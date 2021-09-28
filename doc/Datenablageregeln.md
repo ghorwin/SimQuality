@@ -62,14 +62,16 @@ Time [h]	Var1.TRoom [C]	Var1.GlobalSWRad.Roof (mean) [W/m2]	Var1.GlobalSWRad.Nor
   Beispiel: ein Wert von 500 W bei 1 h bedeutet, dass in der Stunde von 0:00-1:00 im Mittel eine Last von 500 W berechnet wurde.
   
   
+## Ablage von Referenzwerten
+
+Die Referenzwerte werden analog zu Simulationsergebnissen abgelegt, wobei der Tool-Präfix `Reference` verwendet wird, d.h. die Datei `Reference.tsv` muss im Datensatzverzeichnis enthalten sein.
+
 
 ## Vollständigkeit der Daten
 
 - abgelegte Testfall-Dateien müssen stets alle Variablen/Spalten enthalten und alle geforderten Zeitpunkte
 - falls bestimmte Ergebnisse durch ein Programm nicht geliefert werden können (bspw. Aufteilung der Strahlung in diff. und direkt), 
   müssen die Spalten trotzdem vorhanden sein und mit 0 gefüllt werden.
+- die Kopfzeile in den Datensatz-Dateien muss exakt mit der Kopfzeile in der `Reference.tsv`-Datei übereinstimmen
 
-## Ablage von Referenzwerten
 
-Die Referenzwerte werden analog zu Simulationsergebnissen abgelegt, wobei der Tool-Präfix `Reference` verwendet wird (nur relevant 
-für die SimQuality-Cloud-Prüfungsskripte - auf der Webseite als Teil der Testfallspezifikation abgelegt).
