@@ -15,6 +15,8 @@ import os
 
 from TSVContainer import TSVContainer
 from PrintFuncs import *
+import pandas as pd  # Data manipulation and analysis
+from StatisticsFunctions import StatisticsFunctions as sf
 
 RESULTS_SUBDIRNAME = "Auswertung/Ergebnisse"
 
@@ -55,11 +57,27 @@ def listsEqual(list1, list2):
 
 
 def evaluateVariableResults(variable, timeColumn, refData, testData):
-	"""Performance difference calculation between variable data sets."""
+	"""
+	Performance difference calculation between variable data sets.
+	
+	we use different statistical metrics to perform deep comparisions 
+	of the different datasets.
+	
+	"""
 	printNotification("    {}".format(variable))
 	cr = CaseResults()
 	
 	# TODO Stephan
+	# We first convert our data to pandas
+	pdData = pd.Series(data=refData, index=timeColumn)
+	pdTime = pd.Series(data=timeColumn, index=timeColumn)
+	pdRef = pd.Series(data=refData, index=timeColumn)
+
+	cr.norms[0] = sf.function_CVRMSE(pdRef, pdData, pdTime)
+	cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef, pdData, pdTime)
+	cr.norms[2] = sf.function_MBE(pdRef, pdData, pdTime)
+	cr.norms[3] = sf.function_RMSEIQR(pdRef, pdData, pdTime)
+
 	cr.score = 15
 	return cr
 
