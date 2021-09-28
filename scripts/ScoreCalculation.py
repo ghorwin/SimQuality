@@ -36,7 +36,7 @@ except IOError as e:
 testresults = dict()
 
 # process all subdirectories of `AP4` (i.e. test cases)
-subdirs = os.listdir()
+subdirs = os.listdir(os.curdir)
 
 # process all subdirectory starting with TF
 for sd in subdirs:
