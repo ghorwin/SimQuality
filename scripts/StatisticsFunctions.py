@@ -8,11 +8,15 @@
 
 
 import pandas as pd  # Data manipulation and analysis
-import numpy as np  
+import numpy as np
+import math          # used for mathematical calculations
+
+
 
 
 class StatisticsFunctions:
     
+    NEAR_ZERO = 1e-5
     
     ###############################################################################
     ###                      CVRMSE from diff case - ref                        ###
@@ -113,7 +117,7 @@ class StatisticsFunctions:
         calculation"""
         diff_case_ref = diff_case_ref.resample("60min", on="Date and Time").mean()  # Resample as hourly mean average: the time stamp column becomes index column
     
-        hourly_CVRMSE = Calculate_CVRMSE_from_diff_case_ref(diff_case_ref, reference_vector)
+        hourly_CVRMSE = StatisticsFunctions.Calculate_CVRMSE_from_diff_case_ref(diff_case_ref, reference_vector)
     
         return round(hourly_CVRMSE, 2)
     
@@ -133,18 +137,18 @@ class StatisticsFunctions:
         "Daily amplitude test case"
         frames = [date_and_time_stamp_vect, test_case_vector]  # The 2 df to concat
         input_vector = pd.concat(frames, axis=1, join="outer")  # date and time followed by data on the right
-        Daily_amplitude_case = Calculate_daily_amplitude(input_vector)  # Get daily amplitude user test data
+        Daily_amplitude_case = StatisticsFunctions.Calculate_daily_amplitude(input_vector)  # Get daily amplitude user test data
     
         "Daily amplitude reference profile"
         frames = [date_and_time_stamp_vect, reference_vector]  # The 2 df to concat
         input_vector = pd.concat(frames, axis=1, join="outer")  # date and time followed by data on the right
-        Daily_amplitude_reference = Calculate_daily_amplitude(input_vector)  # Get daily amplitude user test data
+        Daily_amplitude_reference = StatisticsFunctions.Calculate_daily_amplitude(input_vector)  # Get daily amplitude user test data
     
         "Difference daily amplitude between test case and reference"
         Diff_daily_aimplitude_case_ref = Daily_amplitude_case - Daily_amplitude_reference
     
         "CVRMSE"
-        daily_amp_CVRMSE = Calculate_CVRMSE_from_diff_case_ref(
+        daily_amp_CVRMSE = StatisticsFunctions.Calculate_CVRMSE_from_diff_case_ref(
             Diff_daily_aimplitude_case_ref, Daily_amplitude_reference)
     
         return round(daily_amp_CVRMSE, 2)
@@ -296,7 +300,7 @@ class StatisticsFunctions:
     
         y = reference_vector
         f = test_case_vector
-    
+        
         squares_diff = (y - f) ** 2
     
         nbr_samples = len(reference_vector)  # Number of samples
@@ -304,6 +308,10 @@ class StatisticsFunctions:
         avrg_ref = reference_vector.mean()  # Average value of the reference = number samples ref * mean average ref
     
         sum_squares = squares_diff.sum()
+        
+        # division through zero handling
+        if math.isclose(avrg_ref, 0 ):
+            avrg_ref = StatisticsFunctions.NEAR_ZERO
     
         CVRMSE = ((np.sqrt(sum_squares / nbr_samples)) / avrg_ref) * 100
     
