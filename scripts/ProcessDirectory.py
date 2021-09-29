@@ -69,14 +69,20 @@ def evaluateVariableResults(variable, timeColumn, refData, testData):
 	
 	# TODO Stephan
 	# We first convert our data to pandas
-	pdData = pd.Series(data=refData, index=timeColumn)
-	pdTime = pd.Series(data=timeColumn, index=timeColumn)
-	pdRef = pd.Series(data=refData, index=timeColumn)
-
-	cr.norms[0] = sf.function_CVRMSE(pdRef, pdData, pdTime)
-	cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef, pdData, pdTime)
-	cr.norms[2] = sf.function_MBE(pdRef, pdData, pdTime)
-	cr.norms[3] = sf.function_RMSEIQR(pdRef, pdData, pdTime)
+	try:
+		pdTime = pd.DataFrame(data=pd.date_range(start="2018-01-01", periods=len(timeColumn), freq="H"), index=timeColumn, columns=["Date and Time"])
+		pdData = pd.DataFrame(data=testData, index=timeColumn, columns=["Data"])
+		pdRef = pd.DataFrame(data=refData, index=timeColumn, columns=["Data"])
+		
+		cr.norms[0] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		#cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef, pdData, pdTime)
+		#cr.norms[2] = convertNAN(sf.function_MBE(pdRef, pdData, pdTime))[0]
+		#cr.norms[3] = convertNAN(sf.function_RMSEIQR(pdRef, pdData, pdTime))[0]
+		
+	except IOError as e:
+		print(e)
+		print("Cannot create statistical evaluation for variable %1".format(variable))
+		exit(1)		
 
 	cr.score = 15
 	return cr
