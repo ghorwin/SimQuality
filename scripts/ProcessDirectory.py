@@ -221,13 +221,13 @@ def processDirectory(path):
 	
 			# number of rows
 			if len(refData.data[i]) != len(tsv.data[i]):
-				printError("'{}'s mismatching number of rows ({}) in file compared to 'Reference.tsv' ({})".format(dataFile, len(tsv.data[i]), len(refData.data[i]) ) )
+				printError("'{}''s mismatching number of rows ({}) in file compared to 'Reference.tsv' ({})".format(dataFile, len(tsv.data[i]), len(refData.data[i]) ) )
 				appendErrorResults(tsvData, testCaseName, toolID, -12, variables)
 				continue			
 			
 
 			if not variables[i] in evaluationVariables:
-				printError("'EvaluationPeriods.tsv' does not contain the variable {}".format(variables[i]))
+				printError("'EvaluationPeriods.tsv' does not contain the variable '{}'".format(variables[i]))
 				continue
 			
 			for j in range(len(evaluationVariables)):
@@ -237,11 +237,11 @@ def processDirectory(path):
 					break
 			
 			if end < start:
-				printError("Evaluation End Point {} has to be after start point  {}.".format(end, start))
+				printError("Evaluation End Point ({}) has to be after start point ({}).".format(end, start))
 				continue
 						
 			if end > len(refData.data[0]):
-				printError("Evaluation End Point {} is bigger then row number of reference results.".format(end, len(refData.data[0])))
+				printError("Evaluation End Point ({}) is bigger then row number of reference results.".format(end, len(refData.data[0])))
 				continue				
 			
 			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1], start, end)
