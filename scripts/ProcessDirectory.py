@@ -15,6 +15,7 @@ import pandas as pd  # Data manipulation and analysis
 from StatisticsFunctions import StatisticsFunctions as sf
 
 RESULTS_SUBDIRNAME = "Auswertung/Ergebnisse"
+EVAL_PERIODS = "EvaluationPeriods.tsv"
 
 
 class CaseResults:
@@ -22,7 +23,7 @@ class CaseResults:
 		self.score = 0
 		self.norms = []
 		
-		for i in range(14) : 
+		for i in range(15) : 
 			self.norms.append(0)
 		self.simQbadge = 0 # means failed
 		
@@ -51,7 +52,7 @@ def listsEqual(list1, list2):
 	return True
 
 
-def evaluateVariableResults(variable, timeColumn, refData, testData):
+def evaluateVariableResults(variable, timeColumn, refData, testData, start, end):
 	"""
 	Performance difference calculation between variable data sets.
 	
@@ -62,13 +63,19 @@ def evaluateVariableResults(variable, timeColumn, refData, testData):
 	printNotification("    {}".format(variable))
 	cr = CaseResults()
 	
-	# TODO Stephan
-	# We first convert our data to pandas
 	try:
+		
+		# We first convert our data to pandas
 		pdTime = pd.DataFrame(data=pd.date_range(start="2018-01-01", periods=len(timeColumn), freq="H"), index=timeColumn, columns=["Date and Time"])
 		pdData = pd.DataFrame(data=testData, index=timeColumn, columns=["Data"])
 		pdRef = pd.DataFrame(data=refData, index=timeColumn, columns=["Data"])
 		
+		# We only use data between out start and end point
+		pdTime = pdTime.loc[start:end]
+		pdData = pdData.loc[start:end]
+		pdRef = pdRef.loc[start:end]
+		
+		# we evaluate the results		
 		cr.norms[0] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
 		cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
 		cr.norms[2] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
@@ -122,8 +129,19 @@ def processDirectory(path):
 	if not "Reference.tsv" in tsvFiles:
 		printError("Missing 'Reference.tsv' file.")
 		return None
+	if not "EvaluationPeriods.tsv" in tsvFiles:
+		printError("Missing 'EvaluationPeriods.tsv' file.")
+		return None
 	tsvFiles = sorted(tsvFiles)
+	
+	# read evaluation periods
+	evalData = TSVContainer()
+	evalData.readAsStrings(os.path.join(tsvPath, "EvaluationPeriods.tsv"))
+	if True in evalData.emptyColumn:
+		printError("'EvaluationPeriods.tsv' contains empty columns.")
+		return None
 
+	
 	# read reference file
 	refData = TSVContainer()
 	refData.readAsStrings(os.path.join(tsvPath, "Reference.tsv") )
@@ -133,7 +151,7 @@ def processDirectory(path):
 	if not refData.convert2Double():
 		printError("'Reference.tsv' contains invalid numbers.")
 		return None
-
+	
 	# extract variable names
 	variables = []
 	for v in refData.headers[1:]:
@@ -147,14 +165,23 @@ def processDirectory(path):
 		v = v[0:p].strip()
 		variables.append(v)
 		printNotification("  {}".format(v))
-
+		
+	# extract variable names
+	evaluationVariables = []
+	for e in evalData.data[0]:
+		evaluationVariables.append(e)
+		printNotification("  {}".format(e))		
 
 	# now read in all the reference files, collect the variable headers and write out the collective file
 	tsvData = []
 	for dataFile in tsvFiles:
 		# special handling of reference data files needed only for visualization
-		if dataFile.startswith("Reference_"):
+		if dataFile.startswith("Reference"):
 			continue
+		
+		if dataFile.startswith("EvaluationPeriods"):
+			continue		
+		
 		printNotification("Reading '{}'.".format(dataFile))
 		toolID = dataFile[0:-4] # strip tsv
 		tsv = TSVContainer()
@@ -169,9 +196,9 @@ def processDirectory(path):
 			appendErrorResults(tsvData, testCaseName, toolID, -9, variables)
 			continue
 		
-		# number of rows
+		# number of cols
 		if len(refData.data) != len(tsv.data):
-			printError("'{}''s mismatching number of rows in file compared to 'Reference.tsv'".format(dataFile))
+			printError("'{}''s mismatching number of columns in file compared to 'Reference.tsv'".format(dataFile))
 			appendErrorResults(tsvData, testCaseName, toolID, -8, variables)
 			continue
 
@@ -186,7 +213,38 @@ def processDirectory(path):
 			# we provide time column, reference data column and value column, also parameter set for norm calculation
 			# we get a variable-specific score stored in CaseResults object
 			
-			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1])
+			# check if data even exists
+			if i > len(tsv.data) :
+				printError("'{}''s columns exceed number of columns of 'Reference.tsv'".format(dataFile))
+				appendErrorResults(tsvData, testCaseName, toolID, -11, variables)
+				break				
+	
+			# number of rows
+			if len(refData.data[i]) != len(tsv.data[i]):
+				printError("'{}'s mismatching number of rows ({}) in file compared to 'Reference.tsv' ({})".format(dataFile, len(tsv.data[i]), len(refData.data[i]) ) )
+				appendErrorResults(tsvData, testCaseName, toolID, -12, variables)
+				continue			
+			
+
+			if not variables[i] in evaluationVariables:
+				printError("'EvaluationPeriods.tsv' does not contain the variable {}".format(variables[i]))
+				continue
+			
+			for j in range(len(evaluationVariables)):
+				if variables[i] == evaluationVariables[j]:
+					start = int(evalData.data[1][j])
+					end = int(evalData.data[2][j])
+					break
+			
+			if end < start:
+				printError("Evaluation End Point {} has to be after start point  {}.".format(end, start))
+				continue
+						
+			if end > len(refData.data[0]):
+				printError("Evaluation End Point {} is bigger then row number of reference results.".format(end, len(refData.data[0])))
+				continue				
+			
+			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1], start, end)
 			cr.TestCase = testCaseName
 			cr.ToolID = toolID
 			cr.Variable = variables[i]
