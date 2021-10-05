@@ -80,7 +80,8 @@ def evaluateVariableResults(variable, timeColumn, refData, testData):
 		print("Cannot create statistical evaluation for variable %1".format(variable))
 		exit(1)		
 
-	cr.score = 15
+	# TODO : Wichtung
+	cr.score = cr.norms[0]
 	return cr
 
 
@@ -132,7 +133,7 @@ def processDirectory(path):
 		if p == -1:
 			print("Missing unit in header label '{}' of 'Reference.tsv'".format(v))
 			return None
-		v = v[0:p]
+		v = v[0:p].strip()
 		variables.append(v)
 		printNotification("  {}".format(v))
 
@@ -177,6 +178,7 @@ def processDirectory(path):
 			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1])
 			cr.TestCase = testCaseName
 			cr.ToolID = toolID
+			cr.Variable = variables[i]
 			cr.ErrorCode = 0
 			tsvData.append(cr)
 
