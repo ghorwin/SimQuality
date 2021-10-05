@@ -1,12 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 #
-# This script processes all data files of a single test case.
-# The actual work is done in class TestCase.
-# 
-# The main script expects the path to the working directory, or
-# uses the current working directory, if path is missing.
-#
+# This file contains functions used to analyse data sets for a single
+# test case.
 
 import sys
 import argparse
@@ -91,10 +87,12 @@ def evaluateVariableResults(variable, timeColumn, refData, testData):
 # all the data is stored in a dictionary with tool-specific data
 def processDirectory(path):
 	"""
-	Processes a test case directory, i.e. reads data from 'Auswertung/Ergebnisse' and
-	calculates score.
+	Processes a test case directory, i.e. path = "data/TF03-Waermeleitung".
+	It then reads data from the subdirectory 'Auswertung/Ergebnisse' and
+	calculates the validation score.
 	
-	Returns a table with data for all test cases and variables. 'None' indicates entirely invalid/missing test data.
+	Returns a CaseResults object with data for all test variables. 
+	'None' indicates entirely invalid/missing test data or reference data.
 	"""
 
 	# test case name

@@ -4,7 +4,7 @@
 # Script to automatically process all simquality test result directories
 # and generate a score file.
 #
-# Script is expected to be run from within the AP4 directory
+# Script is expected to be run from within the 'data' directory.
 
 import os
 
