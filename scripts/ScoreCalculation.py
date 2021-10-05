@@ -51,7 +51,8 @@ for sd in subdirs:
 		testresults[sd] = processDirectory( os.path.join(os.getcwd(), sd) )
 
 # dump test results into file
-fobj.write("Testfall\tToolID\tVariable\tFehlercode\tNorm1\tNorm2\tNorm3\tNorm4\tSimQuality-Score\tSimQ-Einordnung\n")
+
+fobj.write("Testfall\tToolID\tVariable\tFehlercode\tCVRMSE\tDaily Amplitude CVRMSE\tMBE\tRMSEIQR\tAverage\tMax\tMin\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd dev\tSimQuality-Score\tSimQ-Einordnung\n")
 
 testcases = sorted(testresults.keys())
 
