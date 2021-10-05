@@ -21,10 +21,9 @@ class CaseResults:
 	def __init__(self):
 		self.score = 0
 		self.norms = []
-		self.norms.append(0)
-		self.norms.append(0)
-		self.norms.append(0)
-		self.norms.append(0)
+		
+		for i in range(14) : 
+			self.norms.append(0)
 		self.simQbadge = 0 # means failed
 		
 		self.ToolID = ""
@@ -71,9 +70,21 @@ def evaluateVariableResults(variable, timeColumn, refData, testData):
 		pdRef = pd.DataFrame(data=refData, index=timeColumn, columns=["Data"])
 		
 		cr.norms[0] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		#cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef, pdData, pdTime)
-		#cr.norms[2] = convertNAN(sf.function_MBE(pdRef, pdData, pdTime))[0]
-		#cr.norms[3] = convertNAN(sf.function_RMSEIQR(pdRef, pdData, pdTime))[0]
+		cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[2] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[3] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[4] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[5] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[6] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[7] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[8] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[9] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[10] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[11] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[12] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[13] = sf.function_R_squared_coeff_determination(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms[14] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		
 		
 	except IOError as e:
 		print(e)
