@@ -8,6 +8,7 @@
 
 import os
 
+from TSVContainer import TSVContainer
 from ProcessDirectory import processDirectory
 from colorama import *
 from PrintFuncs import *
@@ -19,11 +20,34 @@ BADGES = {
 	3: "Bronze"
 }
 
+def readWeightFactors():
+	# read weight factors
+	# CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R² coefficient determination	std dev
+	try:
+		weightFactorsTSV = TSVContainer()
+		weightFactorsTSV.readAsStrings(os.path.join(os.getcwd(), "WeightFactors.tsv"))
+	except RuntimeError as e:
+		print(e)
+		print (f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
+		exit (1)
+	
+	weightFactors = dict()
+	
+	for i in range(len(weightFactorsTSV.data[0])):
+		weightFactors[weightFactorsTSV.data[0][i]] = int(weightFactorsTSV.data[1][i])
+		
+	
+	weightFactors['Sum'] = sum(map(int, weightFactorsTSV.data[1])) # convert to int and then sum it up
+		
+	return weightFactors
+
 
 # ---*** main ***---
 
 # initialize colored console output
 init()
+
+weightFactors = readWeightFactors()
 
 try:
 	fobj = open("Results.tsv", 'w')
@@ -48,14 +72,13 @@ for sd in subdirs:
 			printError("Malformed directory name: {}".format(sd))
 			continue
 		printNotification("Processing directory '{}'".format(sd))
-		testresults[sd] = processDirectory( os.path.join(os.getcwd(), sd) )
+		testresults[sd] = processDirectory( os.path.join(os.getcwd(), sd), weightFactors )
 
 # dump test results into file
 
-fobj.write("Testfall\tToolID\tVariable\tFehlercode\tCVRMSE\tDaily Amplitude CVRMSE\tMBE\tRMSEIQR\tAverage\tMax\tMin\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd dev\tSimQuality-Score\tSimQ-Einordnung\n")
+fobj.write("Testfall\tToolID\tVariable\tFehlercode\tMax\tMin\tAverage\tCVRMSE\tDaily Amplitude CVRMSE\tMBE\tRMSEIQR\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd dev\tSimQuality-Score\tSimQ-Einordnung\n")
 
 testcases = sorted(testresults.keys())
-
 
 for testcase in testcases:
 	testData = testresults[testcase]
