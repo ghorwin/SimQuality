@@ -1,116 +1,550 @@
 Testfall	ToolID	Variable	Fehlercode	Max	Min	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R� coefficient determination	std dev	SimQuality-Score	SimQ-Einordnung
-03-Waermeleitung	Aixlib	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	95.148	Gold
-03-Waermeleitung	Aixlib	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	59.072	Failed
-03-Waermeleitung	Aixlib	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	96.28999999999999	Gold
-03-Waermeleitung	Aixlib	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.864	Silver
-03-Waermeleitung	ETU	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	83.75	Bronze
-03-Waermeleitung	ETU	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	31.862000000000002	Failed
-03-Waermeleitung	ETU	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	77.80199999999999	Failed
-03-Waermeleitung	ETU	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	88.83599999999998	Bronze
-03-Waermeleitung	IDAICE	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	91.664	Silver
-03-Waermeleitung	IDAICE	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	71.676	Failed
-03-Waermeleitung	IDAICE	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	93.048	Silver
-03-Waermeleitung	IDAICE	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.466	Gold
-03-Waermeleitung	NANDRAD	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.732	Gold
-03-Waermeleitung	NANDRAD	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	94.36800000000001	Silver
-03-Waermeleitung	NANDRAD	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.856	Gold
-03-Waermeleitung	NANDRAD	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.91799999999998	Gold
-03-Waermeleitung	NANDRAD2	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-03-Waermeleitung	NANDRAD2	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-03-Waermeleitung	NANDRAD2	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-03-Waermeleitung	NANDRAD2	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-03-Waermeleitung	TAS	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.268	Gold
-03-Waermeleitung	TAS	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	24.379999999999995	Failed
-03-Waermeleitung	TAS	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.76400000000001	Gold
-03-Waermeleitung	TAS	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	83.602	Bronze
-03-Waermeleitung	THERAKLES	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.702	Gold
-03-Waermeleitung	THERAKLES	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	94.254	Silver
-03-Waermeleitung	THERAKLES	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.84	Gold
-03-Waermeleitung	THERAKLES	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.586	Gold
-03-Waermeleitung	TRNSYS	Variante 1	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.724	Gold
-03-Waermeleitung	TRNSYS	Variante 2	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	93.478	Silver
-03-Waermeleitung	TRNSYS	Variante 3	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.834	Gold
-03-Waermeleitung	TRNSYS	Variante 4	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.886	Gold
-04-WaermeleitungSpeicherung	Aixlib	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	97.584	Gold
-04-WaermeleitungSpeicherung	Aixlib	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	84.258	Bronze
-04-WaermeleitungSpeicherung	Aixlib	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	88.274	Bronze
-04-WaermeleitungSpeicherung	Aixlib	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	87.384	Bronze
-04-WaermeleitungSpeicherung	Aixlib	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.56799999999998	Silver
-04-WaermeleitungSpeicherung	Aixlib	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	83.792	Bronze
-04-WaermeleitungSpeicherung	ETU	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	95.27799999999999	Gold
-04-WaermeleitungSpeicherung	ETU	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	85.326	Bronze
-04-WaermeleitungSpeicherung	ETU	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	54.081999999999994	Failed
-04-WaermeleitungSpeicherung	ETU	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.70599999999999	Silver
-04-WaermeleitungSpeicherung	ETU	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	81.34599999999999	Bronze
-04-WaermeleitungSpeicherung	ETU	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	91.03999999999999	Silver
-04-WaermeleitungSpeicherung	IDAICE	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	96.508	Gold
-04-WaermeleitungSpeicherung	IDAICE	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	91.452	Silver
-04-WaermeleitungSpeicherung	IDAICE	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.11200000000001	Silver
-04-WaermeleitungSpeicherung	IDAICE	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	97.66400000000002	Gold
-04-WaermeleitungSpeicherung	IDAICE	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	95.23400000000001	Gold
-04-WaermeleitungSpeicherung	IDAICE	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	97.86399999999999	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	NANDRAD	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	97.60800000000002	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.51599999999999	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	97.80199999999999	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.94	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.168	Gold
-04-WaermeleitungSpeicherung	TAS	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.48	Gold
-04-WaermeleitungSpeicherung	THERAKLES	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.324	Gold
-04-WaermeleitungSpeicherung	THERAKLES	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.78599999999999	Gold
-04-WaermeleitungSpeicherung	THERAKLES	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	0	Failed
-04-WaermeleitungSpeicherung	THERAKLES	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	0	Failed
-04-WaermeleitungSpeicherung	THERAKLES	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	0	Failed
-04-WaermeleitungSpeicherung	THERAKLES	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	0	Failed
-04-WaermeleitungSpeicherung	TRNSYS	Variante 1 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.34200000000001	Gold
-04-WaermeleitungSpeicherung	TRNSYS	Variante 2 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.748	Gold
-04-WaermeleitungSpeicherung	TRNSYS	Variante 3 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.586	Gold
-04-WaermeleitungSpeicherung	TRNSYS	Variante 3 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.864	Gold
-04-WaermeleitungSpeicherung	TRNSYS	Variante 4 Raum A	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.8	Gold
-04-WaermeleitungSpeicherung	TRNSYS	Variante 4 Raum B	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.89399999999999	Gold
-05-Lueftung	Aixlib	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	96.79	Gold
-05-Lueftung	Aixlib	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.03599999999999	Silver
-05-Lueftung	Aixlib	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	88.822	Bronze
-05-Lueftung	Aixlib	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	57.58399999999999	Failed
-05-Lueftung	Aixlib	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	65.902	Failed
-05-Lueftung	ETU	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	79.244	Failed
-05-Lueftung	ETU	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	96.97999999999999	Gold
-05-Lueftung	ETU	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	91.3	Silver
-05-Lueftung	ETU	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.228	Silver
-05-Lueftung	ETU	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	86.724	Bronze
-05-Lueftung	ETU	Variante 4 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	82.91799999999999	Bronze
-05-Lueftung	ETU	Variante 4 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.02999999999999	Gold
-05-Lueftung	IDAICE	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	95.79	Gold
-05-Lueftung	IDAICE	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.25	Gold
-05-Lueftung	IDAICE	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.386	Silver
-05-Lueftung	IDAICE	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	67.692	Failed
-05-Lueftung	IDAICE	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	76.23599999999999	Failed
-05-Lueftung	NANDRAD	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 4 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	NANDRAD	Variante 4 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	100.0	Gold
-05-Lueftung	TAS	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.534	Gold
-05-Lueftung	TAS	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.268	Gold
-05-Lueftung	TAS	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	89.148	Bronze
-05-Lueftung	TAS	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	92.072	Silver
-05-Lueftung	TAS	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	90.83599999999998	Silver
-05-Lueftung	THERAKLES	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.962	Gold
-05-Lueftung	THERAKLES	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.96400000000001	Gold
-05-Lueftung	THERAKLES	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	89.426	Bronze
-05-Lueftung	THERAKLES	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.42600000000002	Gold
-05-Lueftung	THERAKLES	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	70.124	Failed
-05-Lueftung	TRNSYS	Variante 1 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	90.00800000000001	Silver
-05-Lueftung	TRNSYS	Variante 2 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	98.316	Gold
-05-Lueftung	TRNSYS	Variante 2 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.618	Gold
-05-Lueftung	TRNSYS	Variante 3 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	73.138	Failed
-05-Lueftung	TRNSYS	Variante 3 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	99.292	Gold
-05-Lueftung	TRNSYS	Variante 4 Raumlufttemperatur	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	-186.03399999999996	Failed
-05-Lueftung	TRNSYS	Variante 4 Lueftungswaermestrom	0	Maximum	Minimum	Average	CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R squared coeff determination	std dev	121.02000000000002	Gold
+03-Waermeleitung	Aixlib	Variante 1	0	30.0	20.01	28.69	0.69	5.78	0.01	15.87	0.04	0.03	1.99	0.2	0.00848	99.32	2.25	94.8475	Silver
+03-Waermeleitung	Aixlib	Variante 2	0	30.0	20.0	29.12	0.66	0.0	0.0	184.93	0.04	0.01	1.93	0.19	0.00816	99.33	2.25	53.181999999999995	Failed
+03-Waermeleitung	Aixlib	Variante 3	0	27.71	20.0	24.12	1.3	6.7	0.23	6.09	0.1	0.96	4.0	0.31	0.01352	98.65	2.54	96.365	Gold
+03-Waermeleitung	Aixlib	Variante 4	0	20.93	20.0	20.45	0.35	13.12	0.07	14.11	0.01	0.33	8.19	0.07	0.00332	93.63	0.29	92.075	Silver
+03-Waermeleitung	ETU	Variante 1	0	30.0	20.07	28.99	1.8	33.0	0.3	41.11	0.27	1.06	5.16	0.52	0.01994	95.42	2.08	84.1805	Bronze
+03-Waermeleitung	ETU	Variante 2	0	30.0	20.68	29.14	1.06	9.69	0.02	296.43	0.1	0.06	3.09	0.31	0.01323	98.28	2.13	23.877999999999993	Failed
+03-Waermeleitung	ETU	Variante 3	0	28.62	20.06	25.55	7.48	39.41	1.67	35.0	3.19	6.97	23.02	1.79	0.07181	55.5	2.53	73.1365	Failed
+03-Waermeleitung	ETU	Variante 4	0	20.98	20.0	20.49	0.56	19.57	0.11	22.54	0.01	0.54	13.08	0.11	0.00529	83.76	0.3	86.567	Bronze
+03-Waermeleitung	IDAICE	Variante 1	0	30.0	20.0	28.84	0.88	18.89	0.16	20.02	0.06	0.56	2.51	0.25	0.00905	98.91	2.32	92.175	Silver
+03-Waermeleitung	IDAICE	Variante 2	0	30.0	20.0	29.07	0.36	0.0	-0.05	101.68	0.01	-0.16	1.06	0.11	0.00392	99.8	2.4	74.325	Failed
+03-Waermeleitung	IDAICE	Variante 3	0	28.41	20.0	24.38	2.34	13.07	0.49	10.97	0.31	2.05	7.21	0.56	0.02094	95.63	2.93	92.97999999999999	Silver
+03-Waermeleitung	IDAICE	Variante 4	0	20.88	19.99	20.38	0.02	1.66	0.0	0.83	0.0	0.0	0.48	0.0	0.00019	99.98	0.29	99.5035	Gold
+03-Waermeleitung	NANDRAD	Variante 1	0	30.0	20.0	28.68	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	2.41	100.0	Gold
+03-Waermeleitung	NANDRAD	Variante 2	0	30.0	20.0	29.12	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	2.36	100.0	Gold
+03-Waermeleitung	NANDRAD	Variante 3	0	27.76	20.0	23.89	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	2.68	100.0	Gold
+03-Waermeleitung	NANDRAD	Variante 4	0	20.87	20.0	20.38	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.28	100.0	Gold
+03-Waermeleitung	NANDRAD2	Variante 1	0	30.0	20.0	28.69	0.03	0.59	0.01	0.65	0.0	0.02	0.08	0.01	0.0003	100.0	2.41	99.7535	Gold
+03-Waermeleitung	NANDRAD2	Variante 2	0	30.0	20.0	29.13	0.09	0.0	0.01	25.23	0.0	0.04	0.26	0.03	0.00096	99.99	2.35	93.616	Silver
+03-Waermeleitung	NANDRAD2	Variante 3	0	27.78	20.0	23.9	0.05	0.3	0.01	0.25	0.0	0.05	0.17	0.01	0.00049	100.0	2.69	99.8525	Gold
+03-Waermeleitung	NANDRAD2	Variante 4	0	20.87	20.0	20.38	0.0	0.17	0.0	0.15	0.0	0.0	0.09	0.0	4e-05	100.0	0.28	99.92299999999999	Gold
+03-Waermeleitung	TAS	Variante 1	0	29.99	20.0	28.67	0.05	1.0	-0.01	1.22	0.0	-0.04	0.15	0.02	0.00056	100.0	2.41	99.5675	Gold
+03-Waermeleitung	TAS	Variante 2	0	29.99	20.0	28.96	1.13	0.14	-0.16	316.08	0.11	-0.54	3.3	0.33	0.01161	98.05	2.41	19.98350000000001	Failed
+03-Waermeleitung	TAS	Variante 3	0	27.67	19.99	23.81	0.39	2.35	-0.08	1.85	0.01	-0.32	1.21	0.09	0.0036	99.88	2.63	99.06199999999998	Gold
+03-Waermeleitung	TAS	Variante 4	0	21.03	20.0	20.55	0.83	28.1	0.17	33.38	0.03	0.81	19.37	0.17	0.00784	64.39	0.29	78.4585	Failed
+03-Waermeleitung	THERAKLES	Variante 1	0	30.0	20.0	28.68	0.01	0.38	0.0	0.25	0.0	0.0	0.03	0.0	0.00011	100.0	2.41	99.89200000000001	Gold
+03-Waermeleitung	THERAKLES	Variante 2	0	30.0	20.0	29.12	0.02	0.0	0.0	5.69	0.0	0.0	0.06	0.01	0.00025	100.0	2.36	98.5625	Gold
+03-Waermeleitung	THERAKLES	Variante 3	0	27.77	20.0	23.89	0.01	0.11	-0.0	0.06	0.0	-0.01	0.04	0.0	0.00013	100.0	2.68	99.9665	Gold
+03-Waermeleitung	THERAKLES	Variante 4	0	20.87	20.0	20.38	0.01	1.15	0.0	0.53	0.0	0.0	0.31	0.0	0.00013	99.99	0.28	99.6735	Gold
+03-Waermeleitung	TRNSYS	Variante 1	0	30.0	20.0	28.68	0.0	0.03	-0.0	0.05	0.0	-0.0	0.01	0.0	3e-05	100.0	2.41	99.982	Gold
+03-Waermeleitung	TRNSYS	Variante 2	0	30.0	20.0	29.12	0.06	0.0	-0.0	15.46	0.0	-0.0	0.16	0.02	0.00069	100.0	2.35	96.095	Gold
+03-Waermeleitung	TRNSYS	Variante 3	0	27.76	20.0	23.89	0.02	0.05	0.0	0.08	0.0	0.0	0.05	0.0	0.00017	100.0	2.68	99.9625	Gold
+03-Waermeleitung	TRNSYS	Variante 4	0	20.87	20.0	20.38	0.0	0.06	-0.0	0.06	0.0	-0.0	0.04	0.0	1e-05	100.0	0.28	99.969	Gold
+04-WaermeleitungSpeicherung	Aixlib	Variante 1 Raum A	0	30.0	20.0	29.22	0.09	6.49	-0.01	5.29	0.0	-0.04	0.25	0.03	0.00095	99.98	1.72	97.973	Gold
+04-WaermeleitungSpeicherung	Aixlib	Variante 2 Raum A	0	25.5	22.93	24.17	1.96	21.9	0.01	31.79	0.22	0.03	23.03	0.47	0.01876	54.86	0.76	77.32650000000001	Failed
+04-WaermeleitungSpeicherung	Aixlib	Variante 3 Raum A	0	24.43	22.2	23.75	0.84	4.61	-0.13	43.24	0.04	-0.54	10.48	0.2	0.0082	75.5	0.49	82.569	Bronze
+04-WaermeleitungSpeicherung	Aixlib	Variante 3 Raum B	0	24.19	21.55	23.54	0.86	20.07	-0.17	34.48	0.04	-0.72	8.39	0.2	0.00843	87.72	0.67	85.6135	Bronze
+04-WaermeleitungSpeicherung	Aixlib	Variante 4 Raum A	0	20.32	18.06	19.14	1.06	15.94	-0.13	12.84	0.04	-0.65	7.97	0.2	0.0099	94.16	0.75	92.49000000000001	Silver
+04-WaermeleitungSpeicherung	Aixlib	Variante 4 Raum B	0	19.42	18.7	19.09	1.02	26.65	-0.18	33.64	0.04	-0.94	20.67	0.2	0.00964	54.94	0.22	77.23349999999999	Failed
+04-WaermeleitungSpeicherung	ETU	Variante 1 Raum A	0	30.0	20.0	29.23	0.07	19.23	-0.01	4.13	0.0	-0.02	0.2	0.02	0.00084	99.99	1.71	96.998	Gold
+04-WaermeleitungSpeicherung	ETU	Variante 2 Raum A	0	25.46	22.93	24.17	1.74	23.04	-0.0	28.18	0.18	-0.01	20.42	0.42	0.01664	64.53	0.81	80.22799999999998	Bronze
+04-WaermeleitungSpeicherung	ETU	Variante 3 Raum A	0	24.78	22.22	23.88	1.79	113.83	0.0	91.74	0.18	0.0	22.23	0.43	0.01714	-10.31	0.52	43.578	Failed
+04-WaermeleitungSpeicherung	ETU	Variante 3 Raum B	0	24.22	21.89	23.72	0.16	28.16	0.01	6.54	0.0	0.02	1.59	0.04	0.00157	99.56	0.57	95.0805	Gold
+04-WaermeleitungSpeicherung	ETU	Variante 4 Raum A	0	20.87	17.75	19.23	2.17	48.68	-0.03	26.27	0.18	-0.16	16.31	0.42	0.02063	75.55	0.93	80.8595	Bronze
+04-WaermeleitungSpeicherung	ETU	Variante 4 Raum B	0	19.7	18.71	19.26	0.36	25.07	-0.01	12.03	0.0	-0.05	7.39	0.07	0.00347	94.23	0.31	91.785	Silver
+04-WaermeleitungSpeicherung	IDAICE	Variante 1 Raum A	0	29.99	20.0	29.23	0.13	8.81	-0.01	8.16	0.0	-0.03	0.39	0.04	0.00142	99.95	1.73	96.98150000000001	Gold
+04-WaermeleitungSpeicherung	IDAICE	Variante 2 Raum A	0	25.39	23.02	24.2	0.78	19.97	0.03	12.67	0.04	0.14	9.18	0.19	0.0075	92.83	0.68	91.42999999999999	Silver
+04-WaermeleitungSpeicherung	IDAICE	Variante 3 Raum A	0	24.54	22.52	23.94	0.28	21.3	0.05	14.21	0.0	0.21	3.44	0.07	0.00264	97.35	0.42	93.0075	Silver
+04-WaermeleitungSpeicherung	IDAICE	Variante 3 Raum B	0	24.25	21.83	23.76	0.22	0.42	0.05	8.7	0.0	0.22	2.12	0.05	0.00208	99.22	0.58	97.08099999999999	Gold
+04-WaermeleitungSpeicherung	IDAICE	Variante 4 Raum A	0	20.7	17.93	19.28	0.43	14.8	0.01	5.26	0.01	0.07	3.27	0.08	0.00407	99.02	0.89	96.223	Gold
+04-WaermeleitungSpeicherung	IDAICE	Variante 4 Raum B	0	19.73	18.75	19.29	0.12	3.95	0.02	4.03	0.0	0.1	2.48	0.02	0.00115	99.35	0.3	97.85499999999999	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 1 Raum A	0	30.0	20.0	29.24	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	1.71	100.0	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 2 Raum A	0	25.19	23.13	24.17	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.71	100.0	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 3 Raum A	0	24.43	22.51	23.88	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.41	100.0	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 3 Raum B	0	24.2	21.78	23.71	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.58	100.0	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 4 Raum A	0	20.54	17.98	19.26	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.85	100.0	Gold
+04-WaermeleitungSpeicherung	NANDRAD	Variante 4 Raum B	0	19.7	18.75	19.27	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.29	100.0	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 1 Raum A	0	29.99	20.0	29.22	0.07	7.15	-0.01	4.57	0.0	-0.05	0.22	0.02	0.00085	99.98	1.72	98.09700000000001	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 2 Raum A	0	25.15	23.18	24.16	0.11	4.18	-0.01	1.83	0.0	-0.02	1.32	0.03	0.00108	99.85	0.68	98.777	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 3 Raum A	0	24.41	22.54	23.88	0.06	6.85	-0.0	3.29	0.0	-0.01	0.8	0.02	0.00061	99.86	0.4	98.27399999999999	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 3 Raum B	0	24.2	21.79	23.71	0.02	4.22	-0.0	0.85	0.0	-0.0	0.21	0.0	0.0002	99.99	0.58	99.3115	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 4 Raum A	0	20.54	17.98	19.26	0.06	2.88	-0.0	0.76	0.0	-0.01	0.47	0.01	0.0006	99.98	0.85	99.404	Gold
+04-WaermeleitungSpeicherung	TAS	Variante 4 Raum B	0	19.7	18.74	19.27	0.02	1.57	-0.0	0.63	0.0	-0.01	0.39	0.0	0.00018	99.98	0.29	99.5875	Gold
+04-WaermeleitungSpeicherung	THERAKLES	Variante 1 Raum A	0	30.0	20.0	29.22	0.08	3.48	-0.01	4.64	0.0	-0.04	0.22	0.02	0.0008	99.98	1.72	98.444	Gold
+04-WaermeleitungSpeicherung	THERAKLES	Variante 2 Raum A	0	25.19	23.14	24.17	0.03	0.21	0.0	0.48	0.0	0.0	0.35	0.01	0.00028	99.99	0.7	99.77	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 1 Raum A	0	30.0	20.0	29.22	0.08	3.41	-0.01	4.62	0.0	-0.04	0.22	0.02	0.00079	99.98	1.72	98.45599999999999	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 2 Raum A	0	25.18	23.14	24.17	0.02	0.6	0.0	0.37	0.0	0.0	0.27	0.01	0.00022	99.99	0.7	99.77850000000001	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 3 Raum A	0	24.43	22.51	23.88	0.01	1.38	-0.0	0.55	0.0	-0.0	0.13	0.0	0.0001	100.0	0.41	99.69200000000001	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 3 Raum B	0	24.2	21.78	23.71	0.01	0.41	-0.0	0.21	0.0	-0.0	0.05	0.0	5e-05	100.0	0.58	99.894	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 4 Raum A	0	20.54	17.98	19.26	0.01	0.73	-0.0	0.16	0.0	-0.0	0.1	0.0	0.00013	100.0	0.84	99.862	Gold
+04-WaermeleitungSpeicherung	TRNSYS	Variante 4 Raum B	0	19.69	18.75	19.27	0.01	0.24	-0.0	0.17	0.0	-0.0	0.11	0.0	5e-05	100.0	0.29	99.906	Gold
+05-Lueftung	Aixlib	Variante 1 Raumlufttemperatur	0	15.94	3.95	10.31	0.16	11.14	-0.01	0.19	0.0	-0.13	0.14	0.02	0.0019	100.0	4.25	98.836	Gold
+05-Lueftung	Aixlib	Variante 2 Raumlufttemperatur	0	21.09	1.44	11.61	1.09	6.16	-0.01	1.17	0.02	-0.06	0.65	0.13	0.01354	99.95	5.64	98.9365	Gold
+05-Lueftung	Aixlib	Variante 2 Lueftungswaermestrom	0	289.19	-216.87	1.1	1018.78	4.94	0.13	8.97	96.8	13.91	1.96	9.84	100	98.65	84.47	93.0935	Silver
+05-Lueftung	Aixlib	Variante 3 Raumlufttemperatur	0	18.73	17.52	18.09	1.76	43.47	0.28	129.74	0.1	1.59	35.52	0.31	0.01644	-184.95	0.24	11.198000000000002	Failed
+05-Lueftung	Aixlib	Variante 3 Lueftungswaermestrom	0	141.8	-62.6	25.56	68.14	38.67	1.36	48.12	271.81	5.64	9.92	16.49	100	73.8	37.05	76.28300000000002	Failed
+05-Lueftung	ETU	Variante 1 Raumlufttemperatur	0	16.01	3.93	10.36	0.69	31.53	0.03	0.81	0.01	0.29	0.6	0.07	0.00679	99.97	4.26	96.41749999999999	Gold
+05-Lueftung	ETU	Variante 2 Raumlufttemperatur	0	20.97	1.45	11.62	0.29	4.42	-0.0	0.31	0.0	-0.0	0.17	0.03	0.00375	100.0	5.63	99.43800000000002	Gold
+05-Lueftung	ETU	Variante 2 Lueftungswaermestrom	0	276.5	-214.0	0.96	863.25	4.17	-0.01	7.6	69.5	-0.58	1.66	8.34	100	99.03	82.59	97.2675	Gold
+05-Lueftung	ETU	Variante 3 Raumlufttemperatur	0	18.27	17.34	17.83	0.34	6.81	0.03	24.75	0.0	0.18	6.78	0.06	0.00317	89.63	0.19	89.83599999999998	Bronze
+05-Lueftung	ETU	Variante 3 Lueftungswaermestrom	0	100.0	-53.5	23.57	29.01	15.25	-0.63	20.49	49.28	-2.59	4.22	7.02	100	95.25	30.82	92.2325	Silver
+05-Lueftung	ETU	Variante 4 Raumlufttemperatur	0	23.82	21.98	22.98	1.22	16.93	-0.27	52.06	0.08	-1.16	16.36	0.28	0.01187	42.59	0.42	72.8805	Failed
+05-Lueftung	ETU	Variante 4 Lueftungswaermestrom	0	30.0	-153.0	-43.88	-18.05	13.9	5.02	9.72	77.88	-10.26	4.54	8.82	100	97.57	53.24	97.2455	Gold
+05-Lueftung	IDAICE	Variante 1 Raumlufttemperatur	0	15.99	3.95	10.34	0.19	2.59	0.02	0.22	0.0	0.15	0.16	0.02	0.00145	100.0	4.26	99.6085	Gold
+05-Lueftung	IDAICE	Variante 2 Raumlufttemperatur	0	20.98	1.48	11.62	0.18	1.32	0.01	0.19	0.0	0.06	0.11	0.02	0.00231	100.0	5.63	99.778	Gold
+05-Lueftung	IDAICE	Variante 2 Lueftungswaermestrom	0	290.51	-217.04	0.95	730.53	3.39	-0.01	6.43	49.77	-1.23	1.41	7.06	100	99.3	84.66	97.90350000000001	Gold
+05-Lueftung	IDAICE	Variante 3 Raumlufttemperatur	0	18.64	17.52	18.02	1.38	29.26	0.22	101.79	0.06	1.25	27.86	0.25	0.01295	-75.4	0.21	38.039	Failed
+05-Lueftung	IDAICE	Variante 3 Lueftungswaermestrom	0	114.51	-62.02	23.69	59.24	11.21	-0.51	41.84	205.45	-2.1	8.63	14.33	100	80.19	33.09	83.815	Bronze
+05-Lueftung	NANDRAD	Variante 1 Raumlufttemperatur	0	15.96	3.95	10.32	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.25	100.0	Gold
+05-Lueftung	NANDRAD	Variante 2 Raumlufttemperatur	0	20.97	1.46	11.62	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	5.63	100.0	Gold
+05-Lueftung	NANDRAD	Variante 2 Lueftungswaermestrom	0	282.69	-218.41	0.97	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	84.54	100.0	Gold
+05-Lueftung	NANDRAD	Variante 3 Raumlufttemperatur	0	18.19	17.31	17.8	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.19	100.0	Gold
+05-Lueftung	NANDRAD	Variante 3 Lueftungswaermestrom	0	111.62	-54.55	24.2	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	32.21	100.0	Gold
+05-Lueftung	NANDRAD	Variante 4 Raumlufttemperatur	0	23.97	22.23	23.25	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.38	100.0	Gold
+05-Lueftung	NANDRAD	Variante 4 Lueftungswaermestrom	0	29.74	-164.45	-48.9	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	56.65	100.0	Gold
+05-Lueftung	TAS	Variante 1 Raumlufttemperatur	0	15.96	3.95	10.32	0.04	5.99	-0.0	0.04	0.0	-0.02	0.03	0.0	0.0004	100.0	4.25	99.3885	Gold
+05-Lueftung	TAS	Variante 2 Raumlufttemperatur	0	20.99	1.45	11.62	0.12	1.09	0.0	0.13	0.0	0.0	0.07	0.01	0.00161	100.0	5.64	99.84100000000001	Gold
+05-Lueftung	TAS	Variante 2 Lueftungswaermestrom	0	293.99	-220.44	0.98	991.11	6.02	0.01	8.72	91.62	1.36	1.91	9.57	100	98.72	85.76	96.2085	Gold
+05-Lueftung	TAS	Variante 3 Raumlufttemperatur	0	18.09	17.25	17.74	0.36	5.81	-0.06	26.56	0.0	-0.36	7.27	0.06	0.00341	88.06	0.18	89.26050000000001	Bronze
+05-Lueftung	TAS	Variante 3 Lueftungswaermestrom	0	106.49	-58.19	23.92	18.66	12.4	-0.28	13.18	20.38	-1.14	2.72	4.51	100	98.04	31.95	94.776	Silver
+05-Lueftung	THERAKLES	Variante 1 Raumlufttemperatur	0	15.96	3.95	10.32	0.0	0.11	0.0	0.0	0.0	0.0	0.0	0.0	1e-05	100.0	4.25	99.989	Gold
+05-Lueftung	THERAKLES	Variante 2 Raumlufttemperatur	0	20.97	1.46	11.62	0.0	0.09	0.0	0.0	0.0	0.0	0.0	0.0	5e-05	100.0	5.63	99.991	Gold
+05-Lueftung	THERAKLES	Variante 2 Lueftungswaermestrom	0	291.55	-218.98	0.97	982.49	5.25	0.0	8.65	90.03	0.39	1.89	9.49	100	98.74	85.1	96.5535	Gold
+05-Lueftung	THERAKLES	Variante 3 Raumlufttemperatur	0	18.19	17.31	17.8	0.02	0.69	0.0	1.7	0.0	0.0	0.46	0.0	0.00022	99.95	0.19	99.3835	Gold
+05-Lueftung	THERAKLES	Variante 3 Lueftungswaermestrom	0	129.76	-58.89	25.65	65.28	22.47	1.46	46.1	249.49	6.02	9.51	15.8	100	75.95	34.07	78.73800000000001	Failed
+05-Lueftung	TRNSYS	Variante 1 Raumlufttemperatur	0	15.96	3.95	10.32	0.02	1.19	-0.0	0.02	0.0	-0.0	0.01	0.0	0.00017	100.0	4.25	99.8735	Gold
+05-Lueftung	TRNSYS	Variante 2 Raumlufttemperatur	0	20.96	1.47	11.62	0.56	4.14	-0.0	0.61	0.0	-0.0	0.34	0.07	0.00693	99.99	5.63	99.34700000000001	Gold
+05-Lueftung	TRNSYS	Variante 2 Lueftungswaermestrom	0	282.7	-218.39	0.97	3.84	0.02	-0.0	0.03	0.0	-0.0	0.01	0.04	100	100.0	84.54	99.988	Gold
+05-Lueftung	TRNSYS	Variante 3 Raumlufttemperatur	0	18.26	17.29	17.81	0.17	7.46	0.0	12.44	0.0	0.02	3.41	0.03	0.0016	97.38	0.19	94.89349999999999	Silver
+05-Lueftung	TRNSYS	Variante 3 Lueftungswaermestrom	0	111.42	-54.53	24.19	0.12	0.16	-0.0	0.08	0.0	-0.0	0.02	0.03	100	100.0	32.2	99.959	Gold
+05-Lueftung	TRNSYS	Variante 4 Raumlufttemperatur	0	23.97	22.18	23.25	0.23	3.87	0.0	9.74	0.0	0.01	3.06	0.05	0.0022	97.99	0.38	96.10900000000001	Gold
+05-Lueftung	TRNSYS	Variante 4 Lueftungswaermestrom	0	29.68	-164.44	-49.15	-1.56	0.07	-0.25	0.84	0.58	0.51	0.39	0.76	100	99.98	56.5	99.55499999999999	Gold
+06-WaermeleitungStrahlung	ETU	Variante 1 Raumlufttemperatur	0	34.13	20.0	30.08	4.86	27.16	-0.48	47.38	2.21	-1.59	10.57	1.49	0.04763	81.3	3.53	80.38900000000001	Bronze
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Dach	0	419.0	0.0	148.24	5.24	0.22	-2.24	2.48	62.18	-1.49	1.89	7.89	0.59443	99.77	165.9	99.22349999999999	Gold
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Boden	0	84.0	0.0	30.19	3.31	0.5	0.09	1.56	0.99	0.31	1.19	0.99	0.28405	99.91	33.02	99.17150000000001	Gold
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Nordwand	0	131.0	0.0	28.55	58.23	40.91	-6.56	51.12	417.83	-18.68	9.73	20.44	0.9078	82.46	36.42	82.7355	Bronze
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Ostwand	0	440.0	0.0	79.63	15.43	0.42	-0.8	21.98	153.93	-0.99	2.83	12.41	0.7854	99.18	140.83	93.88	Silver
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Südwand	0	282.0	0.0	69.06	2.38	0.48	0.04	1.19	2.7	0.06	0.58	1.64	0.19374	99.97	99.4	99.48999999999998	Gold
+06-WaermeleitungStrahlung	ETU	Variante 1 abs. Strahlung Westwand	0	447.79	0.0	96.05	35.39	2.08	-11.6	19.83	1451.62	-10.77	8.34	38.1	0.76757	94.41	147.32	94.6035	Silver
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Dach	0	0.0	0.0	0.0	101.19	104.48	-35.32	539.17	1277.42	-100.0	164.78	35.74	3.58291	-4163.12	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Boden	0	0.0	0.0	0.0	100.3	105.78	-26.62	1550.02	712.84	-100.0	315.1	26.7	3.3164	-16675.9	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Nordwand	0	0.0	0.0	0.0	100.32	108.27	-26.98	2704.58	732.65	-100.0	293.94	27.07	3.32923	-15588.08	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Ostwand	0	0.0	0.0	0.0	100.68	103.73	-30.26	734.4	927.98	-100.0	212.46	30.46	3.43721	-7320.78	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Südwand	0	0.0	0.0	0.0	100.61	104.08	-29.43	782.42	876.94	-100.0	222.86	29.61	3.41101	-8106.52	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 Oberflächen-Temp. Westwand	0	0.0	0.0	0.0	100.99	104.35	-32.22	621.91	1058.98	-100.0	177.22	32.54	3.49584	-5026.65	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Dach	0	0.0	0.0	0.0	-110.35	104.35	11.88	154.32	172.0	-100.0	64.0	13.11	100	-459.1	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Boden	0	0.0	0.0	0.0	106.25	105.73	-9.87	269.12	109.87	-100.0	74.16	10.48	2.34958	-775.57	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Nordwand	0	0.0	0.0	0.0	108.66	104.44	-8.96	178.15	94.81	-100.0	66.49	9.74	2.25507	-553.44	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Ostwand	0	0.0	0.0	0.0	582.57	105.19	-0.77	55.97	20.2	-100.0	28.74	4.49	100	-3.04	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Südwand	0	0.0	0.0	0.0	119.86	104.45	-2.83	101.85	11.53	-100.0	43.29	3.4	100	-228.99	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 1 konv. Wärmeleitung Innen Westwand	0	0.0	0.0	0.0	-160.42	104.66	4.14	72.87	44.19	-100.0	34.09	6.65	100	-63.56	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Raumlufttemperatur	0	40.89	20.0	30.09	7.06	1.21	-0.5	11.54	4.66	-1.63	10.24	2.16	0.06846	93.67	8.4	93.89200000000001	Silver
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Dach	0	419.0	0.0	148.24	5.24	0.22	-2.24	2.48	62.19	-1.49	1.89	7.89	0.59445	99.77	165.9	99.22349999999999	Gold
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Boden	0	84.0	0.0	30.19	3.31	0.5	0.09	1.56	0.99	0.31	1.19	1.0	0.28408	99.91	33.02	99.17150000000001	Gold
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Nordwand	0	131.0	0.0	28.55	58.24	40.91	-6.56	51.14	418.1	-18.69	9.74	20.45	0.90829	82.45	36.42	82.729	Bronze
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Ostwand	0	440.0	0.0	79.63	15.43	0.42	-0.8	21.98	154.01	-0.99	2.83	12.41	0.78544	99.18	140.83	93.88	Silver
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Südwand	0	282.0	0.0	69.06	2.38	0.48	0.04	1.19	2.7	0.06	0.58	1.64	0.19376	99.97	99.4	99.48999999999998	Gold
+06-WaermeleitungStrahlung	ETU	Variante 2 abs. Strahlung Westwand	0	447.79	0.0	96.05	35.4	2.08	-11.6	19.84	1452.03	-10.78	8.34	38.11	0.76809	94.41	147.32	94.6035	Silver
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Dach	0	0.0	0.0	0.0	104.6	106.04	-31.68	149.36	1097.83	-100.0	140.04	33.13	3.4537	-1061.9	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Boden	0	0.0	0.0	0.0	103.44	105.95	-29.69	178.29	942.85	-100.0	160.04	30.71	3.39969	-1429.79	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Nordwand	0	0.0	0.0	0.0	103.44	105.97	-29.77	182.25	948.13	-100.0	151.28	30.79	3.40229	-1427.04	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Ostwand	0	0.0	0.0	0.0	103.54	105.98	-30.52	177.58	998.52	-100.0	151.8	31.6	3.42511	-1385.95	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Südwand	0	0.0	0.0	0.0	103.93	105.99	-30.33	166.38	993.46	-100.0	148.17	31.52	3.41695	-1248.91	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 Oberflächen-Temp. Westwand	0	0.0	0.0	0.0	104.58	106.07	-30.97	175.82	1048.82	-100.0	127.21	32.39	3.43293	-1067.51	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Dach	0	0.0	0.0	0.0	-184.1	106.37	2.72	79.1	25.04	-100.0	35.7	5.0	100	-41.86	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Boden	0	0.0	0.0	0.0	132.23	106.23	-2.26	74.54	8.9	-100.0	55.23	2.98	1.19214	-133.6	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Nordwand	0	0.0	0.0	0.0	158.51	106.31	-2.05	64.92	10.55	-100.0	41.93	3.25	100	-66.11	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Ostwand	0	0.0	0.0	0.0	2721.11	106.39	-0.18	109.27	23.16	-100.0	27.69	4.81	100	-0.14	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Südwand	0	0.0	0.0	0.0	447.89	106.35	-0.65	139.85	8.43	-100.0	25.88	2.9	100	-5.25	0.0	0	Failed
+06-WaermeleitungStrahlung	ETU	Variante 2 konv. Wärmeleitung Innen Westwand	0	0.0	0.0	0.0	-542.13	106.4	0.95	149.09	26.43	-100.0	29.2	5.14	100	-3.52	0.0	0	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Raumlufttemperatur	0	34.1	20.04	30.45	0.89	8.86	-0.12	8.67	0.07	-0.39	1.93	0.27	0.00931	99.37	3.49	96.46699999999998	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Dach	0	417.93	0.0	147.88	27.37	0.06	-2.6	12.93	1696.4	-1.72	9.85	41.19	0.6059	93.71	164.74	93.7855	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Boden	0	83.59	0.0	29.64	27.18	0.06	-0.46	12.84	66.93	-1.53	9.78	8.18	0.43401	93.79	32.9	93.78999999999999	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Nordwand	0	243.61	0.0	38.52	84.75	16.97	3.42	74.39	884.94	9.73	14.17	29.75	0.73977	62.85	57.36	68.158	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Ostwand	0	437.41	-0.16	71.93	60.74	0.16	-8.49	86.52	2386.23	-10.56	11.15	48.85	0.49898	87.27	125.99	76.297	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Südwand	0	280.2	-0.16	68.7	49.1	0.22	-0.31	24.55	1148.17	-0.46	12.05	33.88	0.59325	88.25	98.77	89.1805	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 abs. Strahlung Westwand	0	456.22	0.0	114.52	47.26	0.14	6.87	26.48	2588.1	6.39	11.13	50.87	0.80891	90.04	164.52	87.49199999999999	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Dach	0	41.59	20.07	34.93	1.91	8.89	-0.39	10.18	0.46	-1.1	3.11	0.68	0.01964	98.48	5.55	95.8355	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Boden	0	28.15	20.02	26.26	1.53	8.25	-0.36	23.67	0.17	-1.34	4.81	0.41	0.01493	96.09	2.01	91.8035	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Nordwand	0	29.56	20.04	26.92	1.18	31.57	-0.06	31.94	0.1	-0.23	3.47	0.32	0.0116	97.81	2.26	87.71950000000001	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Ostwand	0	33.82	20.04	29.95	1.18	2.41	-0.31	8.61	0.13	-1.02	2.49	0.36	0.01135	98.98	3.46	97.086	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Südwand	0	33.99	20.04	29.68	1.78	15.93	0.25	13.81	0.27	0.85	3.93	0.52	0.01668	97.44	3.5	93.37549999999999	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 1 Oberflächen-Temp. Westwand	0	39.04	20.04	32.46	1.6	9.79	0.23	9.85	0.27	0.72	2.81	0.52	0.01503	98.71	4.78	95.4825	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Dach	0	-0.06	-20.31	-11.21	-18.49	8.46	0.67	25.85	4.83	-5.67	10.72	2.2	100	84.31	5.73	89.0755	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Boden	0	15.1	0.06	10.45	9.07	8.89	0.59	22.98	0.8	5.98	6.33	0.9	0.08176	93.61	3.78	89.33	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Nordwand	0	15.14	0.0	8.82	16.81	12.95	-0.14	27.57	2.27	-1.62	10.29	1.51	0.15202	84.36	4.03	87.299	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Ostwand	0	6.75	-8.76	1.24	250.8	1.76	0.47	24.09	3.74	60.79	12.37	1.94	100	80.9	4.4	72.6465	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Südwand	0	4.38	-4.35	1.91	56.83	18.9	-0.92	48.29	2.59	-32.55	20.53	1.61	100	26.03	2.17	77.94699999999999	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 1 konv. Wärmeleitung Innen Westwand	0	7.94	-13.12	-5.03	-55.79	8.29	-0.88	25.34	5.35	21.33	11.86	2.31	100	80.21	5.63	81.57000000000001	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Raumlufttemperatur	0	40.63	20.04	30.46	2.98	2.26	-0.12	4.87	0.83	-0.41	4.32	0.91	0.03159	98.87	8.44	97.40950000000001	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Dach	0	417.93	0.0	147.88	27.37	0.06	-2.6	12.93	1696.48	-1.73	9.85	41.19	0.60587	93.71	164.74	93.78800000000001	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Boden	0	83.59	0.0	29.64	27.18	0.06	-0.46	12.84	66.94	-1.53	9.78	8.18	0.43399	93.79	32.9	93.78999999999999	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Nordwand	0	243.61	0.0	38.52	84.75	16.98	3.41	74.4	885.19	9.72	14.17	29.75	0.74028	62.84	57.36	68.15549999999999	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Ostwand	0	437.41	-0.16	71.93	60.74	0.16	-8.49	86.52	2386.18	-10.56	11.15	48.85	0.49897	87.27	125.99	76.297	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Südwand	0	280.2	-0.16	68.7	49.1	0.22	-0.32	24.55	1148.24	-0.46	12.06	33.89	0.59325	88.25	98.77	89.178	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 2 abs. Strahlung Westwand	0	456.22	0.0	114.52	47.26	0.14	6.87	26.49	2588.42	6.38	11.13	50.88	0.80936	90.04	164.52	87.49199999999999	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Dach	0	43.24	20.05	31.45	2.94	1.91	-0.23	4.19	0.86	-0.72	3.93	0.93	0.03166	99.08	9.49	97.821	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Boden	0	38.77	20.04	29.54	2.59	2.24	-0.14	4.46	0.59	-0.47	4.0	0.77	0.0272	99.04	7.7	97.6345	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Nordwand	0	39.85	20.04	29.69	3.33	2.6	-0.07	5.86	0.98	-0.25	4.87	0.99	0.03375	98.42	7.8	96.88300000000001	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Ostwand	0	40.96	20.04	30.35	3.55	0.87	-0.17	6.1	1.18	-0.54	5.21	1.08	0.03701	98.25	8.08	96.958	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Südwand	0	41.34	20.04	30.29	2.37	0.62	-0.03	3.79	0.51	-0.11	3.37	0.72	0.02577	99.3	8.53	98.0705	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 Oberflächen-Temp. Westwand	0	44.66	20.04	30.91	3.37	3.36	-0.06	5.66	1.09	-0.19	4.1	1.04	0.03336	98.79	9.3	97.09	Gold
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Dach	0	3.4	-10.3	-2.46	-44.64	3.36	0.26	19.18	1.47	-9.55	8.66	1.21	100	91.66	4.01	93.8405	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Boden	0	5.25	0.01	2.3	20.34	3.12	0.04	11.47	0.21	1.76	8.5	0.46	0.13779	94.47	1.94	93.426	Silver
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Nordwand	0	5.75	-3.17	1.93	55.33	16.5	-0.12	22.66	1.29	-6.03	14.64	1.13	100	79.76	2.63	87.4965	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Ostwand	0	5.68	-11.13	0.28	776.8	3.35	0.1	31.19	1.89	57.38	7.9	1.37	100	91.84	4.56	74.3235	Failed
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Südwand	0	5.53	-5.82	0.42	198.7	2.14	-0.22	62.04	1.66	-34.7	11.48	1.29	100	79.29	2.87	86.97449999999999	Bronze
+06-WaermeleitungStrahlung	IDAICE	Variante 2 konv. Wärmeleitung Innen Westwand	0	5.54	-11.53	-1.11	-151.74	3.0	-0.16	41.73	2.07	17.07	8.17	1.44	100	91.89	4.92	81.74100000000001	Bronze
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Raumlufttemperatur	0	34.06	20.0	30.57	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.44	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Dach	0	418.23	-0.0	150.48	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	164.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Boden	0	83.65	-0.0	30.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	32.84	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Nordwand	0	209.99	-0.0	35.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	48.81	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Ostwand	0	437.97	0.0	80.42	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	136.93	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Südwand	0	281.09	0.0	69.02	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	98.87	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 abs. Strahlung Westwand	0	456.91	-0.0	107.65	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	161.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Dach	0	41.69	20.0	35.32	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	5.47	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Boden	0	28.47	20.0	26.62	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	2.06	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Nordwand	0	29.21	20.0	26.98	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	2.16	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Ostwand	0	34.34	20.0	30.26	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.54	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Südwand	0	33.29	20.0	29.43	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.27	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 Oberflächen-Temp. Westwand	0	38.36	20.0	32.22	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.54	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Dach	0	0.0	-20.49	-11.88	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	5.55	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Boden	0	14.14	0.0	9.87	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.54	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Nordwand	0	14.64	-0.0	8.96	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.81	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Ostwand	0	6.05	-9.59	0.77	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	4.43	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Südwand	0	5.32	-2.53	2.83	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	1.87	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 1 konv. Wärmeleitung Innen Westwand	0	7.89	-11.61	-4.14	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	5.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Raumlufttemperatur	0	41.08	20.0	30.59	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	8.58	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Dach	0	418.23	-0.0	150.48	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	164.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Boden	0	83.65	-0.0	30.1	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	32.84	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Nordwand	0	209.98	-0.0	35.11	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	48.8	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Ostwand	0	437.97	-0.0	80.42	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	136.93	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Südwand	0	281.09	-0.0	69.02	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	98.87	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 abs. Strahlung Westwand	0	456.91	-0.0	107.65	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	161.19	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Dach	0	43.66	20.0	31.68	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	9.72	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Boden	0	39.19	20.0	29.69	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	7.85	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Nordwand	0	40.35	20.0	29.77	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	7.88	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Ostwand	0	40.82	20.0	30.52	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	8.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Südwand	0	41.27	20.0	30.33	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	8.58	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 Oberflächen-Temp. Westwand	0	45.46	20.0	30.97	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	9.48	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Dach	0	3.01	-11.0	-2.72	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	4.2	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Boden	0	5.4	0.0	2.26	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	1.95	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Nordwand	0	5.89	-1.86	2.05	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	2.52	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Ostwand	0	5.94	-11.44	0.18	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	4.81	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Südwand	0	5.84	-5.38	0.65	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100	100.0	2.83	100.0	Gold
+06-WaermeleitungStrahlung	NANDRAD	Variante 2 konv. Wärmeleitung Innen Westwand	0	5.46	-12.14	-0.95	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	5.05	100.0	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 Raumlufttemperatur	0	33.4	20.0	30.12	1.67	8.03	-0.45	16.28	0.26	-1.47	3.63	0.51	0.01559	97.79	3.27	94.25549999999998	Silver
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Dach	0	418.99	0.0	150.89	3.25	0.2	0.41	1.53	23.86	0.27	1.17	4.88	0.57875	99.91	165.03	99.224	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Boden	0	83.8	0.0	29.26	7.21	0.2	-0.84	3.41	4.71	-2.79	2.59	2.17	0.31126	99.56	33.17	99.1115	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Nordwand	0	241.04	0.0	27.08	51.67	15.71	-8.02	45.36	329.01	-22.84	8.64	18.14	1.29245	86.19	55.37	88.5675	Bronze
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Ostwand	0	459.42	0.0	75.0	24.51	5.11	-5.42	34.92	388.71	-6.74	4.5	19.72	1.3849	97.93	146.04	91.0085	Silver
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Südwand	0	280.97	0.0	68.47	2.81	0.39	-0.55	1.4	3.75	-0.8	0.69	1.94	0.2262	99.96	99.53	99.63250000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 abs. Strahlung Westwand	0	455.31	0.0	102.37	15.75	0.19	-5.28	8.82	287.27	-4.9	3.71	16.95	1.29959	98.89	167.74	97.90700000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Dach	0	41.15	19.99	35.01	1.32	3.89	-0.31	7.05	0.22	-0.87	2.16	0.47	0.01219	99.27	5.33	97.41650000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Boden	0	28.26	20.0	26.47	0.65	4.47	-0.15	10.11	0.03	-0.57	2.06	0.17	0.00616	99.29	2.01	96.5465	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Nordwand	0	28.29	20.0	26.31	2.75	15.06	-0.67	74.1	0.55	-2.48	8.05	0.74	0.02617	88.23	1.95	76.811	Failed
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Ostwand	0	33.79	20.0	29.68	2.1	4.81	-0.58	15.3	0.4	-1.9	4.43	0.63	0.01984	96.78	3.36	94.5785	Silver
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Südwand	0	32.95	20.0	29.22	1.04	3.98	-0.21	8.12	0.09	-0.72	2.31	0.31	0.00969	99.12	3.18	97.04249999999999	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 Oberflächen-Temp. Westwand	0	37.52	20.0	31.6	2.4	2.22	-0.62	14.77	0.6	-1.92	4.21	0.77	0.02255	97.11	4.36	95.0795	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Dach	0	0.01	-20.7	-12.24	-3.32	1.6	-0.35	4.64	0.16	2.97	1.92	0.39	100	99.49	5.59	97.381	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Boden	0	12.99	-0.01	9.12	8.13	10.52	-0.74	20.6	0.64	-7.52	5.68	0.8	0.06862	94.87	3.25	93.4885	Silver
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Nordwand	0	15.27	0.0	9.51	7.02	2.71	0.55	11.5	0.4	6.15	4.29	0.63	0.05395	97.28	4.06	93.83599999999998	Silver
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Ostwand	0	6.58	-9.43	1.09	49.28	2.5	0.32	4.73	0.14	41.24	2.43	0.38	100	99.26	4.52	87.53899999999999	Bronze
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Südwand	0	4.58	-2.76	2.24	22.68	4.56	-0.59	19.27	0.41	-20.96	8.19	0.64	100	88.23	1.74	96.1535	Gold
+06-WaermeleitungStrahlung	TAS	Variante 1 konv. Wärmeleitung Innen Westwand	0	8.28	-11.11	-3.72	-11.79	0.57	0.43	5.35	0.24	-10.35	2.5	0.49	100	99.12	5.22	100.436	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Raumlufttemperatur	0	39.87	20.0	30.14	4.19	6.55	-0.45	6.85	1.64	-1.47	6.08	1.28	0.03913	97.77	7.94	96.1455	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Dach	0	418.99	0.0	150.89	3.25	0.2	0.41	1.53	23.86	0.27	1.17	4.89	0.57877	99.91	165.03	99.224	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Boden	0	83.8	0.0	29.26	7.21	0.2	-0.84	3.41	4.71	-2.79	2.59	2.17	0.31128	99.56	33.17	99.1115	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Nordwand	0	241.04	0.0	27.08	51.69	15.72	-8.02	45.38	329.34	-22.85	8.64	18.15	1.29279	86.17	55.37	88.56099999999999	Bronze
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Ostwand	0	459.42	0.0	75.0	24.52	5.11	-5.42	34.93	388.81	-6.74	4.5	19.72	1.38493	97.93	146.04	91.006	Silver
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Südwand	0	280.97	0.0	68.47	2.81	0.39	-0.55	1.4	3.76	-0.8	0.69	1.94	0.22622	99.96	99.53	99.63250000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 abs. Strahlung Westwand	0	455.31	0.0	102.37	15.76	0.19	-5.28	8.83	287.76	-4.91	3.71	16.96	1.2999	98.89	167.74	97.90700000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Dach	0	42.38	19.99	31.23	4.24	5.98	-0.45	6.06	1.81	-1.42	5.68	1.34	0.03983	98.09	9.08	96.5355	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Boden	0	38.21	20.0	29.33	3.69	5.75	-0.36	6.37	1.2	-1.21	5.72	1.1	0.03472	98.05	7.31	96.4125	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Nordwand	0	39.46	20.0	29.29	4.36	5.07	-0.47	7.69	1.69	-1.59	6.38	1.3	0.03966	97.28	7.24	95.965	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Ostwand	0	39.7	20.0	30.04	4.36	6.22	-0.48	7.47	1.77	-1.56	6.39	1.33	0.04213	97.37	7.59	95.9085	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Südwand	0	39.92	20.0	29.94	3.95	7.11	-0.39	6.32	1.43	-1.28	5.63	1.2	0.03648	98.05	8.0	96.329	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 Oberflächen-Temp. Westwand	0	44.19	20.0	30.47	4.98	5.81	-0.5	8.37	2.37	-1.61	6.05	1.54	0.04471	97.36	8.82	95.8205	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Dach	0	2.42	-10.59	-2.72	-7.32	8.05	-0.0	3.14	0.04	0.11	1.42	0.2	100	99.78	4.07	97.99450000000002	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Boden	0	5.15	-0.0	2.03	15.52	5.28	-0.23	8.75	0.12	-10.11	6.48	0.35	0.07899	96.78	1.73	97.70899999999999	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Nordwand	0	5.64	-1.73	2.12	19.69	4.76	0.07	8.07	0.16	3.2	5.21	0.4	100	97.44	2.56	95.02000000000001	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Ostwand	0	6.31	-11.15	0.24	140.07	0.8	0.07	5.62	0.06	37.19	1.43	0.25	100	99.73	4.78	88.81949999999999	Bronze
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Südwand	0	5.43	-5.2	0.5	43.28	5.28	-0.15	13.51	0.08	-23.18	2.5	0.28	100	99.02	2.68	101.11749999999999	Gold
+06-WaermeleitungStrahlung	TAS	Variante 2 konv. Wärmeleitung Innen Westwand	0	5.93	-11.55	-0.83	-28.23	0.44	0.12	7.76	0.07	-12.87	1.52	0.27	100	99.72	5.01	100.8115	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Raumlufttemperatur	0	34.07	20.0	30.57	0.03	0.28	0.0	0.28	0.0	0.0	0.06	0.01	0.00027	100.0	3.44	99.887	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Dach	0	418.06	0.0	149.77	2.85	0.07	-0.71	1.35	18.39	-0.47	1.03	4.29	0.04999	99.93	164.1	99.505	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Boden	0	83.61	0.0	29.95	2.85	0.06	-0.14	1.35	0.74	-0.47	1.03	0.86	0.03058	99.93	32.82	99.506	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Nordwand	0	212.97	0.0	35.47	6.56	1.06	0.37	5.76	5.31	1.06	1.1	2.3	0.03685	99.78	50.11	97.881	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Ostwand	0	436.67	0.0	78.43	8.65	0.29	-1.99	12.33	48.42	-2.48	1.59	6.96	0.05866	99.74	135.66	97.072	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Südwand	0	281.56	0.0	68.42	7.39	0.15	-0.59	3.69	25.99	-0.86	1.81	5.1	0.0653	99.73	99.09	98.78450000000001	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 abs. Strahlung Westwand	0	457.22	0.0	108.87	4.37	0.1	1.22	2.45	22.16	1.14	1.03	4.71	0.03897	99.91	162.71	98.82149999999999	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Dach	0	41.7	20.0	35.32	0.05	0.3	0.0	0.26	0.0	0.0	0.08	0.02	0.00046	100.0	5.48	99.88499999999999	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Boden	0	28.48	20.0	26.62	0.02	0.15	0.0	0.25	0.0	0.0	0.05	0.0	0.00016	100.0	2.06	99.91	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Nordwand	0	29.22	20.0	26.98	0.02	0.22	0.0	0.62	0.0	0.0	0.07	0.01	0.00021	100.0	2.16	99.80550000000001	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Ostwand	0	34.35	20.0	30.26	0.04	0.24	0.0	0.3	0.0	0.0	0.09	0.01	0.00041	100.0	3.54	99.8785	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Südwand	0	33.29	20.0	29.43	0.04	0.29	0.0	0.28	0.0	0.0	0.08	0.01	0.00034	100.0	3.27	99.881	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 Oberflächen-Temp. Westwand	0	38.38	20.0	32.22	0.06	0.33	0.0	0.35	0.0	0.0	0.1	0.02	0.00052	100.0	4.55	99.8545	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Dach	0	0.0	-20.53	-11.88	-1.33	0.34	0.0	1.86	0.03	-0.04	0.77	0.16	100	99.92	5.57	99.3065	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Boden	0	14.16	0.0	9.84	0.98	0.61	-0.02	2.49	0.01	-0.22	0.69	0.1	0.0104	99.92	3.54	99.187	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Nordwand	0	14.66	-0.0	8.95	1.2	0.34	-0.01	1.97	0.01	-0.08	0.73	0.11	0.01259	99.92	3.82	99.29899999999999	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Ostwand	0	6.06	-9.61	0.75	19.89	0.19	-0.02	1.91	0.02	-2.57	0.98	0.15	100	99.88	4.43	99.883	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Südwand	0	5.33	-2.53	2.81	2.64	0.64	-0.02	2.25	0.01	-0.75	0.96	0.07	100	99.84	1.89	99.297	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 1 konv. Wärmeleitung Innen Westwand	0	7.91	-11.6	-4.1	-3.48	0.3	0.04	1.58	0.02	-1.02	0.74	0.14	100	99.92	5.19	99.633	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Raumlufttemperatur	0	41.08	20.0	30.59	0.03	0.03	-0.0	0.05	0.0	-0.0	0.05	0.01	0.00033	100.0	8.58	99.97200000000001	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Dach	0	418.06	0.0	149.95	2.05	0.07	-0.54	0.97	9.48	-0.36	0.74	3.08	0.03469	99.96	164.14	99.64949999999999	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Boden	0	83.61	0.0	29.99	2.05	0.06	-0.11	0.97	0.38	-0.36	0.74	0.62	0.02201	99.96	32.83	99.6505	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Nordwand	0	212.81	0.0	35.42	4.76	0.94	0.31	4.18	2.8	0.88	0.8	1.67	0.02441	99.88	49.82	98.423	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Ostwand	0	437.22	0.0	78.91	6.52	0.19	-1.51	9.29	27.53	-1.88	1.2	5.25	0.04784	99.85	135.99	97.80600000000001	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Südwand	0	281.82	0.0	68.58	5.34	0.13	-0.43	2.67	13.56	-0.63	1.31	3.68	0.04993	99.86	99.08	99.1285	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 abs. Strahlung Westwand	0	457.15	0.0	108.54	3.01	0.08	0.89	1.69	10.53	0.82	0.71	3.24	0.02499	99.96	162.28	99.181	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Dach	0	43.68	20.0	31.68	0.03	0.08	-0.0	0.05	0.0	-0.0	0.04	0.01	0.00034	100.0	9.73	99.96950000000001	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Boden	0	39.19	20.0	29.69	0.04	0.08	-0.0	0.06	0.0	-0.0	0.06	0.01	0.00038	100.0	7.86	99.962	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Nordwand	0	40.39	20.0	29.77	0.04	0.2	-0.0	0.07	0.0	-0.0	0.05	0.01	0.00036	100.0	7.89	99.95	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Ostwand	0	40.82	20.0	30.52	0.04	0.03	-0.0	0.06	0.0	-0.0	0.05	0.01	0.0004	100.0	8.2	99.9695	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Südwand	0	41.29	20.0	30.33	0.04	0.14	-0.0	0.06	0.0	-0.0	0.06	0.01	0.00041	100.0	8.59	99.956	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 Oberflächen-Temp. Westwand	0	45.47	20.0	30.97	0.04	0.08	-0.0	0.07	0.0	-0.0	0.05	0.01	0.00041	100.0	9.49	99.962	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Dach	0	3.01	-11.03	-2.71	-4.89	0.29	0.01	2.1	0.02	-0.24	0.95	0.13	100	99.9	4.21	99.2535	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Boden	0	5.41	0.0	2.26	1.99	0.2	-0.0	1.12	0.0	-0.07	0.83	0.04	0.01378	99.95	1.96	99.50249999999998	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Nordwand	0	5.9	-1.85	2.04	3.85	0.3	-0.01	1.58	0.01	-0.64	1.02	0.08	100	99.9	2.53	99.465	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Ostwand	0	5.94	-11.55	0.23	104.78	0.72	0.05	4.21	0.03	28.91	1.07	0.19	100	99.85	4.78	91.358	Silver
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Südwand	0	5.84	-5.41	0.65	25.09	0.31	-0.0	7.83	0.03	-0.22	1.45	0.16	100	99.67	2.85	97.6545	Gold
+06-WaermeleitungStrahlung	THERAKLES	Variante 2 konv. Wärmeleitung Innen Westwand	0	5.48	-12.18	-1.0	-15.88	0.38	-0.05	4.37	0.02	4.95	0.86	0.15	100	99.91	5.09	97.4035	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Raumlufttemperatur	0	34.1	20.0	30.59	0.08	1.1	0.02	0.83	0.0	0.07	0.18	0.03	0.00079	99.99	3.45	99.61850000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Dach	0	418.26	0.0	151.05	3.94	0.02	0.57	1.86	35.13	0.38	1.42	5.93	0.57967	99.87	164.66	99.0635	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Boden	0	83.65	0.0	30.21	3.94	0.02	0.11	1.86	1.41	0.38	1.42	1.19	0.28563	99.87	32.93	99.0635	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Nordwand	0	237.71	0.0	34.51	26.67	14.05	-0.59	23.41	87.62	-1.69	4.46	9.36	0.89846	96.32	53.75	91.498	Silver
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Ostwand	0	458.36	0.0	80.44	19.34	4.64	0.02	27.55	241.98	0.02	3.55	15.56	0.78595	98.71	143.01	91.5625	Silver
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Südwand	0	281.36	0.0	69.11	0.88	0.07	0.09	0.44	0.37	0.13	0.22	0.6	0.19082	100.0	98.91	99.79550000000002	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 abs. Strahlung Westwand	0	457.16	0.0	108.09	12.53	0.04	0.44	7.02	182.04	0.41	2.95	13.49	0.75779	99.3	165.65	97.296	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Dach	0	41.73	20.0	35.37	0.15	0.14	0.05	0.81	0.0	0.14	0.25	0.05	0.00145	99.99	5.49	99.6845	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Boden	0	28.49	20.0	26.64	0.07	0.17	0.02	1.07	0.0	0.07	0.22	0.02	0.00065	99.99	2.07	99.64150000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Nordwand	0	29.17	20.0	26.95	0.16	1.66	-0.03	4.21	0.0	-0.12	0.46	0.04	0.00149	99.96	2.15	98.6905	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Ostwand	0	34.36	20.0	30.27	0.08	0.67	0.01	0.61	0.0	0.03	0.18	0.03	0.00083	99.99	3.54	99.7265	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Südwand	0	33.3	20.0	29.45	0.06	0.2	0.02	0.46	0.0	0.05	0.13	0.02	0.00056	100.0	3.27	99.82000000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 Oberflächen-Temp. Westwand	0	38.48	20.0	32.26	0.16	0.76	0.04	0.98	0.0	0.13	0.28	0.05	0.00143	99.99	4.56	99.57499999999999	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Dach	0	-0.0	-20.55	-11.96	-0.68	0.49	-0.07	0.96	0.01	0.6	0.4	0.08	100	99.98	5.55	99.458	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Boden	0	14.21	-0.0	9.88	0.28	1.62	0.01	0.71	0.0	0.11	0.2	0.03	0.00305	99.99	3.55	99.5815	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Nordwand	0	14.73	-0.0	9.1	1.67	0.91	0.14	2.73	0.02	1.54	1.02	0.15	0.01595	99.85	3.83	98.564	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Ostwand	0	6.09	-9.56	0.8	6.48	0.09	0.03	0.62	0.0	3.63	0.32	0.05	100	99.99	4.43	98.84700000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Südwand	0	5.31	-2.51	2.85	1.02	0.61	0.01	0.87	0.0	0.53	0.37	0.03	100	99.98	1.87	99.4935	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 1 konv. Wärmeleitung Innen Westwand	0	7.88	-11.77	-4.19	-1.61	0.45	-0.05	0.73	0.0	1.18	0.34	0.07	100	99.98	5.22	99.3895	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Raumlufttemperatur	0	41.07	20.0	30.62	0.73	0.41	0.04	1.19	0.05	0.12	1.06	0.22	0.0061	99.93	8.64	99.35600000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Dach	0	418.26	0.0	151.05	3.94	0.02	0.57	1.86	35.14	0.38	1.42	5.93	0.57969	99.87	164.66	99.0635	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Boden	0	83.65	0.0	30.21	3.94	0.02	0.11	1.86	1.41	0.38	1.42	1.19	0.28565	99.87	32.93	99.0635	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Nordwand	0	237.71	0.0	34.51	26.71	14.05	-0.6	23.45	87.95	-1.7	4.47	9.38	0.89895	96.31	53.75	91.4865	Silver
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Ostwand	0	458.36	0.0	80.44	19.35	4.64	0.02	27.56	242.07	0.02	3.55	15.56	0.786	98.71	143.01	91.55999999999999	Silver
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Südwand	0	281.36	0.0	69.11	0.88	0.07	0.09	0.44	0.37	0.13	0.22	0.6	0.19085	100.0	98.91	99.79550000000002	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 abs. Strahlung Westwand	0	457.16	0.0	108.09	12.55	0.04	0.44	7.03	182.52	0.41	2.96	13.51	0.75832	99.3	165.65	97.29100000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Dach	0	43.67	20.0	31.72	0.59	0.43	0.04	0.84	0.04	0.14	0.79	0.19	0.00513	99.96	9.76	99.5085	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Boden	0	39.18	20.0	29.71	0.56	0.41	0.03	0.97	0.03	0.1	0.87	0.17	0.00494	99.95	7.9	99.4665	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Nordwand	0	41.83	20.0	29.91	1.09	7.4	0.14	1.93	0.11	0.48	1.6	0.33	0.00881	99.83	7.97	98.232	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Ostwand	0	40.81	19.8	30.46	0.73	0.99	-0.06	1.25	0.05	-0.19	1.07	0.22	0.00798	99.93	8.27	99.358	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Südwand	0	41.45	20.0	30.48	0.78	0.45	0.15	1.24	0.06	0.51	1.11	0.24	0.00736	99.92	8.62	99.228	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 Oberflächen-Temp. Westwand	0	45.44	19.82	30.92	1.24	0.43	-0.05	2.08	0.15	-0.15	1.51	0.38	0.00994	99.84	9.59	99.07300000000001	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Dach	0	3.03	-11.0	-2.73	-2.46	0.39	-0.02	1.06	0.0	0.6	0.48	0.07	100	99.97	4.19	99.4215	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Boden	0	5.63	-0.0	2.26	4.97	4.64	0.0	2.8	0.01	0.1	2.08	0.11	0.04616	99.67	2.0	98.2415	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Nordwand	0	5.89	-1.47	2.08	7.81	5.46	0.03	3.2	0.03	1.55	2.07	0.16	100	99.6	2.51	97.689	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Ostwand	0	6.11	-12.43	0.18	161.86	7.06	0.01	6.5	0.08	3.6	1.65	0.29	100	99.65	4.88	96.304	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Südwand	0	6.09	-5.39	0.65	19.05	2.45	0.0	5.95	0.02	0.53	1.1	0.12	100	99.81	2.86	97.8315	Gold
+06-WaermeleitungStrahlung	TRNSYS	Variante 2 konv. Wärmeleitung Innen Westwand	0	5.5	-13.05	-0.96	-26.35	5.96	-0.01	7.25	0.06	1.16	1.42	0.25	100	99.76	5.14	96.91050000000001	Gold
+07-Fenster	Aixlib	Variante 7.1 Raumlufttemperatur	0	24.51	23.88	24.17	0.49	18.38	-0.0	38.39	0.01	-0.0	22.88	0.12	0.00472	52.34	0.21	75.6955	Failed
+07-Fenster	Aixlib	Variante 7.1 Wärmeleitung Fenster	0	0.0	0.0	0.0	-15819.38	101.69	0.03	47.12	25.07	-100.0	46.66	5.01	100	-0.0	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.2 Raumlufttemperatur	0	0.0	0.0	0.0	101.09	103.42	-30.62	594.1	958.05	-100.0	164.29	30.95	3.44594	-4565.39	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.2 Trans.Strahlung Fenster	0	0.0	0.0	0.0	169.05	103.52	-73.76	89.08	15548.13	-100.0	44.31	124.69	3.3773	-53.83	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.2 Wärmeleitung Fenster	0	0.0	0.0	0.0	-108.69	103.42	11.64	218.06	159.96	-100.0	61.55	12.65	100	-551.17	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.3 Raumlufttemperatur	0	0.0	0.0	0.0	100.8	103.45	-28.34	707.04	815.93	-100.0	188.05	28.56	3.37338	-6257.26	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.3 Trans.Strahlung Fenster	0	0.0	0.0	0.0	174.85	103.52	-57.74	119.71	10192.79	-100.0	40.85	100.96	3.19587	-48.61	0.0	0	Failed
+07-Fenster	Aixlib	Variante 7.3 Wärmeleitung Fenster	0	0.0	0.0	0.0	-108.7	103.46	9.02	221.33	96.14	-100.0	59.32	9.81	100	-550.93	0.0	0	Failed
+07-Fenster	ETU	Variante 7.1 Raumlufttemperatur	0	24.28	24.05	24.17	0.69	56.21	0.0	53.69	0.03	0.0	32.01	0.17	0.00661	6.76	0.07	58.967999999999996	Failed
+07-Fenster	ETU	Variante 7.1 Wärmeleitung Fenster	0	0.0	0.0	0.0	-15819.38	101.69	0.03	47.12	25.07	-100.0	46.66	5.01	100	-0.0	0.0	0	Failed
+07-Fenster	ETU	Variante 7.2 Raumlufttemperatur	0	34.33	20.0	29.53	6.5	74.12	-1.09	38.22	3.96	-3.55	10.57	1.99	0.06089	80.69	3.92	78.38149999999999	Failed
+07-Fenster	ETU	Variante 7.2 Trans.Strahlung Fenster	0	281.15	0.0	73.66	23.29	0.31	-0.1	12.27	295.15	-0.14	6.1	17.18	0.51408	97.08	99.41	94.9735	Silver
+07-Fenster	ETU	Variante 7.2 Wärmeleitung Fenster	0	0.0	0.0	0.0	-108.69	103.42	11.64	218.06	159.96	-100.0	61.55	12.65	100	-551.17	0.0	0	Failed
+07-Fenster	ETU	Variante 7.3 Raumlufttemperatur	0	30.28	20.0	26.78	7.51	76.93	-1.56	52.65	4.53	-5.5	14.0	2.13	0.06993	64.74	2.78	71.73049999999999	Failed
+07-Fenster	ETU	Variante 7.3 Trans.Strahlung Fenster	0	233.73	0.0	52.34	30.45	6.88	-5.4	20.85	309.14	-9.35	7.11	17.58	0.5031	95.49	75.54	93.983	Silver
+07-Fenster	ETU	Variante 7.3 Wärmeleitung Fenster	0	0.0	0.0	0.0	-108.7	103.46	9.02	221.33	96.14	-100.0	59.32	9.81	100	-550.93	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.1 Raumlufttemperatur	0	0.0	0.0	0.0	100.0	101.33	-24.17	7795.44	583.99	-100.0	4647.28	24.17	3.22545	-1965687.63	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.1 Wärmeleitung Fenster	0	0.0	0.0	0.0	-15819.38	101.69	0.03	47.12	25.07	-100.0	46.66	5.01	100	-0.0	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.2 Raumlufttemperatur	0	0.0	0.0	0.0	101.09	103.42	-30.62	594.1	958.05	-100.0	164.29	30.95	3.44594	-4565.39	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.2 Trans.Strahlung Fenster	0	0.0	0.0	0.0	169.05	103.52	-73.76	89.08	15548.13	-100.0	44.31	124.69	3.3773	-53.83	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.2 Wärmeleitung Fenster	0	0.0	0.0	0.0	-108.69	103.42	11.64	218.06	159.96	-100.0	61.55	12.65	100	-551.17	0.0	0	Failed
+07-Fenster	IDAICE	Variante 7.3 Raumlufttemperatur	0	35.81	19.44	29.85	8.02	56.3	1.51	56.24	5.16	5.32	14.96	2.27	0.07284	59.78	4.39	69.207	Failed
+07-Fenster	IDAICE	Variante 7.3 Trans.Strahlung Fenster	0	345.0	-0.19	78.61	92.6	40.44	20.87	63.4	2858.99	36.14	21.63	53.47	0.74775	58.32	115.32	59.411500000000004	Failed
+07-Fenster	IDAICE	Variante 7.3 Wärmeleitung Fenster	0	14.04	-336.48	-66.63	-1394.47	5757.89	-57.61	2839.48	15822.86	638.67	760.97	125.79	100	-107030.34	113.25	-17605.120000000003	Failed
+07-Fenster	NANDRAD	Variante 7.1 Raumlufttemperatur	0	24.45	23.93	24.17	0.01	0.0	0.0	0.68	0.0	0.0	0.4	0.0	8e-05	99.99	0.17	99.7285	Gold
+07-Fenster	NANDRAD	Variante 7.1 Wärmeleitung Fenster	0	6.25	-4.48	-0.03	-8.48	0.01	-0.0	0.03	0.0	1.19	0.03	0.0	100	100.0	5.01	99.6865	Gold
+07-Fenster	NANDRAD	Variante 7.2 Raumlufttemperatur	0	38.81	20.0	30.6	0.11	0.77	-0.02	0.67	0.0	-0.06	0.19	0.04	0.00112	99.99	4.52	99.7215	Gold
+07-Fenster	NANDRAD	Variante 7.2 Trans.Strahlung Fenster	0	281.09	0.0	73.63	0.87	0.09	-0.13	0.46	0.41	-0.17	0.23	0.64	0.19744	100.0	100.47	99.86099999999999	Gold
+07-Fenster	NANDRAD	Variante 7.2 Wärmeleitung Fenster	0	0.0	-20.67	-11.65	-0.51	2.01	-0.02	1.02	0.0	0.13	0.29	0.06	100	99.99	4.98	99.4375	Gold
+07-Fenster	NANDRAD	Variante 7.3 Raumlufttemperatur	0	35.02	20.0	28.23	0.42	1.6	-0.1	2.95	0.01	-0.37	0.78	0.12	0.0038	99.89	3.53	98.9835	Gold
+07-Fenster	NANDRAD	Variante 7.3 Trans.Strahlung Fenster	0	247.11	0.0	57.14	2.32	0.78	-0.6	1.59	1.79	-1.05	0.54	1.34	0.19754	99.97	81.94	99.6475	Gold
+07-Fenster	NANDRAD	Variante 7.3 Wärmeleitung Fenster	0	0.0	-16.55	-9.05	-2.71	2.37	-0.03	5.53	0.06	0.34	1.48	0.24	100	99.59	3.89	97.86399999999999	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.1 Raumlufttemperatur	0	24.45	23.93	24.17	0.01	0.0	0.0	0.68	0.0	0.0	0.4	0.0	8e-05	99.99	0.17	99.7285	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.1 Wärmeleitung Fenster	0	6.25	-4.48	-0.03	-8.48	0.01	-0.0	0.03	0.0	1.19	0.03	0.0	100	100.0	5.01	99.6865	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.2 Raumlufttemperatur	0	24.45	23.93	24.17	25.64	94.93	-6.45	150.71	61.65	-21.08	41.68	7.85	0.26475	-200.22	0.17	2.6464999999999974	Failed
+07-Fenster	NANDRAD_TEMP	Variante 7.2 Trans.Strahlung Fenster	0	281.09	0.0	73.63	0.87	0.09	-0.13	0.46	0.41	-0.17	0.23	0.64	0.19744	100.0	100.47	99.86099999999999	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.2 Wärmeleitung Fenster	0	0.0	-20.67	-11.65	-0.51	2.01	-0.02	1.02	0.0	0.13	0.29	0.06	100	99.99	4.98	99.4375	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.3 Raumlufttemperatur	0	35.02	20.0	28.23	0.42	1.6	-0.1	2.95	0.01	-0.37	0.78	0.12	0.0038	99.89	3.53	98.9835	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.3 Trans.Strahlung Fenster	0	247.11	0.0	57.14	2.32	0.78	-0.6	1.59	1.79	-1.05	0.54	1.34	0.19754	99.97	81.94	99.6475	Gold
+07-Fenster	NANDRAD_TEMP	Variante 7.3 Wärmeleitung Fenster	0	0.0	-16.55	-9.05	-2.71	2.37	-0.03	5.53	0.06	0.34	1.48	0.24	100	99.59	3.89	97.86399999999999	Gold
+07-Fenster	THERAKLES	Variante 7.1 Raumlufttemperatur	0	24.45	23.93	24.17	0.01	1.86	0.0	1.02	0.0	0.0	0.61	0.0	0.00013	99.97	0.17	99.402	Gold
+07-Fenster	THERAKLES	Variante 7.1 Wärmeleitung Fenster	0	6.28	-4.51	-0.03	-4810.24	0.57	0.0	14.33	2.32	-0.14	14.19	1.52	100	90.75	5.24	91.4605	Silver
+07-Fenster	THERAKLES	Variante 7.2 Raumlufttemperatur	0	38.81	20.0	30.6	0.11	0.87	-0.01	0.63	0.0	-0.05	0.17	0.03	0.00106	99.99	4.52	99.72400000000002	Gold
+07-Fenster	THERAKLES	Variante 7.2 Trans.Strahlung Fenster	0	284.29	0.0	73.66	24.7	0.91	-0.1	13.02	332.06	-0.14	6.48	18.22	0.54283	96.71	101.07	94.57549999999999	Silver
+07-Fenster	THERAKLES	Variante 7.2 Wärmeleitung Fenster	0	0.0	-20.69	-11.67	-3.65	2.1	-0.03	7.33	0.18	0.25	2.07	0.42	100	99.26	4.97	97.26650000000001	Gold
+07-Fenster	THERAKLES	Variante 7.3 Raumlufttemperatur	0	35.02	20.0	28.24	0.42	1.69	-0.1	2.92	0.01	-0.36	0.78	0.12	0.00377	99.89	3.53	98.9795	Gold
+07-Fenster	THERAKLES	Variante 7.3 Trans.Strahlung Fenster	0	251.06	0.0	57.09	27.3	0.91	-0.65	18.69	248.5	-1.12	6.38	15.76	0.51736	96.38	82.38	93.37849999999999	Silver
+07-Fenster	THERAKLES	Variante 7.3 Wärmeleitung Fenster	0	0.0	-16.52	-9.06	-4.96	1.67	-0.04	10.09	0.2	0.43	2.7	0.45	100	98.65	3.89	96.3255	Gold
+07-Fenster	TRNSYS	Variante 7.1 Raumlufttemperatur	0	24.45	23.93	24.17	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.17	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.1 Wärmeleitung Fenster	0	6.25	-4.48	-0.03	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	5.01	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.2 Raumlufttemperatur	0	38.84	20.0	30.62	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.53	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.2 Trans.Strahlung Fenster	0	281.42	0.0	73.76	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	100.54	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.2 Wärmeleitung Fenster	0	0.0	-20.55	-11.64	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	4.96	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.3 Raumlufttemperatur	0	35.19	20.0	28.34	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.58	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.3 Trans.Strahlung Fenster	0	247.15	0.0	57.74	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	82.82	100.0	Gold
+07-Fenster	TRNSYS	Variante 7.3 Wärmeleitung Fenster	0	0.0	-16.53	-9.02	-0.0	0.0	0.0	0.0	0.0	-0.0	0.0	0.0	100	100.0	3.84	100.0	Gold
+08-InterneLasten	Aixlib	Variante 8.1 Raumlufttemperatur	0	40.81	20.0	38.27	0.19	127.52	0.0	2.49	0.01	0.0	0.36	0.07	0.0031	99.97	4.07	86.53099999999999	Bronze
+08-InterneLasten	Aixlib	Variante 8.1 Oberflächentemperatur	0	38.23	20.0	35.69	0.12	19.22	-0.0	1.43	0.0	-0.0	0.23	0.04	0.00166	99.99	4.05	97.66149999999999	Gold
+08-InterneLasten	Aixlib	Variante 8.2 Raumlufttemperatur	0	38.23	20.0	35.7	0.12	16.23	0.01	1.43	0.0	0.02	0.23	0.04	0.00171	99.99	4.05	97.9555	Gold
+08-InterneLasten	Aixlib	Variante 8.2 Oberflächentemperatur	0	38.23	20.0	35.7	0.12	21.09	0.01	1.45	0.0	0.02	0.24	0.04	0.00174	99.99	4.05	97.462	Gold
+08-InterneLasten	Aixlib	Variante 8.3 Raumlufttemperatur	0	41.5	20.0	35.27	3.03	4.04	0.09	20.34	1.14	0.24	5.03	1.07	0.02931	93.95	4.42	92.28599999999999	Silver
+08-InterneLasten	Aixlib	Variante 8.3 Oberflächentemperatur	0	36.16	20.0	33.13	0.98	23.18	0.08	13.21	0.11	0.25	2.05	0.32	0.00967	99.1	3.43	93.6695	Silver
+08-InterneLasten	Aixlib	Variante 8.4.Raumlufttemperatur	0	36.14	20.0	33.1	0.99	20.99	0.06	13.35	0.11	0.19	2.06	0.33	0.00976	99.09	3.41	93.86449999999999	Silver
+08-InterneLasten	Aixlib	Variante 8.4 Oberflächentemperatur	0	36.18	20.0	33.1	1.03	26.7	0.06	13.97	0.12	0.19	2.15	0.34	0.01018	99.01	3.41	93.104	Silver
+08-InterneLasten	ETU	Variante 8.1 Raumlufttemperatur	0	40.8	20.0	38.26	0.08	70.27	-0.0	1.09	0.0	-0.01	0.16	0.03	0.00148	99.99	4.11	92.6615	Silver
+08-InterneLasten	ETU	Variante 8.1 Oberflächentemperatur	0	0.0	0.0	0.0	100.65	194.09	-35.69	1208.12	1290.58	-100.0	197.1	35.92	3.59738	-7636.62	0.0	0	Failed
+08-InterneLasten	ETU	Variante 8.2 Raumlufttemperatur	0	38.22	20.0	35.69	0.02	10.54	-0.0	0.26	0.0	-0.01	0.04	0.01	0.0003	100.0	4.08	98.8735	Gold
+08-InterneLasten	ETU	Variante 8.2 Oberflächentemperatur	0	0.0	0.0	0.0	100.65	194.15	-35.69	1208.38	1290.62	-100.0	197.1	35.93	3.5974	-7640.09	0.0	0	Failed
+08-InterneLasten	ETU	Variante 8.3 Raumlufttemperatur	0	41.14	20.0	35.18	1.65	1.4	-0.0	11.1	0.34	-0.01	2.74	0.58	0.01605	98.2	4.3	96.13250000000001	Gold
+08-InterneLasten	ETU	Variante 8.3 Oberflächentemperatur	0	0.0	0.0	0.0	100.53	100.89	-33.04	1353.86	1103.64	-100.0	209.68	33.22	3.52357	-9337.15	0.0	0	Failed
+08-InterneLasten	ETU	Variante 8.4.Raumlufttemperatur	0	35.78	20.0	33.04	0.38	7.7	-0.0	5.15	0.02	-0.0	0.8	0.13	0.00376	99.86	3.42	97.72149999999999	Gold
+08-InterneLasten	ETU	Variante 8.4 Oberflächentemperatur	0	0.0	0.0	0.0	100.53	100.9	-33.04	1363.08	1103.46	-100.0	209.84	33.22	3.52351	-9346.9	0.0	0	Failed
+08-InterneLasten	IDAICE	Variante 8.1 Raumlufttemperatur	0	40.57	20.0	38.09	0.5	2.64	-0.17	6.39	0.04	-0.45	0.91	0.19	0.00462	99.79	4.03	97.992	Gold
+08-InterneLasten	IDAICE	Variante 8.1 Oberflächentemperatur	0	37.98	20.0	35.52	0.54	2.72	-0.17	6.45	0.04	-0.49	1.05	0.19	0.00497	99.78	4.01	97.9425	Gold
+08-InterneLasten	IDAICE	Variante 8.2 Raumlufttemperatur	0	37.99	20.0	35.52	0.53	2.73	-0.17	6.39	0.04	-0.48	1.04	0.19	0.00493	99.78	4.01	97.9565	Gold
+08-InterneLasten	IDAICE	Variante 8.2 Oberflächentemperatur	0	37.98	20.0	35.52	0.53	2.56	-0.17	6.41	0.04	-0.48	1.05	0.19	0.00494	99.78	4.0	97.96600000000001	Gold
+08-InterneLasten	IDAICE	Variante 8.3 Raumlufttemperatur	0	40.94	20.0	35.05	2.52	1.35	-0.14	16.93	0.79	-0.39	4.19	0.89	0.02324	95.8	4.24	94.05249999999998	Silver
+08-InterneLasten	IDAICE	Variante 8.3 Oberflächentemperatur	0	13.37	0.0	5.36	86.02	895.51	-27.68	1158.4	807.97	-83.78	179.41	28.42	2.60189	-6808.93	5.82	-1339.3980000000001	Failed
+08-InterneLasten	IDAICE	Variante 8.4.Raumlufttemperatur	0	35.64	20.0	32.91	0.53	1.78	-0.13	7.11	0.03	-0.4	1.1	0.17	0.00488	99.74	3.36	97.8305	Gold
+08-InterneLasten	IDAICE	Variante 8.4 Oberflächentemperatur	0	35.64	20.0	32.91	0.52	1.76	-0.13	7.03	0.03	-0.4	1.08	0.17	0.00481	99.75	3.36	97.859	Gold
+08-InterneLasten	NANDRAD	Variante 8.1 Raumlufttemperatur	0	40.81	20.0	38.27	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.11	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.1 Oberflächentemperatur	0	38.23	20.0	35.69	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.08	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.2 Raumlufttemperatur	0	38.23	20.0	35.69	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.08	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.2 Oberflächentemperatur	0	38.23	20.0	35.69	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.08	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.3 Raumlufttemperatur	0	41.19	20.0	35.19	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	4.33	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.3 Oberflächentemperatur	0	35.84	20.0	33.04	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.42	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.4.Raumlufttemperatur	0	35.83	20.0	33.04	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.42	100.0	Gold
+08-InterneLasten	NANDRAD	Variante 8.4 Oberflächentemperatur	0	35.83	20.0	33.04	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	3.42	100.0	Gold
+08-InterneLasten	TAS	Variante 8.1 Raumlufttemperatur	0	40.8	20.0	38.26	0.03	2.13	-0.01	0.39	0.0	-0.02	0.06	0.01	0.00039	100.0	4.12	99.67949999999999	Gold
+08-InterneLasten	TAS	Variante 8.1 Oberflächentemperatur	0	38.22	20.0	35.68	0.03	2.55	-0.01	0.35	0.0	-0.02	0.06	0.01	0.00036	100.0	4.09	99.64750000000001	Gold
+08-InterneLasten	TAS	Variante 8.2 Raumlufttemperatur	0	38.22	20.0	35.68	0.03	2.49	-0.01	0.35	0.0	-0.02	0.06	0.01	0.00036	100.0	4.09	99.6535	Gold
+08-InterneLasten	TAS	Variante 8.2 Oberflächentemperatur	0	38.22	20.0	35.68	0.03	2.84	-0.01	0.35	0.0	-0.02	0.06	0.01	0.00036	100.0	4.09	99.6185	Gold
+08-InterneLasten	TAS	Variante 8.3 Raumlufttemperatur	0	41.15	20.0	35.18	0.28	0.86	-0.01	1.87	0.01	-0.02	0.46	0.1	0.00269	99.95	4.31	99.329	Gold
+08-InterneLasten	TAS	Variante 8.3 Oberflächentemperatur	0	35.8	20.0	33.04	0.14	4.76	-0.01	1.86	0.0	-0.02	0.29	0.05	0.00137	99.98	3.42	98.9885	Gold
+08-InterneLasten	TAS	Variante 8.4.Raumlufttemperatur	0	35.8	20.0	33.04	0.14	4.35	-0.0	1.87	0.0	-0.01	0.29	0.05	0.00137	99.98	3.42	99.0245	Gold
+08-InterneLasten	TAS	Variante 8.4 Oberflächentemperatur	0	35.8	20.0	33.04	0.13	3.52	-0.0	1.82	0.0	-0.01	0.28	0.04	0.00133	99.98	3.42	99.12250000000002	Gold
+08-InterneLasten	THERAKLES	Variante 8.1 Raumlufttemperatur	0	40.81	20.0	38.27	0.0	0.25	-0.0	0.01	0.0	-0.0	0.0	0.0	1e-05	100.0	4.11	99.9725	Gold
+08-InterneLasten	THERAKLES	Variante 8.1 Oberflächentemperatur	0	38.23	20.0	35.69	0.0	0.08	-0.0	0.01	0.0	-0.0	0.0	0.0	1e-05	100.0	4.08	99.98949999999999	Gold
+08-InterneLasten	THERAKLES	Variante 8.2 Raumlufttemperatur	0	38.23	20.0	35.69	0.0	0.08	-0.0	0.01	0.0	-0.0	0.0	0.0	1e-05	100.0	4.08	99.98949999999999	Gold
+08-InterneLasten	THERAKLES	Variante 8.2 Oberflächentemperatur	0	38.23	20.0	35.69	0.0	0.17	-0.0	0.01	0.0	-0.0	0.0	0.0	1e-05	100.0	4.08	99.9805	Gold
+08-InterneLasten	THERAKLES	Variante 8.3 Raumlufttemperatur	0	41.19	20.0	35.19	0.03	0.46	-0.0	0.23	0.0	-0.0	0.06	0.01	0.00033	100.0	4.33	99.88149999999999	Gold
+08-InterneLasten	THERAKLES	Variante 8.3 Oberflächentemperatur	0	35.84	20.0	33.04	0.01	0.25	-0.0	0.07	0.0	-0.0	0.01	0.0	6e-05	100.0	3.42	99.95500000000001	Gold
+08-InterneLasten	THERAKLES	Variante 8.4.Raumlufttemperatur	0	41.19	20.0	35.19	9.61	398.52	2.15	129.95	10.08	6.5	20.06	3.17	0.08764	13.76	4.33	8.084500000000002	Failed
+08-InterneLasten	THERAKLES	Variante 8.4 Oberflächentemperatur	0	35.84	20.0	33.04	0.04	0.89	0.0	0.49	0.0	0.01	0.07	0.01	0.00035	100.0	3.42	99.7685	Gold
+08-InterneLasten	TRNSYS	Variante 8.1 Raumlufttemperatur	0	40.81	20.0	38.27	0.01	1.85	-0.0	0.1	0.0	-0.0	0.01	0.0	8e-05	100.0	4.11	99.7875	Gold
+08-InterneLasten	TRNSYS	Variante 8.1 Oberflächentemperatur	0	38.23	20.0	35.69	0.01	1.94	-0.0	0.1	0.0	-0.0	0.02	0.0	8e-05	100.0	4.08	99.776	Gold
+08-InterneLasten	TRNSYS	Variante 8.2 Raumlufttemperatur	0	38.23	20.0	35.69	0.0	0.06	-0.0	0.01	0.0	-0.0	0.0	0.0	1e-05	100.0	4.08	99.9915	Gold
+08-InterneLasten	TRNSYS	Variante 8.2 Oberflächentemperatur	0	38.16	20.0	35.62	0.2	3.9	-0.07	2.38	0.01	-0.2	0.39	0.07	0.00198	99.97	4.08	98.963	Gold
+08-InterneLasten	TRNSYS	Variante 8.3 Raumlufttemperatur	0	41.19	20.0	35.19	0.03	0.15	0.0	0.23	0.0	0.0	0.06	0.01	0.00033	100.0	4.33	99.9125	Gold
+08-InterneLasten	TRNSYS	Variante 8.3 Oberflächentemperatur	0	35.84	20.0	33.04	0.01	0.36	0.0	0.13	0.0	0.0	0.02	0.0	0.0001	100.0	3.42	99.9265	Gold
+08-InterneLasten	TRNSYS	Variante 8.4.Raumlufttemperatur	0	35.84	20.0	33.04	0.02	0.45	0.0	0.28	0.0	0.01	0.04	0.01	0.00019	100.0	3.42	99.8725	Gold
+08-InterneLasten	TRNSYS	Variante 8.4 Oberflächentemperatur	0	35.7	20.0	32.99	0.26	9.97	-0.06	3.52	0.01	-0.17	0.54	0.09	0.00255	99.94	3.41	98.02149999999999	Gold
+09-Verschattung	Aixlib	Azimuth	0	207.81	92.57	140.92	0.07	0.3	0.03	0.17	0.01	0.02	0.08	0.1	0.00075	100.0	35.04	99.9025	Gold
+09-Verschattung	Aixlib	Altitude	0	61.36	30.48	51.16	0.3	0.18	-0.15	0.92	0.02	-0.3	0.5	0.15	0.00309	99.98	9.93	99.699	Gold
+09-Verschattung	Aixlib	Variante 9.1 Sonnenlichtfaktor	0	0.34	0.0	0.16	86.55	33.75	-0.17	271.43	0.08	-52.85	61.32	0.29	0.23134	-390.57	0.14	-46.935500000000005	Failed
+09-Verschattung	Aixlib	Variante 9.2 Sonnenlichtfaktor	0	1.0	0.0	0.59	40.37	134.53	-0.23	96.24	0.11	-28.05	49.95	0.33	0.24978	-121.72	0.43	23.754	Failed
+09-Verschattung	Aixlib	Variante 9.3 Sonnenlichtfaktor	0	0.34	0.0	0.15	3.86	2.1	0.0	1.91	0.0	2.85	1.7	0.01	0.0047	99.84	0.14	98.151	Gold
+09-Verschattung	Aixlib	Variante 9.4 Sonnenlichtfaktor	0	0.0	0.0	0.0	100.19	173.21	-0.96	1131.18	0.92	-100.0	600.94	0.96	0.673	-25812.34	0.0	0	Failed
+09-Verschattung	Aixlib	Variante 9.5 Sonnenlichtfaktor	0	0.96	0.0	0.44	0.84	0.37	0.0	0.47	0.0	0.5	0.39	0.0	0.00244	99.99	0.37	99.6215	Gold
+09-Verschattung	Aixlib	Variante 9.6 Sonnenlichtfaktor	0	0.0	0.0	0.0	132.58	173.21	-0.51	68.19	0.46	-100.0	68.19	0.68	0.48066	-131.95	0.0	0	Failed
+09-Verschattung	ETU	Azimuth	0	207.98	92.47	140.89	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	35.12	100.0	Gold
+09-Verschattung	ETU	Altitude	0	61.52	30.62	51.32	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	9.94	100.0	Gold
+09-Verschattung	IDAICE	Azimuth	0	207.99	92.39	140.82	0.06	0.07	-0.07	0.14	0.01	-0.05	0.07	0.08	0.00069	100.0	35.16	99.953	Gold
+09-Verschattung	IDAICE	Altitude	0	61.6	30.66	51.38	0.12	0.2	0.06	0.37	0.0	0.12	0.2	0.06	0.00114	100.0	9.95	99.8075	Gold
+09-Verschattung	IDAICE	Variante 9.1 Sonnenlichtfaktor	0	0.58	0.17	0.32	11.67	3.75	-0.01	36.58	0.0	-4.47	8.26	0.04	0.02673	91.09	0.11	88.196	Bronze
+09-Verschattung	IDAICE	Variante 9.2 Sonnenlichtfaktor	0	1.0	0.49	0.88	12.0	48.77	0.07	28.62	0.01	8.5	14.85	0.1	0.06026	80.39	0.16	79.189	Failed
+09-Verschattung	IDAICE	Variante 9.3 Sonnenlichtfaktor	0	0.3	0.0	0.14	20.58	20.34	-0.0	10.21	0.0	-3.0	9.05	0.03	0.02648	95.36	0.11	93.205	Silver
+09-Verschattung	IDAICE	Variante 9.4 Sonnenlichtfaktor	0	1.0	0.81	0.91	6.99	205.68	-0.05	78.96	0.0	-5.24	41.95	0.07	0.03481	-26.25	0.07	31.576999999999998	Failed
+09-Verschattung	IDAICE	Variante 9.5 Sonnenlichtfaktor	0	0.94	0.0	0.43	5.64	1.96	-0.01	3.15	0.0	-2.8	2.61	0.02	0.01881	99.54	0.36	98.995	Gold
+09-Verschattung	IDAICE	Variante 9.6 Sonnenlichtfaktor	0	1.0	0.0	0.46	25.34	0.0	-0.05	13.03	0.02	-9.6	13.03	0.13	0.07485	91.52	0.4	94.61299999999999	Silver
+09-Verschattung	NANDRAD	Azimuth	0	207.98	92.47	140.89	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	35.12	100.0	Gold
+09-Verschattung	NANDRAD	Altitude	0	61.52	30.62	51.32	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	9.94	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.1 Sonnenlichtfaktor	0	0.66	0.19	0.33	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.13	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.2 Sonnenlichtfaktor	0	1.0	0.34	0.81	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.22	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.3 Sonnenlichtfaktor	0	0.33	0.0	0.15	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.14	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.4 Sonnenlichtfaktor	0	1.0	0.84	0.96	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.06	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.5 Sonnenlichtfaktor	0	0.95	0.0	0.44	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.37	100.0	Gold
+09-Verschattung	NANDRAD	Variante 9.6 Sonnenlichtfaktor	0	1.0	0.0	0.51	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	100.0	0.45	100.0	Gold
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TAS	Variante 9.6 Sonnenlichtfaktor	-12	0	Failed
+09-Verschattung	TRNSYS	Azimuth	0	207.81	92.39	140.77	0.09	0.14	-0.12	0.22	0.02	-0.09	0.11	0.13	0.00086	100.0	35.09	99.92600000000002	Gold
+09-Verschattung	TRNSYS	Altitude	0	61.5	30.57	51.28	0.09	0.2	-0.04	0.27	0.0	-0.08	0.14	0.04	0.00099	100.0	9.95	99.89750000000001	Gold
+09-Verschattung	TRNSYS	Variante 9.1 Sonnenlichtfaktor	0	0.66	0.19	0.33	1.22	0.82	0.0	3.82	0.0	0.06	0.86	0.0	0.00321	99.9	0.13	98.718	Gold
+09-Verschattung	TRNSYS	Variante 9.2 Sonnenlichtfaktor	0	1.0	0.34	0.81	0.15	0.4	-0.0	0.35	0.0	-0.07	0.18	0.0	0.0007	100.0	0.22	99.845	Gold
+09-Verschattung	TRNSYS	Variante 9.3 Sonnenlichtfaktor	0	0.33	0.0	0.14	3.08	2.15	-0.0	1.53	0.0	-0.99	1.36	0.0	0.00382	99.9	0.14	99.295	Gold
+09-Verschattung	TRNSYS	Variante 9.4 Sonnenlichtfaktor	0	1.0	0.84	0.95	1.35	10.83	-0.01	15.24	0.0	-0.56	8.1	0.01	0.00662	95.3	0.06	92.51700000000001	Silver
+09-Verschattung	TRNSYS	Variante 9.5 Sonnenlichtfaktor	0	0.95	0.0	0.44	1.04	0.16	0.0	0.58	0.0	0.37	0.48	0.0	0.00393	99.98	0.37	99.62349999999999	Gold
+09-Verschattung	TRNSYS	Variante 9.6 Sonnenlichtfaktor	0	1.0	0.0	0.51	0.9	0.0	-0.0	0.46	0.0	-0.0	0.46	0.0	0.00399	99.99	0.45	99.7685	Gold
