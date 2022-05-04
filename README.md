@@ -7,9 +7,9 @@ For each of the test cases a reference is defined and several statistival method
 
 The following batches can be awarded by the different tools:
 If the SimQuality-Score is:
-- > 95 %: SimQuality-Gold
-- > 90 %: SimQuality-Silver
-- > 80 %: SimQuality-Bronze
-- < 80 %: Failed
+-  <b>> 95 %</b>: SimQuality-Gold
+-  <b>> 90 %</b>: SimQuality-Silver
+-  <b>> 80 %</b>: SimQuality-Bronze
+-  <b>< 80 %</b>: Failed
 
 
