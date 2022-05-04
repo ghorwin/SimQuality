@@ -21,10 +21,8 @@ EVAL_PERIODS = "EvaluationPeriods.tsv"
 class CaseResults:
 	def __init__(self):
 		self.score = 0
-		self.norms = []
+		self.norms = dict()
 		
-		for i in range(15) : 
-			self.norms.append(0)
 		self.simQbadge = 0 # means failed
 		
 		self.ToolID = ""
@@ -52,7 +50,7 @@ def listsEqual(list1, list2):
 	return True
 
 
-def evaluateVariableResults(variable, timeColumn, refData, testData, start, end):
+def evaluateVariableResults(variable, timeColumn, refData, testData, start, end, weightFactors):
 	"""
 	Performance difference calculation between variable data sets.
 	
@@ -76,21 +74,21 @@ def evaluateVariableResults(variable, timeColumn, refData, testData, start, end)
 		pdRef = pdRef.loc[start:end]
 		
 		# we evaluate the results		
-		cr.norms[0] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[1] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[2] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[3] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[4] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[5] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[6] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[7] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[8] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[9] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[10] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[11] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[12] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[13] = sf.function_R_squared_coeff_determination(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-		cr.norms[14] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		
+		cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['R squared coeff determination'] = sf.function_R_squared_coeff_determination(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+		cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
 		
 		
 	except IOError as e:
@@ -99,12 +97,37 @@ def evaluateVariableResults(variable, timeColumn, refData, testData, start, end)
 		exit(1)		
 
 	# TODO : Wichtung
-	cr.score = cr.norms[0]
+	if(abs(cr.norms['Average']) < 1e-4):
+		cr.score = 0		# prevent division by zero error
+	else:
+		cr.score = ( weightFactors.get('CVRMSE', 0) * ( 100.0 - cr.norms['CVRMSE'] ) +  		# in %
+			     weightFactors.get('Daily Amplitude CVRMSE', 0) * ( 100.0 - cr.norms['Daily Amplitude CVRMSE'] ) + 	# in % 
+			     weightFactors.get('MBE', 0) * ( 100.0 - 100.0*cr.norms['MBE'] / cr.norms['Average']) + 
+			     weightFactors.get('RMSEIQR', 0) * ( 100.0 - cr.norms['RMSEIQR'] ) + 		# in %
+			     weightFactors.get('MSE', 0) * ( 100.0 - 100*cr.norms['MSE'] / cr.norms['Average']) + 
+			     weightFactors.get('NMBE', 0) * ( 100.0 - cr.norms['NMBE'] ) + 
+			     weightFactors.get('NRMSE', 0) * ( 100.0 - cr.norms['NRMSE'] ) + 
+			     weightFactors.get('RMSE', 0) * ( 100.0 - 100.0*cr.norms['RMSE'] / cr.norms['Average']) + 
+			     weightFactors.get('RMSLE', 0) * ( 100.0 - cr.norms['RMSLE'] / cr.norms['Average']) + 
+			     weightFactors.get('R squared coeff determination', 0)*( 100.0 - cr.norms['R squared coeff determination'] / cr.norms['Average']) + 
+			     weightFactors.get('std dev', 0)*( 100.0 - cr.norms['std dev'] / cr.norms['Average']) ) / weightFactors['Sum'] 
+	
+	# scoring caluclation --> >95% : Gold | >90% : Silver | >80% : Bronze
+	badge = 0
+	if(cr.score>95):
+		badge = 1
+	elif(cr.score>90):
+		badge = 2
+	elif(cr.score>80):
+		badge = 3
+	# now set the final SimQuality Badge 
+	cr.simQbadge = badge
+	
 	return cr
 
 
 # all the data is stored in a dictionary with tool-specific data
-def processDirectory(path):
+def processDirectory(path, weightFactors):
 	"""
 	Processes a test case directory, i.e. path = "data/TF03-Waermeleitung".
 	It then reads data from the subdirectory 'Auswertung/Ergebnisse' and
@@ -117,6 +140,7 @@ def processDirectory(path):
 	# test case name
 	testCaseName = os.path.split(path)[1]
 	testCaseName = testCaseName[2:]
+	
 
 	# result dir exists?
 	tsvPath = os.path.join(path, RESULTS_SUBDIRNAME)
@@ -124,6 +148,7 @@ def processDirectory(path):
 	if not os.path.exists(tsvPath):
 		printError("Missing test result directory '{}'.".format(tsvPath))
 		return None # None indicates entirely invalid/missing test data.
+	
 
 	tsvFiles = [o for o in os.listdir(tsvPath) if o.endswith("tsv")]
 	if not "Reference.tsv" in tsvFiles:
@@ -154,7 +179,9 @@ def processDirectory(path):
 	
 	# extract variable names
 	variables = []
+	rawVariables = []
 	for v in refData.headers[1:]:
+		rawVariables.append(v)
 		# remove unit and optional '(mean)' identifier
 		p = v.find("(mean)")
 		if p == -1:
@@ -191,16 +218,22 @@ def processDirectory(path):
 			appendErrorResults(tsvData, testCaseName, toolID, -10, variables)
 			continue
 		# check if header line is exactly correct
-		if not listsEqual(refData.headers, tsv.headers):
-			printError("'{}''s header doesn't match header of 'Reference.tsv'".format(dataFile))
-			appendErrorResults(tsvData, testCaseName, toolID, -9, variables)
-			continue
+		#if not listsEqual(refData.headers, tsv.headers):
+			#printError("'{}''s header doesn't match header of 'Reference.tsv'".format(dataFile))
+			#appendErrorResults(tsvData, testCaseName, toolID, -9, variables)
+			#continue
+		
+		# if not all data is provieded by a tool we only want to skip the specific variable
+		for header in tsv.headers:
+			if header not in refData.headers:
+				printError("'{}''s header '{}' is not part of the reference header".format(dataFile, header))
+				continue
 		
 		# number of cols
-		if len(refData.data) != len(tsv.data):
-			printError("'{}''s mismatching number of columns in file compared to 'Reference.tsv'".format(dataFile))
-			appendErrorResults(tsvData, testCaseName, toolID, -8, variables)
-			continue
+		#if len(refData.data) != len(tsv.data):
+			#printError("'{}''s mismatching number of columns in file compared to 'Reference.tsv'".format(dataFile))
+			#appendErrorResults(tsvData, testCaseName, toolID, -8, variables)
+			#continue
 
 		if not tsv.convert2Double():
 			printError("Data file contains invalid numbers.")
@@ -212,18 +245,21 @@ def processDirectory(path):
 			# call function to generate and evaluate all norms for the given variable
 			# we provide time column, reference data column and value column, also parameter set for norm calculation
 			# we get a variable-specific score stored in CaseResults object
+			if not rawVariables[i] in tsv.headers:
+				printError("'{}''s does not contain the variable {} and will be skipped.".format(dataFile, variables[i]))
+				continue
 			
 			# check if data even exists
 			if i > len(tsv.data) :
 				printError("'{}''s columns exceed number of columns of 'Reference.tsv'".format(dataFile))
 				appendErrorResults(tsvData, testCaseName, toolID, -11, variables)
-				break				
-	
+				break					
+
 			# number of rows
 			if len(refData.data[i]) != len(tsv.data[i]):
 				printError("'{}''s mismatching number of rows ({}) in file compared to 'Reference.tsv' ({})".format(dataFile, len(tsv.data[i]), len(refData.data[i]) ) )
 				appendErrorResults(tsvData, testCaseName, toolID, -12, variables)
-				continue			
+				continue
 			
 
 			if not variables[i] in evaluationVariables:
@@ -244,7 +280,7 @@ def processDirectory(path):
 				printError("Evaluation End Point ({}) is bigger then row number of reference results.".format(end, len(refData.data[0])))
 				continue				
 			
-			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1], start, end)
+			cr = evaluateVariableResults(variables[i], refData.data[0], refData.data[i+1], tsv.data[i+1], start, end, weightFactors)
 			cr.TestCase = testCaseName
 			cr.ToolID = toolID
 			cr.Variable = variables[i]
