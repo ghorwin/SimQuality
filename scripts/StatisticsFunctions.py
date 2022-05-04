@@ -11,7 +11,8 @@ import pandas as pd  # Data manipulation and analysis
 import numpy as np
 import math          # used for mathematical calculations
 
-
+import warnings      # used to catch warnings inside the functions e.g. when some division by zero errors occur
+warnings.filterwarnings("error") 
 
 
 class StatisticsFunctions:
@@ -27,12 +28,16 @@ class StatisticsFunctions:
         of a case compared to a reference: CVRMSE with all data points [%].
         """
     
-        nbr_samples = len(diff_case_ref)  # Number of samples
-        avrg_ref = (reference_vector.mean())  # Average value of the reference = number samples ref * mean average ref
-        square_diff = diff_case_ref ** 2
-        sum_squares = square_diff.sum()
-        CVRMSE = ((math.sqrt(sum_squares / nbr_samples)) / avrg_ref) * 100
-    
+        try:
+            nbr_samples = len(diff_case_ref)        # Number of samples
+            avrg_ref = (reference_vector.mean())    # Average value of the reference = number samples ref * mean average ref
+            square_diff = diff_case_ref ** 2        
+            sum_squares = square_diff.sum()
+            CVRMSE = ((math.sqrt(sum_squares / nbr_samples)) / avrg_ref) * 100
+        except RuntimeWarning:
+            print("Error in CVRMSE calculation. Returns 999 to indicate error.")
+            return 999
+            
         return CVRMSE
     
     
@@ -266,22 +271,27 @@ class StatisticsFunctions:
     
         "y: observations / reality / measured data / reference data"
         "f: prediction / fitted data / modeled data / test data"
-    
-        y = reference_vector
-        f = test_case_vector
-    
-        log_f = np.log(f + 1)
-        log_y = np.log(y + 1)
-    
-        squares_diff_logs = (log_f - log_y) ** 2
-    
-        sum_squares_diff = squares_diff_logs.sum()
-    
-        nbr_samples = len(test_case_vector)
-    
-        average_squares_diff = sum_squares_diff / nbr_samples
-    
-        RMSLE = np.sqrt(average_squares_diff)
+        try:
+            
+            y = reference_vector
+            f = test_case_vector
+        
+            log_f = np.log(f + 1)
+            log_y = np.log(y + 1)
+        
+            squares_diff_logs = (log_f - log_y) ** 2
+        
+            sum_squares_diff = squares_diff_logs.sum()
+        
+            nbr_samples = len(test_case_vector)
+        
+            average_squares_diff = sum_squares_diff / nbr_samples
+        
+            RMSLE = np.sqrt(average_squares_diff)
+        
+        except RuntimeWarning:
+            print("Cannot calculate RMSLE error")
+            return 999
     
         return round(RMSLE, 5)
     
