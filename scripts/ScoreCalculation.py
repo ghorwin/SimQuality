@@ -7,6 +7,7 @@
 # Script is expected to be run from within the 'data' directory.
 
 import os
+import sys
 
 from TSVContainer import TSVContainer
 from ProcessDirectory import processDirectory
@@ -28,7 +29,7 @@ def readWeightFactors():
 		weightFactorsTSV.readAsStrings(os.path.join(os.getcwd(), "WeightFactors.tsv"))
 	except RuntimeError as e:
 		print(e)
-		print (f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
+		print(f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
 		exit (1)
 	
 	weightFactors = dict()
@@ -44,17 +45,31 @@ def readWeightFactors():
 
 # ---*** main ***---
 
-# initialize colored console output
-init()
 
-weightFactors = readWeightFactors()
-
+# Create results file
 try:
-	fobj = open("Results.tsv", 'w')
+	fobj = open("Results.tsv", "w")
 except IOError as e:
 	print(e)
 	print("Cannot create 'Results.tsv' file")
 	exit(1)
+
+# Create log file
+oldStdout = sys.stdout
+try:
+	log = open("Log.txt", "w")
+except IOError as e:
+	print(e)
+	print("Cannot create 'Log.txt' file")
+	exit(1)
+
+# redirect outputs to log
+sys.stdout = log
+
+# initialize colored console output
+init()
+
+weightFactors = readWeightFactors()
 
 # create dictionary for test case results
 testresults = dict()
@@ -71,6 +86,7 @@ for sd in subdirs:
 		except:
 			printError("Malformed directory name: {}".format(sd))
 			continue
+		printNotification("\n################################################\n")
 		printNotification("Processing directory '{}'".format(sd))
 		testresults[sd] = processDirectory( os.path.join(os.getcwd(), sd), weightFactors )
 
@@ -87,13 +103,18 @@ for testcase in testcases:
 		continue
 	for td in testData:
 		resText = "{}\t{}\t{}\t{}\t".format(td.TestCase, td.ToolID, td.Variable, td.ErrorCode)
-		for n in td.norms:
-			resText = resText + "{}\t".format(n)
+		for key in td.norms:
+			resText = resText + "{}\t".format(td.norms[key])
 		resText = resText + "{}\t".format(td.score)
 		resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
 		fobj.write(resText)
+		
+sys.stdout = oldStdout
 
 fobj.close()
 del fobj
+log.close()
+del log
 
+printNotification("\n################################################\n")
 printNotification("Done.")
