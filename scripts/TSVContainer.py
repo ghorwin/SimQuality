@@ -18,7 +18,7 @@ class TSVContainer:
 		"""Reads the file but keeps all tokens as strings"""
 		try:
 			print("Reading {}".format(fname))
-			fobj = open(fname, 'r')
+			fobj = open(fname, 'r', encoding="utf-8", errors='ignore')
 			lines = fobj.readlines()
 			fobj.close()
 			del fobj
