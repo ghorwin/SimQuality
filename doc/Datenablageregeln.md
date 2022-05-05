@@ -11,7 +11,7 @@
 Schema:
 
 ```
-<tool+version>.tsv
+<tool+[optional]version>.tsv
 ```
 
 Beispiel:
@@ -30,11 +30,11 @@ Unterverzeichnis des jeweiligen Testfalls abgelegt werden.
 - Beispiel:
 
 ```
-Time [h]	Var1.Tout [C]	Var1.TRoom [C]	Var2.Tout [C]	Var2.TRoom [C]
+Time [h]	Variante 1 Aussenlufttemperatur [C]	Variante 1 Raumlufttemperatur [C]	Variante 2 Raumlufttemperatur [C]	Var 2 Raumlufttemperatur [C]
 ```
 
 - Spalten sind tab-getrennt (wie beim Kopieren aus Excel/Calc).
-- Variablenbezeichner sind zusammengesetzt aus Variantenpräfix `Var<N>` und Variablennamenkürzel
+- Variablenbezeichner sind zusammengesetzt aus Variantenpräfix `Variante <Testfall-Nr.>.<Varianten-Nr.>` und Variablennamenkürzel
   (entsprechend Beschreibung und Aufgabenstellung)
 - Anzahl der Nachkommastellen ist sinnvoll zu begrenzen (z.B. auf 6 signifikante Stellen)
 
