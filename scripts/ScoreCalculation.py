@@ -8,11 +8,14 @@
 
 import os
 import sys
+import plotly.express as px
+import pandas as pd
 
 from TSVContainer import TSVContainer
 from ProcessDirectory import processDirectory
 from colorama import *
 from PrintFuncs import *
+
 
 BADGES = {
 	0: "Failed",
@@ -98,10 +101,20 @@ testcases = sorted(testresults.keys())
 
 for testcase in testcases:
 	testData = testresults[testcase]
+	
+	# we also want to create some plotly charts
+	# there fore we create a new data frame
+	dfs = dict() 
+	
 	# skip test cases with missing/invalid 'Reference.tsv'
 	if testData == None:
 		continue
 	for td in testData:
+		if td.Variable not in dfs:
+			printNotification(f"Create new data frame.")
+			dfs[td.Variable] = pd.DataFrame()
+			dfs[td.Variable] = pd.concat([td.pdTime, dfs[td.Variable]])
+		
 		resText = "{}\t{}\t{}\t{}\t".format(td.TestCase, td.ToolID, td.Variable, td.ErrorCode)
 		for key in td.norms:
 			resText = resText + "{}\t".format(td.norms[key])
@@ -109,6 +122,19 @@ for testcase in testcases:
 		resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
 		fobj.write(resText)
 		
+		# dfs[td.Variable] = pd.concat([dfs[td.Variable], td.pdData], keys=[",".join(keys)], names=[",".join(names)])
+		dfs[td.Variable][td.ToolID] = td.pdData.loc[:,'Data']
+	
+	for variable in dfs:
+		printNotification(f"Creating charts of test case {testcase}")
+		printNotification(f"Columns: {','.join(dfs[variable].columns)}")
+		
+		# print(dfs[variable].to_string())
+		
+		fig = px.line(dfs[variable], x='Date and Time', y=dfs[variable].columns[1:])
+		fig.write_html(f"../charts/{testcase}-{variable}.html")
+	
+	
 sys.stdout = oldStdout
 
 fobj.close()
