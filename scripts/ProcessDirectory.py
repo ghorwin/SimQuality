@@ -9,12 +9,14 @@ import argparse
 import glob
 import os
 import pandas as pd  # Data manipulation and analysis
+import datetime as dt
 from StatisticsFunctions import StatisticsFunctions as sf
 import plotly
 
 from TSVContainer import TSVContainer
 from PrintFuncs import *
 
+from scripts.PrintFuncs import printError, printNotification
 
 RESULTS_SUBDIRNAME = "Auswertung/Ergebnisse"
 EVAL_PERIODS = "EvaluationPeriods.tsv"
@@ -30,11 +32,10 @@ class CaseResults:
 		self.ToolID = ""
 		self.TestCase = ""
 		self.Variable = ""
-		self.ErrorCode = -10 # no data/dataset broken
+		self.ErrorCode = -10  # no data/dataset broken
 		
-		self.pdData = pd.DataFrame
-		self.pdTime = pd.DataFrame
-		self.pdRef = pd.DataFrame
+		self.Data = pd.DataFrame
+		self.RefData = pd.DataFrame
 
 
 def appendErrorResults(tsvData, testCaseName, toolID, errorCode, variables):
@@ -83,13 +84,17 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 		# time column data from tool data set is now set for reference data set
 		timeColumnRef = timeColumnData
 		refData = newRefData
-		
-		
+
 	# We first convert our data to pandas
 	try:
-		cr.pdTime = pd.DataFrame(data=pd.date_range(start="2018-01-01", periods=len(timeColumnRef), freq="H"), index=timeColumnRef, columns=["Date and Time"])
-		cr.pdData = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
-		cr.pdRef = pd.DataFrame(data=refData, index=timeColumnRef, columns=["Data"])
+		startDate = dt.datetime(2020, 1, 1) + dt.timedelta(hours=testData[0])
+		pdTime = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(timeColumnRef), freq="H"), index=timeColumnRef, columns=["Date and Time"])
+		pdData = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
+		pdRef = pd.DataFrame(data=refData, index=timeColumnRef, columns=["Data"])
+
+		cr.Data = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
+		cr.RefData = pd.DataFrame(data=refData, index=timeColumnData, columns=["Data"]).loc[start:end]
+
 	except ValueError as e:
 		printWarning(str(e))
 		printWarning(f"        Could not convert given data of file to pandas dataframe.")
@@ -98,9 +103,9 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 		
 	
 	# We only use data between out start and end point
-	pdTime = cr.pdTime.loc[start:end]
-	pdData = cr.pdData.loc[start:end]
-	pdRef = cr.pdRef.loc[start:end]
+	pdTime = pdTime.loc[start:end]
+	pdData = pdData.loc[start:end]
+	pdRef = pdRef.loc[start:end]
 	
 	# initialize all statistical methods in cr.norms
 	for key in weightFactors:
@@ -161,7 +166,7 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
 
 # all the data is stored in a dictionary with tool-specific data
-def processDirectory(path, weightFactors):
+def processDirectory(path):
 	"""
 	Processes a test case directory, i.e. path = "data/TF03-Waermeleitung".
 	It then reads data from the subdirectory 'Auswertung/Ergebnisse' and
@@ -174,7 +179,6 @@ def processDirectory(path, weightFactors):
 	# test case name
 	testCaseName = os.path.split(path)[1]
 	testCaseName = testCaseName[2:]
-	
 
 	# result dir exists?
 	tsvPath = os.path.join(path, RESULTS_SUBDIRNAME)
@@ -210,6 +214,24 @@ def processDirectory(path, weightFactors):
 	if not refData.convert2Double():
 		printError("    'Reference.tsv' contains invalid numbers.")
 		return None
+
+	# read Weight factors
+	# read weight factors
+	# CVRMSE	Daily Amplitude CVRMSE	MBE	RMSEIQR	MSE	NMBE	NRMSE	RMSE	RMSLE	R² coefficient determination	std dev
+	try:
+		weightFactorsTSV = TSVContainer()
+		weightFactorsTSV.readAsStrings(os.path.join(tsvPath, "WeightFactors.tsv"))
+	except RuntimeError as e:
+		print(e)
+		print(f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
+		exit(1)
+
+	weightFactors = dict()
+
+	for i in range(len(weightFactorsTSV.data[0])):
+		weightFactors[weightFactorsTSV.data[0][i]] = int(weightFactorsTSV.data[1][i])
+
+		weightFactors['Sum'] = sum(map(int, weightFactorsTSV.data[1]))  # convert to int and then sum it up
 	
 	# extract variable names
 	variables = []

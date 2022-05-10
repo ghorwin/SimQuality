@@ -10,6 +10,7 @@ import os
 import sys
 import plotly.graph_objects as go
 import pandas as pd
+import feather
 
 from TSVContainer import TSVContainer
 from ProcessDirectory import processDirectory
@@ -57,17 +58,15 @@ def scoreCalculation():
         exit(1)
 
     # Create log file
-    oldStdout = sys.stdout
-    try:
-        log = open("Log.txt", "w")
-    except IOError as e:
-        print(e)
-        print("Cannot create 'Log.txt' file")
-        exit(1)
+    # oldStdout = sys.stdout
+    # try:
+    #     log = open("Log.txt", "w")
+    # except IOError as e:
+    #     print(e)
+    #     print("Cannot create 'Log.txt' file")
+    #     exit(1)
 
     # redirect outputs to log
-    sys.stdout = log
-
     # initialize colored console output
     init()
 
@@ -93,13 +92,69 @@ def scoreCalculation():
     # dump test results into file
 
     fobj.write(
-        "Testfall\tToolID\tVariable\tFehlercode\tMax\tMin\tAverage\tCVRMSE\tDaily Amplitude CVRMSE\tMBE\tRMSEIQR\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd dev\tSimQuality-Score\tSimQ-Einordnung\n")
+        "Testfall\tToolID\tVariable\tFehlercode\tMax\tMin\tAverage\tCVRMSE\tDaily Amplitude "
+        "CVRMSE\tMBE\tRMSEIQR\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd "
+        "dev\tSimQuality-Score\tSimQ-Einordnung\n"
+    )
 
+    testcases = sorted(testresults.keys())
+
+    for testcase in testcases:
+        testData = testresults[testcase]
+        # skip test cases with missing/invalid 'Reference.tsv'
+        if testData == None:
+            continue
+        for td in testData:
+            resText = "{}\t{}\t{}\t{}\t".format(td.TestCase, td.ToolID, td.Variable, td.ErrorCode)
+            for n in td.norms:
+                resText = resText + "{}\t".format(n)
+            resText = resText + "{}\t".format(td.score)
+            resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
+            fobj.write(resText)
+
+    fobj.close()
+    del fobj
     printNotification("\n################################################\n")
-    printNotification("Done.")
 
+    printNotification("\nConvert data for SimQuality Dashboard\n")
+
+    #### Convert to website ####
+    # pandaResults = dict()
+    # convertToPandas()
+
+    dashDir = "../dash_data/"
+
+    for testcase in testresults.keys():
+        if testresults[testcase] is None:
+            continue
+
+        for var in testresults[testcase]:
+            if var.Data.empty:
+                continue
+            testCaseDir = os.path.join(dashDir, testcase)
+            if not os.path.exists(testCaseDir):
+                os.mkdir(testCaseDir)
+            variableDir = os.path.join(testCaseDir, var.Variable)
+            if not os.path.exists(variableDir):
+                os.mkdir(variableDir)
+            file = os.path.join(dashDir, testcase, var.Variable, var.ToolID + ".ftr")
+            refFile = os.path.join(dashDir, testcase, var.Variable, "Reference.ftr")
+            try:
+                df = var.Data.reset_index()
+                dfRef = var.RefData.reset_index()
+                df.to_feather(file)
+                dfRef.to_feather(refFile)
+            except Exception as e:
+                printError(e)
+                printError("Could not convert panda data to feather data.")
+
+    printNotification("Done producing evaluation data and dash conversion.")
 
 # ---*** main ***---
 if __name__ == "__main__":
-	scoreCalculation()
-	exit(1)
+    try:
+        scoreCalculation()
+    except Exception as e:
+        print(e)
+        printError("Could not evaluate SimQuality results.")
+    exit(1)
