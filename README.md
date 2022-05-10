@@ -1,5 +1,5 @@
 # SimQuality Evaluation Scripts
-This repository contains all the python evaluation scripts for the SimQuality-Suite (https://simquality.de/) 
+This repository contains all the python evaluation scripts for the SimQuality-Suite (https://simquality.de/). It also produces all necessairy data for the SimQuality-Dashboard (https://github.com/hirseboy/SimQuality-Dashboard).
 
 For each of the test cases a reference is defined and several statistival methods are compared with specific weight factors. In the end each Tools gets a SimQuality badge with regard to its agreement to the reference.
 
