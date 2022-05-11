@@ -51,7 +51,7 @@ LINESTYLES = {
 def scoreCalculation():
     # Create results file
     try:
-        fobj = open("Results.tsv", "w")
+        fobj = open("Results.tsv", "w", encoding="utf-8")
     except IOError as e:
         print(e)
         print("Cannot create 'Results.tsv' file")
@@ -75,26 +75,31 @@ def scoreCalculation():
 
     # process all subdirectories of `AP4` (i.e. test cases)
     subdirs = os.listdir(os.curdir)
-
-    # process all subdirectory starting with TF
-    for sd in subdirs:
-        if len(sd) > 4 and sd.startswith("TF"):
-            # extract next two digits and try to convert to a number
-            try:
-                testCaseNumber = int(sd[2:3])
-            except:
-                printError("Malformed directory name: {}".format(sd))
-                continue
-            printNotification("\n################################################\n")
-            printNotification("Processing directory '{}'".format(sd))
-            testresults[sd] = processDirectory(os.path.join(os.getcwd(), sd))
+    try:
+        # process all subdirectory starting with TF
+        for sd in subdirs:
+            if len(sd) > 4 and sd.startswith("TF"):
+                # extract next two digits and try to convert to a number
+                try:
+                    testCaseNumber = int(sd[2:3])
+                except:
+                    printError("Malformed directory name: {}".format(sd))
+                    continue
+                printNotification("\n################################################\n")
+                printNotification("Processing directory '{}'".format(sd))
+                testresults[sd] = processDirectory(os.path.join(os.getcwd(), sd))
+    except Exception as e:
+        fobj.close()
+        del fobj
+        printError(str(e))
+        raise Exception(f"Could not process data in directory {sd}")
 
     # dump test results into file
 
     fobj.write(
-        "Testfall\tToolID\tVariable\tFehlercode\tMax\tMin\tAverage\tCVRMSE\tDaily Amplitude "
-        "CVRMSE\tMBE\tRMSEIQR\tMSE\tNMBE\tNRMSE\tRMSE\tRMSLE\tR² coefficient determination\tstd "
-        "dev\tSimQuality-Score\tSimQ-Einordnung\n"
+        "Test Case\tVariable\tToolID\tTool Name\tVersion\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
+        "\tMSE [%]\tNMBE [%]\tNRMSE [%]\tRMSE [%]\tRMSLE [%]\tR squared [-]\tstd dev [-]\tMaximum [-]\tMinimum [-]\tAverage [-]"
+        "\tSimQ-Score [%]\tSimQ-Rating\n"
     )
 
     testcases = sorted(testresults.keys())
@@ -105,9 +110,12 @@ def scoreCalculation():
         if testData == None:
             continue
         for td in testData:
-            resText = "{}\t{}\t{}\t{}\t".format(td.TestCase, td.ToolID, td.Variable, td.ErrorCode)
-            for n in td.norms:
-                resText = resText + "{}\t".format(n)
+            resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName, td.Version, td.Editor,
+                                                        td.ErrorCode)
+            for n in td.norms.keys():
+                if n == "Sum":
+                    continue
+                resText = resText + "{}\t".format(td.norms[n])
             resText = resText + "{}\t".format(td.score)
             resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
             fobj.write(resText)
@@ -155,6 +163,6 @@ if __name__ == "__main__":
     try:
         scoreCalculation()
     except Exception as e:
-        print(e)
+        printError(str(e))
         printError("Could not evaluate SimQuality results.")
     exit(1)
