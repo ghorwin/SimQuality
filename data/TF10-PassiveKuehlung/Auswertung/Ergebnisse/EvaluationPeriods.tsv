@@ -1,0 +1,14 @@
+Variable	Start [h]	End [h]
+Variante 10.1 Raumlufttemperatur	740	2900
+Variante 10.1 Heizleistung	740	2900
+Variante 10.1 Kühlleistung	740	2900
+Variante 10.2 Raumlufttemperatur	740	2900
+Variante 10.2 Heizleistung	740	2900
+Variante 10.2 Kühlleistung	740	2900
+Variante 10.2 Rücklauftemperatur	740	2900
+Variante 10.2 Innentemperatur.Dach	740	2900
+Variante 10.2 Innentemperatur.Boden	740	2900
+Variante 10.2 Innentemperatur.Wand.Nord	740	2900
+Variante 10.2 Innentemperatur.Wand.Ost	740	2900
+Variante 10.2 Innentemperatur.Wand.Süd	740	2900
+Variante 10.2 Innentemperatur.Wand.West	740	2900
