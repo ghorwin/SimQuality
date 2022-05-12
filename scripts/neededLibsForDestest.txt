@@ -1,5 +1,0 @@
-pip install matplotlib
-pip install plotly
-pip install requests
-pip install pandas
-pip install tk
