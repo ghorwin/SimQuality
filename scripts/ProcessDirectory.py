@@ -60,7 +60,7 @@ def listsEqual(list1, list2):
     return True
 
 
-def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, testData, start, end, weightFactors):
+def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, testData, starts, ends, weightFactors, timeIndicator):
     """
 	Performance difference calculation between variable data sets.
 	
@@ -71,95 +71,116 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
     printNotification("    {}".format(variable))
     cr = CaseResults()
 
-    # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
-    # For this we are nice and try to convert our reference results.
-    if not listsEqual(timeColumnData, timeColumnRef):
-        printWarning(f"        Mismatching time columns in Data set file and reference data set.")
-        printWarning(f"        Trying to convert reference data set.")
+    pdTime = pd.DataFrame()
+    pdRef = pd.DataFrame()
+    pdData = pd.DataFrame()
 
-        newTestData = []
+    cr.RefData = pd.DataFrame()
 
-        for i in range(len(timeColumnRef)):
-            if timeColumnRef[i] not in timeColumnData.index:
-                return cr
+    for i in range(len(starts)):
+        start = starts[i]
+        end = ends[i]
 
-            index = timeColumnData.index(timeColumnRef[i])
-            newTestData.append(timeColumnData[index])
+        # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
+        # For this we are nice and try to convert our reference results.
+        if not listsEqual(timeColumnData, timeColumnRef):
+            printWarning(f"        Mismatching time columns in Data set file and reference data set.")
+            printWarning(f"        Trying to convert reference data set.")
 
-        # time column data from tool data set is now set for reference data set
-        timeColumnData = timeColumnRef
-        testData = newTestData
+            newTestData = []
 
-    # We first convert our data to pandas
-    try:
-        startDate = dt.datetime(2020, 1, 1) + dt.timedelta(hours=testData[0])
-        pdTime = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(timeColumnRef), freq="H"),
-                              index=timeColumnRef, columns=["Date and Time"])
-        pdData = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
-        pdRef = pd.DataFrame(data=refData, index=timeColumnRef, columns=["Data"])
+            for i in range(len(timeColumnRef)):
+                if timeColumnRef[i] not in timeColumnData.index:
+                    return cr
 
-        cr.Data = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
-        cr.RefData = pd.DataFrame(data=refData, index=timeColumnData, columns=["Data"]).loc[start:end]
+                index = timeColumnData.index(timeColumnRef[i])
+                newTestData.append(timeColumnData[index])
 
-    except ValueError as e:
-        printWarning(str(e))
-        printWarning(f"        Could not convert given data of file to pandas dataframe.")
-        cr.ErrorCode = -15
-        return cr
+            # time column data from tool data set is now set for reference data set
+            timeColumnData = timeColumnRef
+            testData = newTestData
 
-    # We only use data between out start and end point
-    pdTime = pdTime.loc[start:end]
-    pdData = pdData.loc[start:end]
-    pdRef = pdRef.loc[start:end]
+        # We first convert our data to pandas
+        try:
+            split = 1
+            if timeIndicator == "min":
+                split = 60
 
-    # initialize all statistical methods in cr.norms
-    for key in weightFactors:
-        cr.norms[key] = -99
+            start = float(start)#/split
+            end = float(end)#/split
 
-    try:
-        # we evaluate the results
-        cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            startDate = dt.datetime(2021, 1, 1) + dt.timedelta(hours=timeColumnData[0]/split)
+            pdT = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(timeColumnRef), freq=timeIndicator),
+                                  index=timeColumnRef, columns=["Date and Time"])
+            pdD = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
+            pdR = pd.DataFrame(data=refData, index=timeColumnRef, columns=["Data"])
 
-        cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
-                                                                                pdTime["Date and Time"])
-        cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-        cr.norms['R squared coeff determination'] = sf.function_R_squared_coeff_determination(pdRef["Data"],
-                                                                                              pdData["Data"],
-                                                                                              pdTime["Date and Time"])
-        cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.Data = pd.DataFrame(data=testData, index=[x / split for x in timeColumnData], columns=["Data"])
+            cr.RefData = pd.concat([cr.RefData,
+                                    pd.DataFrame(data=refData, index=timeColumnData, columns=["Data"]).loc[start:end]])
+
+        except ValueError as e:
+            printWarning(str(e))
+            printWarning(f"        Could not convert given data of file to pandas dataframe.")
+            cr.ErrorCode = -15
+            return cr
+
+        # We only use data between out start and end point
+        pdTime = pd.concat([pdTime, pdT.loc[start:end]])
+        pdData = pd.concat([pdData, pdD.loc[start:end]])
+        pdRef = pd.concat([pdRef,pdR.loc[start:end]])
+
+        # initialize all statistical methods in cr.norms
+        for key in weightFactors:
+            cr.norms[key] = -99
+
+        try:
+            # we evaluate the results
+            cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+
+            cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
+                                                                                    pdTime["Date and Time"])
+            cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+            cr.norms['R squared coeff determination'] = sf.function_R_squared_coeff_determination(pdRef["Data"],
+                                                                                                  pdData["Data"],
+                                                                                                  pdTime["Date and Time"])
+            cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
 
 
-    except (RuntimeError, RuntimeWarning) as e:
-        printError(f"        {str(e)}")
-        printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
 
-    # TODO : Wichtung
-    if (abs(cr.norms['Average']) < 1e-4):
-        cr.score = 0  # prevent division by zero error
-    else:
-        cr.score = (weightFactors.get('CVRMSE', 0) * (100.0 - cr.norms['CVRMSE']) +  # in %
-                    weightFactors.get('Daily Amplitude CVRMSE', 0) * (
-                                100.0 - cr.norms['Daily Amplitude CVRMSE']) +  # in %
-                    weightFactors.get('MBE', 0) * (100.0 - 100.0 * cr.norms['MBE'] / cr.norms['Average']) +
-                    weightFactors.get('RMSEIQR', 0) * (100.0 - cr.norms['RMSEIQR']) +  # in %
-                    weightFactors.get('MSE', 0) * (100.0 - 100 * cr.norms['MSE'] / cr.norms['Average']) +
-                    weightFactors.get('NMBE', 0) * (100.0 - cr.norms['NMBE']) +  # in %
-                    weightFactors.get('NRMSE', 0) * (100.0 - cr.norms['NRMSE']) +  # in %
-                    weightFactors.get('RMSE', 0) * (100.0 - 100.0 * cr.norms['RMSE'] / cr.norms['Average']) +
-                    weightFactors.get('RMSLE', 0) * (100.0 - cr.norms['RMSLE'] / cr.norms['Average']) +
-                    weightFactors.get('R squared coeff determination', 0) * (
-                    cr.norms['R squared coeff determination']) +  # in %
-                    weightFactors.get('std dev', 0) * (100.0 - cr.norms['std dev'] / cr.norms['Average'])) / \
-                   weightFactors['Sum']
+        # TODO : Wichtung
+        if (abs(cr.norms['Average']) < 1e-4):
+            cr.score = 0  # prevent division by zero error
+        else:
+            cr.score = cr.score + \
+                (weightFactors.get('CVRMSE', 0) * (100.0 - cr.norms['CVRMSE']) +  # in %
+                        weightFactors.get('Daily Amplitude CVRMSE', 0) * (
+                                    100.0 - cr.norms['Daily Amplitude CVRMSE']) +  # in %
+                        weightFactors.get('MBE', 0) * (100.0 - 100.0 * cr.norms['MBE'] / cr.norms['Average']) +
+                        weightFactors.get('RMSEIQR', 0) * (100.0 - cr.norms['RMSEIQR']) +  # in %
+                        weightFactors.get('MSE', 0) * (100.0 - 100 * cr.norms['MSE'] / cr.norms['Average']) +
+                        weightFactors.get('NMBE', 0) * (100.0 - cr.norms['NMBE']) +  # in %
+                        weightFactors.get('NRMSE', 0) * (100.0 - cr.norms['NRMSE']) +  # in %
+                        weightFactors.get('RMSE', 0) * (100.0 - 100.0 * cr.norms['RMSE'] / cr.norms['Average']) +
+                        weightFactors.get('RMSLE', 0) * (100.0 - cr.norms['RMSLE'] / cr.norms['Average']) +
+                        weightFactors.get('R squared coeff determination', 0) * (
+                        cr.norms['R squared coeff determination']) +  # in %
+                        weightFactors.get('std dev', 0) * (100.0 - cr.norms['std dev'] / cr.norms['Average'])) / \
+                       weightFactors['Sum']
+
+    cr.score = cr.score / len(starts) # normation
 
     # scoring caluclation --> >95% : Gold | >90% : Silver | >80% : Bronze
     badge = 0
@@ -326,28 +347,41 @@ def processDirectory(path):
 
             for j in range(len(evaluationVariables)):
                 if variables[i] == evaluationVariables[j]:
-                    start = float(evalData.data[1][j])
-                    end = float(evalData.data[2][j])
+                    starts = evalData.data[1][j].split(",")
+                    ends = evalData.data[2][j].split(",")
                     break
 
-            if end < start:
-                printError(
-                    "    Evaluation End Point ({}) has to be after start point ({}). Skipped.".format(end, start))
-                continue
+            if len(starts) != len(ends):
+                printError(f"Start and end timpoints for evaluation do not have the same size: {len(start)} vs {len(end)}")
 
-            if end > refData.data[0][-1]:
-                printError(
-                    "    Evaluation End Point ({}) is bigger then last time stamp of reference results ({}). Skipped.".format(
-                        end, refData.data[0][-1]))
-                continue
-            if start < refData.data[0][0]:
-                printError(
-                    "    Evaluation Start Point ({}) is smaller then first time stamp of reference results ({}). Skipped.".format(
-                        end, refData.data[0][0]))
-                continue
+            for j in range(len(starts)):
+                start = float(starts[j])
+                end = float(ends[j])
+                if end < start:
+                    printError(
+                        "    Evaluation End Point ({}) has to be after start point ({}). Skipped.".format(end, start))
+                    continue
+
+                if end > refData.data[0][-1]:
+                    printError(
+                        "    Evaluation End Point ({}) is bigger then last time stamp of reference results ({}). Skipped.".format(
+                            end, refData.data[0][-1]))
+                    continue
+                if start < refData.data[0][0]:
+                    printError(
+                        "    Evaluation Start Point ({}) is smaller then first time stamp of reference results ({}). Skipped.".format(
+                            end, refData.data[0][0]))
+                    continue
+
+            # check if have an hourly time column
+            try:
+                timeIndicator = tsv.headers[0].split('[')[1].split(']')[0]
+            except Exception as e:
+                printError(str(e))
+                raise Exception(f"Could not convert time unit {tsv.headers[0]} to h.")
 
             cr = evaluateVariableResults(variables[i], refData.data[0], tsv.data[0], refData.data[i + 1],
-                                         tsv.data[i + 1], start, end, weightFactors)
+                                         tsv.data[i + 1], starts, ends, weightFactors, timeIndicator)
             cr.TestCase = testCaseName
             cr.ToolID = toolID
             cr.Variable = variables[i]

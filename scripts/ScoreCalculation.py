@@ -51,7 +51,7 @@ LINESTYLES = {
 def scoreCalculation():
     # Create results file
     try:
-        fobj = open("Results.tsv", "w", encoding="utf-8")
+        fobj = open("../dash_data/Results.tsv", "w", encoding="utf-8")
     except IOError as e:
         print(e)
         print("Cannot create 'Results.tsv' file")
