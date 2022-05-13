@@ -1,0 +1,2 @@
+python ScoreCalculation.py
+pause

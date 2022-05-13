@@ -18,7 +18,7 @@ from PrintFuncs import *
 
 from scripts.PrintFuncs import printError, printNotification
 
-RESULTS_SUBDIRNAME = "Auswertung/Ergebnisse"
+RESULTS_SUBDIRNAME = "result_data"
 EVAL_PERIODS = "EvaluationPeriods.tsv"
 
 
@@ -77,6 +77,10 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
     cr.RefData = pd.DataFrame()
 
+    # initialize all statistical methods in cr.norms
+    for key in weightFactors:
+        cr.norms[key] = -99
+
     for i in range(len(starts)):
         start = starts[i]
         end = ends[i]
@@ -106,18 +110,23 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             if timeIndicator == "min":
                 split = 60
 
-            start = float(start)#/split
-            end = float(end)#/split
+            # Convert all the data to hourly indexes
+            start = float(start)/split
+            end = float(end)/split
 
-            startDate = dt.datetime(2021, 1, 1) + dt.timedelta(hours=timeColumnData[0]/split)
-            pdT = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(timeColumnRef), freq=timeIndicator),
-                                  index=timeColumnRef, columns=["Date and Time"])
-            pdD = pd.DataFrame(data=testData, index=timeColumnData, columns=["Data"])
-            pdR = pd.DataFrame(data=refData, index=timeColumnRef, columns=["Data"])
+            tempTimeColumnData = [x / split for x in timeColumnData]
+            tempTimeColumnRef = [x / split for x in timeColumnRef]
 
-            cr.Data = pd.DataFrame(data=testData, index=[x / split for x in timeColumnData], columns=["Data"])
+            startDate = dt.datetime(2021, 1, 1) + dt.timedelta(hours=tempTimeColumnData[0])
+            pdT = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(tempTimeColumnRef), freq=timeIndicator),
+                                  index=tempTimeColumnRef, columns=["Date and Time"])
+            pdD = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
+            pdR = pd.DataFrame(data=refData, index=tempTimeColumnRef, columns=["Data"])
+
+            cr.Data = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
             cr.RefData = pd.concat([cr.RefData,
-                                    pd.DataFrame(data=refData, index=timeColumnData, columns=["Data"]).loc[start:end]])
+                                    pd.DataFrame(data=refData, index=tempTimeColumnData,
+                                                 columns=["Data"]).loc[start:end]])
 
         except ValueError as e:
             printWarning(str(e))
@@ -130,22 +139,57 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         pdData = pd.concat([pdData, pdD.loc[start:end]])
         pdRef = pd.concat([pdRef,pdR.loc[start:end]])
 
-        # initialize all statistical methods in cr.norms
-        for key in weightFactors:
-            cr.norms[key] = -99
-
         try:
             # we evaluate the results
             cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-            cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-            cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
 
+        try:
+            cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
+            cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
                                                                                     pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+
+        try:
             cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
             cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
             cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
@@ -220,24 +264,25 @@ def processDirectory(path):
         return None  # None indicates entirely invalid/missing test data.
 
     tsvFiles = [o for o in os.listdir(tsvPath) if o.endswith("tsv")]
-    if not "Reference.tsv" in tsvFiles:
+    evalFiles = [o for o in os.listdir(path) if o.endswith("tsv")]
+    if not "Reference.tsv" in evalFiles:
         printError("    Missing 'Reference.tsv' file.")
         return None
-    if not "EvaluationPeriods.tsv" in tsvFiles:
+    if not "EvaluationPeriods.tsv" in evalFiles:
         printError("    Missing 'EvaluationPeriods.tsv' file.")
         return None
     tsvFiles = sorted(tsvFiles)
 
     # read evaluation periods
     evalData = TSVContainer()
-    evalData.readAsStrings(os.path.join(tsvPath, "EvaluationPeriods.tsv"))
+    evalData.readAsStrings(os.path.join(path, "EvaluationPeriods.tsv"))
     if True in evalData.emptyColumn:
         printError("    'EvaluationPeriods.tsv' contains empty columns.")
         return None
 
     # read reference file
     refData = TSVContainer()
-    refData.readAsStrings(os.path.join(tsvPath, "Reference.tsv"))
+    refData.readAsStrings(os.path.join(path, "Reference.tsv"))
     if True in refData.emptyColumn:
         printError("    'Reference.tsv' contains empty columns.")
         return None
