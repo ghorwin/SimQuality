@@ -1,2 +1,2 @@
-python38.exe ../scripts/ScoreCalculation.py
+C:\Python38\python.exe ../scripts/ScoreCalculation.py
 pause
