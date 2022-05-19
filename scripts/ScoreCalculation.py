@@ -73,12 +73,14 @@ def scoreCalculation():
     # dump test results into file
 
     fobj.write(
-        "Test Case\tVariable\tToolID\tTool Name\tVersion\tTool Color\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
+        "Test Case\tVariable\tToolID\tTool Name\tVersion\tUnit\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
         "\tMSE [%]\tNMBE [%]\tNRMSE [%]\tRMSE [%]\tRMSLE [%]\tR squared [-]\tstd dev [-]\tMaximum [-]\tMinimum [-]\tAverage [-]"
         "\tSimQ-Score [%]\tSimQ-Rating\n"
     )
 
     testcases = sorted(testresults.keys())
+
+    colors = dict()
 
     for testcase in testcases:
         testData = testresults[testcase]
@@ -86,8 +88,8 @@ def scoreCalculation():
         if testData == None:
             continue
         for td in testData:
-            resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName,
-                                                            td.Version, td.DisplayColor, td.Editor, td.ErrorCode)
+            resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName,
+                                                            td.Version, td.Unit, td.Editor, td.ErrorCode)
             for n in td.norms.keys():
                 if n == "Sum":
                     continue
@@ -95,6 +97,8 @@ def scoreCalculation():
             resText = resText + "{}\t".format(td.score)
             resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
             fobj.write(resText)
+
+            colors[td.ToolID] = td.DisplayColor
 
     fobj.close()
     del fobj
@@ -114,7 +118,6 @@ def scoreCalculation():
 
         printNotification(f"\n------------------------------------\n")
         printNotification(f"Converting all data for test Case {testcase}")
-        printNotification(f"\n------------------------------------\n")
 
         for var in testresults[testcase]:
             if var.Data.empty:
@@ -137,6 +140,15 @@ def scoreCalculation():
                 printError("Could not convert panda data to feather data.")
 
     printNotification("Done producing evaluation data and dash conversion.")
+
+    #### Convert data dict ####
+    try:
+        resultFile = "ToolColors.tsv"
+        colorDf = pd.DataFrame.from_dict(colors, orient='index')
+        colorDf.to_csv(os.path.join(dashDir, resultFile), sep="\t", header=False)
+    except Exception as e:
+        printError(str(e))
+        raise Exception(f"Could not create tool color file {colorDf}.")
 
 # ---*** main ***---
 if __name__ == "__main__":

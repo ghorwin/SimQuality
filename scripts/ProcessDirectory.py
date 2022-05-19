@@ -36,7 +36,7 @@ class CaseResults:
         self.Editor = ""
         self.Version = ""
         self.DisplayName = ""
-        self.DisplayColor = ""
+        self.Unit = ""
 
         self.Data = pd.DataFrame
         self.RefData = pd.DataFrame
@@ -61,7 +61,8 @@ def listsEqual(list1, list2):
     return True
 
 
-def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, testData, starts, ends, weightFactors, timeIndicator):
+def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, testData, starts, ends, weightFactors,
+                            timeIndicator):
     """
 	Performance difference calculation between variable data sets.
 	
@@ -112,15 +113,15 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
                 split = 60
 
             # Convert all the data to hourly indexes
-            start = float(start)/split
-            end = float(end)/split
+            start = float(start) / split
+            end = float(end) / split
 
             tempTimeColumnData = [x / split for x in timeColumnData]
             tempTimeColumnRef = [x / split for x in timeColumnRef]
 
             startDate = dt.datetime(2021, 1, 1) + dt.timedelta(hours=tempTimeColumnData[0])
             pdT = pd.DataFrame(data=pd.date_range(start=startDate, periods=len(tempTimeColumnRef), freq=timeIndicator),
-                                  index=tempTimeColumnRef, columns=["Date and Time"])
+                               index=tempTimeColumnRef, columns=["Date and Time"])
             pdD = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
             pdR = pd.DataFrame(data=refData, index=tempTimeColumnRef, columns=["Data"])
 
@@ -138,66 +139,78 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         # We only use data between out start and end point
         pdTime = pd.concat([pdTime, pdT.loc[start:end]])
         pdData = pd.concat([pdData, pdD.loc[start:end]])
-        pdRef = pd.concat([pdRef,pdR.loc[start:end]])
+        pdRef = pd.concat([pdRef, pdR.loc[start:end]])
 
+        ####### MAXIMUM #######
         try:
             # we evaluate the results
             cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
-
+            printError(f"        Cannot calculate Maximum for variable '{variable}'")
+        ####### MAXIMUM #######
         try:
             cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
-
+            printError(f"        Cannot calculate Minimum for variable '{variable}'")
+        ####### MAXIMUM #######
         try:
             cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
-
+            printError(f"        Cannot calculate Average for variable '{variable}'")
+        ####### MAXIMUM #######
         try:
             cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
-
+            printError(f"        Cannot calculate CVRMSE for variable '{variable}'")
+        ####### MAXIMUM #######
         try:
             cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
                                                                                     pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
-
+            printError(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
+        ####### MAXIMUM #######
         try:
             cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+            printError(f"        Cannot calculate MBE for variable '{variable}'")
 
         try:
             cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+            printError(f"        Cannot calculate RMSIQR for variable '{variable}'")
 
         try:
             cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+            printError(f"        Cannot calculate MSE for variable '{variable}'")
 
         try:
             cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate MSE for variable '{variable}'")
+
+        try:
             cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate MSE for variable '{variable}'")
+
+        try:
             cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
             cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
             cr.norms['R squared coeff determination'] = sf.function_R_squared_coeff_determination(pdRef["Data"],
                                                                                                   pdData["Data"],
-                                                                                                  pdTime["Date and Time"])
+                                                                                                  pdTime[
+                                                                                                      "Date and Time"])
             cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
 
 
@@ -210,22 +223,22 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             cr.score = 0  # prevent division by zero error
         else:
             cr.score = cr.score + \
-                (weightFactors.get('CVRMSE', 0) * (100.0 - cr.norms['CVRMSE']) +  # in %
+                       (weightFactors.get('CVRMSE', 0) * (100.0 - abs(cr.norms['CVRMSE'])) +  # in %
                         weightFactors.get('Daily Amplitude CVRMSE', 0) * (
-                                    100.0 - cr.norms['Daily Amplitude CVRMSE']) +  # in %
-                        weightFactors.get('MBE', 0) * (100.0 - 100.0 * cr.norms['MBE'] / cr.norms['Average']) +
-                        weightFactors.get('RMSEIQR', 0) * (100.0 - cr.norms['RMSEIQR']) +  # in %
-                        weightFactors.get('MSE', 0) * (100.0 - 100 * cr.norms['MSE'] / cr.norms['Average']) +
-                        weightFactors.get('NMBE', 0) * (100.0 - cr.norms['NMBE']) +  # in %
-                        weightFactors.get('NRMSE', 0) * (100.0 - cr.norms['NRMSE']) +  # in %
-                        weightFactors.get('RMSE', 0) * (100.0 - 100.0 * cr.norms['RMSE'] / cr.norms['Average']) +
-                        weightFactors.get('RMSLE', 0) * (100.0 - cr.norms['RMSLE'] / cr.norms['Average']) +
+                                100.0 - abs(cr.norms['Daily Amplitude CVRMSE'])) +  # in %
+                        weightFactors.get('MBE', 0) * (100.0 - 100.0 * abs(cr.norms['MBE']) / cr.norms['Average']) +
+                        weightFactors.get('RMSEIQR', 0) * (100.0 - abs(cr.norms['RMSEIQR'])) +  # in %
+                        weightFactors.get('MSE', 0) * (100.0 - 100 * abs(cr.norms['MSE']) / cr.norms['Average']) +
+                        weightFactors.get('NMBE', 0) * (100.0 - abs(cr.norms['NMBE'])) +  # in %
+                        weightFactors.get('NRMSE', 0) * (100.0 - abs(cr.norms['NRMSE'])) +  # in %
+                        weightFactors.get('RMSE', 0) * (100.0 - 100.0 * abs(cr.norms['RMSE']) / cr.norms['Average']) +
+                        weightFactors.get('RMSLE', 0) * (100.0 - abs(cr.norms['RMSLE']) / cr.norms['Average']) +
                         weightFactors.get('R squared coeff determination', 0) * (
-                        cr.norms['R squared coeff determination']) +  # in %
-                        weightFactors.get('std dev', 0) * (100.0 - cr.norms['std dev'] / cr.norms['Average'])) / \
+                            cr.norms['R squared coeff determination']) +  # in %
+                        weightFactors.get('std dev', 0) * (100.0 - abs(cr.norms['std dev']) / cr.norms['Average'])) / \
                        weightFactors['Sum']
 
-    cr.score = cr.score / len(starts) # normation
+    cr.score = cr.score / len(starts)  # normation
 
     # scoring caluclation --> >95% : Gold | >90% : Silver | >80% : Bronze
     badge = 0
@@ -399,7 +412,8 @@ def processDirectory(path):
                     break
 
             if len(starts) != len(ends):
-                printError(f"Start and end timpoints for evaluation do not have the same size: {len(start)} vs {len(end)}")
+                printError(
+                    f"Start and end timpoints for evaluation do not have the same size: {len(start)} vs {len(end)}")
 
             for j in range(len(starts)):
                 start = float(starts[j])
@@ -433,6 +447,7 @@ def processDirectory(path):
             cr.ToolID = toolID
             cr.Variable = variables[i]
             cr.ErrorCode = 0
+            cr.Unit = rawVariables[i].split("[")[1].split("]")[0].strip()
             try:
                 data = toolData.loc[toolData['Tool'] == toolID]
                 cr.DisplayName = data['Tool Name'].item()
