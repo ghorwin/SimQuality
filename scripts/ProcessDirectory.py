@@ -36,6 +36,7 @@ class CaseResults:
         self.Editor = ""
         self.Version = ""
         self.DisplayName = ""
+        self.DisplayColor = ""
 
         self.Data = pd.DataFrame
         self.RefData = pd.DataFrame
@@ -306,14 +307,15 @@ def processDirectory(path):
     weightFactors['Sum'] = sum(map(int, weightFactorsTSV.data[1]))  # convert to int and then sum it up
 
     # read Weight factors
+    ToolData = []
     try:
-        toolData = pd.read_csv(os.path.join(path, "ToolData.tsv"), encoding='utf-8', sep="\t",
+        toolData = pd.read_csv(os.path.join(path, "ToolSpecifications.tsv"), encoding='utf-8', sep="\t",
                                engine="pyarrow")
     # toolData = toolData.set_index(['Tool'])
     # toolData = toolData.to_dict('records')
     except RuntimeError as e:
         print(e)
-        print(f"Tool Data 'ToolData.tsv' is not specified in directory {path}.")
+        print(f"Tool Data '{str(ToolData)}' is not specified in directory {path}.")
         exit(1)
 
     # extract variable names
@@ -436,6 +438,7 @@ def processDirectory(path):
                 cr.DisplayName = data['Tool Name'].item()
                 cr.Version = data['Tool Version'].item()
                 cr.Editor = data['Tool Editor'].item()
+                cr.DisplayColor = data['Tool Color'].item()
             except Exception as e:
                 printError(str(e))
                 raise Exception(f"Data in 'ToolData.tsv' in {path} not specified for Tool '{toolID}'")

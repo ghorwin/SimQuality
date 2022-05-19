@@ -24,30 +24,6 @@ BADGES = {
     3: "Bronze"
 }
 
-TOOLCOLORS = {
-    "Reference": "#000000",
-    "ETU": "#8ae234",
-    "IDAICE": "#e50c0c",
-    "NANDRAD": "#ffc120",
-    "NANDRAD2": "#ffc120",
-    "Aixlib": "#7c00bf",
-    "TRNSYS": "#0369a3",
-    "TAS": "#ffd74c",
-    "THERAKLES": "#d36118"
-}
-
-LINESTYLES = {
-    "Reference": "markers",
-    "ETU": "lines",
-    "IDAICE": "lines",
-    "NANDRAD": "lines",
-    "NANDRAD2": "lines",
-    "Aixlib": "lines",
-    "TRNSYS": "lines",
-    "TAS": "lines",
-    "THERAKLES": "lines"
-}
-
 def scoreCalculation():
     # Create results file
     try:
@@ -97,7 +73,7 @@ def scoreCalculation():
     # dump test results into file
 
     fobj.write(
-        "Test Case\tVariable\tToolID\tTool Name\tVersion\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
+        "Test Case\tVariable\tToolID\tTool Name\tVersion\tTool Color\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
         "\tMSE [%]\tNMBE [%]\tNRMSE [%]\tRMSE [%]\tRMSLE [%]\tR squared [-]\tstd dev [-]\tMaximum [-]\tMinimum [-]\tAverage [-]"
         "\tSimQ-Score [%]\tSimQ-Rating\n"
     )
@@ -110,8 +86,8 @@ def scoreCalculation():
         if testData == None:
             continue
         for td in testData:
-            resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName, td.Version, td.Editor,
-                                                        td.ErrorCode)
+            resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName,
+                                                            td.Version, td.DisplayColor, td.Editor, td.ErrorCode)
             for n in td.norms.keys():
                 if n == "Sum":
                     continue
@@ -135,6 +111,10 @@ def scoreCalculation():
     for testcase in testresults.keys():
         if testresults[testcase] is None:
             continue
+
+        printNotification(f"\n------------------------------------\n")
+        printNotification(f"Converting all data for test Case {testcase}")
+        printNotification(f"\n------------------------------------\n")
 
         for var in testresults[testcase]:
             if var.Data.empty:
