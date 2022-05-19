@@ -1,2 +1,2 @@
-python3 ../scripts/ScoreCalculation.py
+python38.exe ../scripts/ScoreCalculation.py
 pause
