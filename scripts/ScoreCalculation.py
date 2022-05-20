@@ -12,6 +12,7 @@ import plotly.graph_objects as go
 import pandas as pd
 import feather
 
+sys.path.append(os.path.join(os.getcwd()))
 from TSVContainer import TSVContainer
 from ProcessDirectory import processDirectory
 from colorama import *
@@ -73,8 +74,8 @@ def scoreCalculation():
     # dump test results into file
 
     fobj.write(
-        "Test Case\tVariable\tToolID\tTool Name\tVersion\tUnit\tEditor\tFehlercode\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tRMSEIQR [%]"
-        "\tMSE [%]\tNMBE [%]\tNRMSE [%]\tRMSE [%]\tRMSLE [%]\tR squared [-]\tstd dev [-]\tMaximum [-]\tMinimum [-]\tAverage [-]"
+        "Test Case\tVariable\tToolID\tTool Name\tVersion\tUnit\tEditor\tFehlercode\t"
+        "Average [-]\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tMSE [%]\tMax Difference [-]\tMaximum [-]\tMinimum [-]\tNMBE [%]\tNRMSE [%]\tR squared [-]\tRMSE [%]\tRMSEIQR [%]\tRMSLE [%]\tstd dev [-]"
         "\tSimQ-Score [%]\tSimQ-Rating\n"
     )
 
@@ -90,7 +91,10 @@ def scoreCalculation():
         for td in testData:
             resText = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t".format(td.TestCase, td.Variable, td.ToolID, td.DisplayName,
                                                             td.Version, td.Unit, td.Editor, td.ErrorCode)
-            for n in td.norms.keys():
+
+            sortedKeys = sorted(td.norms.keys())
+
+            for n in sortedKeys:
                 if n == "Sum":
                     continue
                 resText = resText + "{}\t".format(td.norms[n])

@@ -427,4 +427,13 @@ class StatisticsFunctions:
         result = np.std(test_case_vector)
         
         return round(result, 2)
-    
+
+    ###############################################################################
+    ###                          Max Difference                                 ###
+    ###############################################################################
+
+    def function_max_difference(reference_vector, test_case_vector, date_and_time_stamp_vect):
+        diff = test_case_vector - reference_vector
+
+        return round(max(diff.abs()), 2)
+

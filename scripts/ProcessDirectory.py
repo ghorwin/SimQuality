@@ -196,32 +196,63 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate MSE for variable '{variable}'")
+            printError(f"        Cannot calculate NMBE for variable '{variable}'")
 
         try:
             cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate MSE for variable '{variable}'")
+            printError(f"        Cannot calculate NRMSE for variable '{variable}'")
 
         try:
             cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-            cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-            cr.norms['R squared coeff determination'] = sf.function_R_squared_coeff_determination(pdRef["Data"],
-                                                                                                  pdData["Data"],
-                                                                                                  pdTime[
-                                                                                                      "Date and Time"])
-            cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
-
-
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
-            printError(f"        Cannot calculate statistical evaluation for variable '{variable}'")
+            printError(f"        Cannot calculate RMSE for variable '{variable}'")
+
+        try:
+            cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate RMSLE for variable '{variable}'")
+
+        try:
+            cr.norms['R squared'] = sf.function_R_squared_coeff_determination(pdRef["Data"],pdData["Data"],pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate R squared for variable '{variable}'")
+
+        try:
+            cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate std dev for variable '{variable}'")
+
+        try:
+            cr.norms['Max Difference'] = sf.function_max_difference(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
+        except (RuntimeError, RuntimeWarning) as e:
+            printError(f"        {str(e)}")
+            printError(f"        Cannot calculate Max Difference for variable '{variable}'")
+
 
         # TODO : Wichtung
         if (abs(cr.norms['Average']) < 1e-4):
             cr.score = 0  # prevent division by zero error
         else:
+            sum = 999999
+            if weightFactors['Sum'] > 0:
+                sum = weightFactors['Sum']
+            if 'Max Difference' in weightFactors.keys():
+                if sum == 999999:
+                    sum = 1
+                else:
+                    sum = sum + 1
+
+            maxDiff = 0
+            if "Max Difference" in weightFactors.keys():
+                maxDiff = 80.0 + 20.0 * (weightFactors.get('Max Difference', 0) - abs(
+                                cr.norms['Max Difference'])) / weightFactors.get('Max Difference', 9999)
+
             cr.score = cr.score + \
                        (weightFactors.get('CVRMSE', 0) * (100.0 - abs(cr.norms['CVRMSE'])) +  # in %
                         weightFactors.get('Daily Amplitude CVRMSE', 0) * (
@@ -233,10 +264,9 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
                         weightFactors.get('NRMSE', 0) * (100.0 - abs(cr.norms['NRMSE'])) +  # in %
                         weightFactors.get('RMSE', 0) * (100.0 - 100.0 * abs(cr.norms['RMSE']) / cr.norms['Average']) +
                         weightFactors.get('RMSLE', 0) * (100.0 - abs(cr.norms['RMSLE']) / cr.norms['Average']) +
-                        weightFactors.get('R squared coeff determination', 0) * (
-                            cr.norms['R squared coeff determination']) +  # in %
-                        weightFactors.get('std dev', 0) * (100.0 - abs(cr.norms['std dev']) / cr.norms['Average'])) / \
-                       weightFactors['Sum']
+                        weightFactors.get('R squared', 0) * (cr.norms['R squared']) +  # in %
+                        weightFactors.get('std dev', 0) * (100.0 - abs(cr.norms['std dev']) / cr.norms['Average']) +
+                        maxDiff) / sum
 
     cr.score = cr.score / len(starts)  # normation
 
@@ -315,9 +345,12 @@ def processDirectory(path):
 
     weightFactors = dict()
 
+    diffFactor = 0
     for i in range(len(weightFactorsTSV.data[0])):
-        weightFactors[weightFactorsTSV.data[0][i]] = int(weightFactorsTSV.data[1][i])
-    weightFactors['Sum'] = sum(map(int, weightFactorsTSV.data[1]))  # convert to int and then sum it up
+        if weightFactorsTSV.data[0][i] == "Max Difference":
+            diffFactor = - float(weightFactorsTSV.data[1][i])
+        weightFactors[weightFactorsTSV.data[0][i]] = float(weightFactorsTSV.data[1][i])
+    weightFactors['Sum'] = diffFactor + sum(map(float, weightFactorsTSV.data[1]))  # convert to int and then sum it up
 
     # read Weight factors
     ToolData = []
