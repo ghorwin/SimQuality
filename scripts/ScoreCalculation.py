@@ -76,7 +76,7 @@ def scoreCalculation():
     fobj.write(
         "Test Case\tVariable\tToolID\tTool Name\tVersion\tUnit\tEditor\tFehlercode\t"
         "Average [-]\tCVRMSE [%]\tDaily Amplitude CVRMSE [%]\tMBE\tMSE [%]\tMax Difference [-]\tMaximum [-]\tMinimum [-]\tNMBE [%]\tNRMSE [%]\tR squared [-]\tRMSE [%]\tRMSEIQR [%]\tRMSLE [%]\tstd dev [-]"
-        "\tSimQ-Score [%]\tSimQ-Rating\n"
+        "\tReference\tSimQ-Score [%]\tSimQ-Rating\n"
     )
 
     testcases = sorted(testresults.keys())
@@ -98,6 +98,7 @@ def scoreCalculation():
                 if n == "Sum":
                     continue
                 resText = resText + "{}\t".format(td.norms[n])
+            resText = resText + "{}\t".format(td.Reference)
             resText = resText + "{}\t".format(td.score)
             resText = resText + "{}\n".format(BADGES.get(td.simQbadge))
             fobj.write(resText)

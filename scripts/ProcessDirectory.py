@@ -37,6 +37,7 @@ class CaseResults:
         self.Version = ""
         self.DisplayName = ""
         self.Unit = ""
+        self.Reference = False
 
         self.Data = pd.DataFrame
         self.RefData = pd.DataFrame
@@ -334,13 +335,22 @@ def processDirectory(path):
         printError("    'Reference.tsv' contains invalid numbers.")
         return None
 
+    # read reference specification
+    try:
+        with open(os.path.join(path,'References.txt')) as f:
+            lines = f.readlines()
+            references = lines[0].split(",")
+    except RuntimeError as e:
+        printError(e)
+        printError(f"References.txt needs to be specified. Separated by ','")
+
     # read Weight factors
     try:
         weightFactorsTSV = TSVContainer()
         weightFactorsTSV.readAsStrings(os.path.join(path, "WeightFactors.tsv"))
     except RuntimeError as e:
-        print(e)
-        print(f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
+        printError(e)
+        printError(f"At least one weight factor has to be specified in 'WeightFactors.tsv'.")
         exit(1)
 
     weightFactors = dict()
@@ -385,6 +395,31 @@ def processDirectory(path):
     for e in evalData.data[0]:
         evaluationVariables.append(e)
         printNotification("  {}".format(e))
+
+    ###############################################################
+
+    referenceDf = pd.DataFrame()
+
+    tsvData = []
+    for dataFile in tsvFiles:
+
+        printNotification("\n-------------------------------------------------------\n")
+        printNotification("Generating References.\n")
+        printNotification("Reading '{}'.".format(dataFile))
+        toolID = dataFile[0:-4]  # strip tsv
+
+        if not toolID in references:
+            continue
+
+        tsv = pd.read_csv(os.path.join(tsvPath, dataFile), sep="\t", on_bad_lines='warn')
+
+
+        referenceDf = referenceDf.add(tsv, fill_value=0)
+
+
+    ###############################################################
+
+    referenceDf = referenceDf.div(len(references))
 
     # now read in all the reference files, collect the variable headers and write out the collective file
     tsvData = []
@@ -474,13 +509,22 @@ def processDirectory(path):
                 printError(str(e))
                 raise Exception(f"Could not convert time unit {tsv.headers[0]} to h.")
 
-            cr = evaluateVariableResults(variables[i], refData.data[0], tsv.data[0], refData.data[i + 1],
+
+
+            cols = referenceDf.columns
+            time = cols[0]
+            data = cols[i+1]
+            cr = evaluateVariableResults(variables[i], referenceDf[time].tolist(), tsv.data[0], referenceDf[data].tolist(),
                                          tsv.data[i + 1], starts, ends, weightFactors, timeIndicator)
             cr.TestCase = testCaseName
             cr.ToolID = toolID
             cr.Variable = variables[i]
             cr.ErrorCode = 0
             cr.Unit = rawVariables[i].split("[")[1].split("]")[0].strip()
+
+            if toolID in references:
+                cr.Reference = True
+
             try:
                 data = toolData.loc[toolData['Tool'] == toolID]
                 cr.DisplayName = data['Tool Name'].item()
