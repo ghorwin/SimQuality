@@ -12,11 +12,11 @@ import pandas as pd  # Data manipulation and analysis
 import datetime as dt
 from StatisticsFunctions import StatisticsFunctions as sf
 import plotly
+import numpy
 
 from TSVContainer import TSVContainer
 from PrintFuncs import *
 
-from scripts.PrintFuncs import printError, printNotification
 
 RESULTS_SUBDIRNAME = "result_data"
 EVAL_PERIODS = "EvaluationPeriods.tsv"
@@ -90,7 +90,7 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
         # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
         # For this we are nice and try to convert our reference results.
-        if not listsEqual(timeColumnData, timeColumnRef):
+        if not numpy.allclose(timeColumnData, timeColumnRef):
             printWarning(f"        Mismatching time columns in Data set file and reference data set.")
             printWarning(f"        Trying to convert reference data set.")
 
@@ -402,18 +402,15 @@ def processDirectory(path):
 
     tsvData = []
     for dataFile in tsvFiles:
+        toolID = dataFile[0:-4]  # strip tsv
+        if not toolID in references:
+            continue
 
         printNotification("\n-------------------------------------------------------\n")
         printNotification("Generating References.\n")
         printNotification("Reading '{}'.".format(dataFile))
-        toolID = dataFile[0:-4]  # strip tsv
-
-        if not toolID in references:
-            continue
 
         tsv = pd.read_csv(os.path.join(tsvPath, dataFile), sep="\t", on_bad_lines='warn')
-
-
         referenceDf = referenceDf.add(tsv, fill_value=0)
 
 
@@ -514,8 +511,13 @@ def processDirectory(path):
             cols = referenceDf.columns
             time = cols[0]
             data = cols[i+1]
-            cr = evaluateVariableResults(variables[i], referenceDf[time].tolist(), tsv.data[0], referenceDf[data].tolist(),
-                                         tsv.data[i + 1], starts, ends, weightFactors, timeIndicator)
+
+            # if data has not the same order we look for the correct header position
+            # and take its index
+            index = tsv.headers.index(rawVariables[i])
+            cr = evaluateVariableResults(variables[i], referenceDf[tsv.headers[0]].tolist(), tsv.data[0],
+                                         referenceDf[tsv.headers[i+1]].tolist(),
+                                         tsv.data[index], starts, ends, weightFactors, timeIndicator)
             cr.TestCase = testCaseName
             cr.ToolID = toolID
             cr.Variable = variables[i]
