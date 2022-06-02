@@ -1,0 +1,1 @@
+Die Berechnung des Sonnenstands ist nur vom Zeitpunkt und dem Standort des Gebäudes/Betrachters abhängig. Daher kann die Berechnung auch unabhängig von der Gebäudesimulation erfolgen. Eingangsdaten sind je Standort: Längengrad, Breitengrad und Zeitzone. Ein Überblick über die gewählten Standorte gibt die folgende Abbildung.
