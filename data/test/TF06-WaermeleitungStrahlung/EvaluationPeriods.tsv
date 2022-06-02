@@ -1,0 +1,39 @@
+Variable	Start [h]	End [h]
+Variante 1 Raumlufttemperatur	3600,8040	4400,8760
+Variante 1 abs. Strahlung Dach	3600,8041	4400,8761
+Variante 1 abs. Strahlung Boden	3600,8042	4400,8762
+Variante 1 abs. Strahlung Nordwand	3600,8043	4400,8763
+Variante 1 abs. Strahlung Ostwand	3600,8044	4400,8764
+Variante 1 abs. Strahlung Südwand	3600,8045	4400,8765
+Variante 1 abs. Strahlung Westwand	3600,8046	4400,8766
+Variante 1 Oberflächen-Temp. Dach	3600,8047	4400,8767
+Variante 1 Oberflächen-Temp. Boden	3600,8048	4400,8768
+Variante 1 Oberflächen-Temp. Nordwand	3600,8049	4400,8769
+Variante 1 Oberflächen-Temp. Ostwand	3600,8050	4400,8770
+Variante 1 Oberflächen-Temp. Südwand	3600,8051	4400,8771
+Variante 1 Oberflächen-Temp. Westwand	3600,8052	4400,8772
+Variante 1 konv. Wärmeleitung Innen Dach	3600,8053	4400,8773
+Variante 1 konv. Wärmeleitung Innen Boden	3600,8054	4400,8774
+Variante 1 konv. Wärmeleitung Innen Nordwand	3600,8055	4400,8775
+Variante 1 konv. Wärmeleitung Innen Ostwand	3600,8056	4400,8776
+Variante 1 konv. Wärmeleitung Innen Südwand	3600,8057	4400,8777
+Variante 1 konv. Wärmeleitung Innen Westwand	3600,8058	4400,8778
+Variante 2 Raumlufttemperatur	3600,8059	4400,8779
+Variante 2 abs. Strahlung Dach	3600,8060	4400,8780
+Variante 2 abs. Strahlung Boden	3600,8061	4400,8781
+Variante 2 abs. Strahlung Nordwand	3600,8062	4400,8782
+Variante 2 abs. Strahlung Ostwand	3600,8063	4400,8783
+Variante 2 abs. Strahlung Südwand	3600,8064	4400,8784
+Variante 2 abs. Strahlung Westwand	3600,8065	4400,8785
+Variante 2 Oberflächen-Temp. Dach	3600,8066	4400,8786
+Variante 2 Oberflächen-Temp. Boden	3600,8067	4400,8787
+Variante 2 Oberflächen-Temp. Nordwand	3600,8068	4400,8788
+Variante 2 Oberflächen-Temp. Ostwand	3600,8069	4400,8789
+Variante 2 Oberflächen-Temp. Südwand	3600,8070	4400,8790
+Variante 2 Oberflächen-Temp. Westwand	3600,8071	4400,8791
+Variante 2 konv. Wärmeleitung Innen Dach	3600,8072	4400,8792
+Variante 2 konv. Wärmeleitung Innen Boden	3600,8073	4400,8793
+Variante 2 konv. Wärmeleitung Innen Nordwand	3600,8074	4400,8794
+Variante 2 konv. Wärmeleitung Innen Ostwand	3600,8075	4400,8795
+Variante 2 konv. Wärmeleitung Innen Südwand	3600,8076	4400,8796
+Variante 2 konv. Wärmeleitung Innen Westwand	3600,8077	4400,8797
