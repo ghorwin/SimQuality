@@ -80,6 +80,8 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
     cr.RefData = pd.DataFrame()
 
+
+
     # initialize all statistical methods in cr.norms
     for key in weightFactors:
         cr.norms[key] = -99
@@ -88,24 +90,54 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         start = starts[i]
         end = ends[i]
 
-        # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
-        # For this we are nice and try to convert our reference results.
-        if not numpy.allclose(timeColumnData, timeColumnRef):
-            printWarning(f"        Mismatching time columns in Data set file and reference data set.")
-            printWarning(f"        Trying to convert reference data set.")
+        try:
+            # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
+            # For this we are nice and try to convert our reference results.
+            if not listsEqual(timeColumnData, timeColumnRef):
+                printWarning(f"        Mismatching time columns in data set file and reference data set. "
+                             f"Could be due to Numerical inaccuracy.")
 
-            newTestData = []
+                printWarning(f"        Trying to compare with numerical tolerance.")
 
-            for i in range(len(timeColumnRef)):
-                if timeColumnRef[i] not in timeColumnData.index:
-                    return cr
 
-                index = timeColumnData.index(timeColumnRef[i])
-                newTestData.append(timeColumnData[index])
+            if not numpy.allclose(timeColumnData, timeColumnRef):
 
-            # time column data from tool data set is now set for reference data set
-            timeColumnData = timeColumnRef
-            testData = newTestData
+                printWarning(f"        Yep, that was the case. We can continue ;)")
+
+        except Exception as e:
+
+            printWarning(f"        Nope, still quite a mass. :(")
+            printWarning(f"        Trying to convert reference results for our tool with less time steps.")
+
+            if len(timeColumnData) < len(timeColumnRef):
+                newRefData = []
+
+                for i in range(len(timeColumnData)):
+                    if timeColumnData[i] not in timeColumnRef:
+                        printWarning(f"        Could not be converted unfortunately. Sorry. :(")
+                        return cr
+
+                    index = timeColumnRef.index(timeColumnData[i])
+                    newRefData.append(refData[index])
+
+                # time column data from tool data set is now set for reference data set
+                timeColumnRef = timeColumnData
+                refData = newRefData
+
+            elif len(timeColumnData) > len(timeColumnRef):
+                newTestData = []
+
+                for i in range(len(timeColumnRef)):
+                    if timeColumnRef[i] not in timeColumnData:
+                        printWarning(f"        Could not be converted unfortunately. Sorry. :(")
+                        return cr
+
+                    index = timeColumnData.index(timeColumnRef[i])
+                    newTestData.append(testData[index])
+
+                # time column data from tool data set is now set for reference data set
+                timeColumnData = timeColumnRef
+                testData = newTestData
 
         # We first convert our data to pandas
         try:
