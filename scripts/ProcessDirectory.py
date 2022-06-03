@@ -36,6 +36,7 @@ class CaseResults:
         self.Editor = ""
         self.Version = ""
         self.DisplayName = ""
+        self.DisplayColor = "#ffc120"
         self.Unit = ""
         self.Reference = False
 
