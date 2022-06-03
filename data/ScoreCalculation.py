@@ -159,6 +159,14 @@ def scoreCalculation():
 
     printNotification("\n################################################\n\n")
     printNotification("Done producing evaluation data and dash conversion.")
+    printNotification("\nCopy data to dashboard.")
+
+    path1 = os.path.join("../dash_data")
+    path2 = os.path.join("../../SimQuality-Dashboard/dash_data")
+
+    printNotification("\nFinished.")
+
+    shutil.copytree(path1, path2, dirs_exist_ok=True)
 
     #### Convert data dict ####
     try:
