@@ -92,6 +92,18 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         end = ends[i]
 
         try:
+            split = 1
+            if timeIndicator == "min":
+                split = 60
+
+            tempTimeColumnData = [x / split for x in timeColumnData]
+            cr.Data = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
+
+        except Exception as e:
+            printError(str(e))
+            raise Exception("Could not convert data to case result object.")
+
+        try:
             # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
             # For this we are nice and try to convert our reference results.
             if not listsEqual(timeColumnData, timeColumnRef):
@@ -159,7 +171,7 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             pdD = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
             pdR = pd.DataFrame(data=refData, index=tempTimeColumnRef, columns=["Data"])
 
-            cr.Data = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
+            # cr.Data = pd.DataFrame(data=testData, index=tempTimeColumnData, columns=["Data"])
             cr.RefData = pd.concat([cr.RefData,
                                     pd.DataFrame(data=refData, index=tempTimeColumnData,
                                                  columns=["Data"]).loc[start:end]])
@@ -182,32 +194,32 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
             printError(f"        Cannot calculate Maximum for variable '{variable}'")
-        ####### MAXIMUM #######
+        ####### MINUMUM #######
         try:
             cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
             printError(f"        Cannot calculate Minimum for variable '{variable}'")
-        ####### MAXIMUM #######
+        ####### Average #######
         try:
             cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
             printError(f"        Cannot calculate Average for variable '{variable}'")
-        ####### MAXIMUM #######
+        ####### CVRMSE #######
         try:
             cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
             printError(f"        Cannot calculate CVRMSE for variable '{variable}'")
-        ####### MAXIMUM #######
+        ####### Daily Amplitude CVRMSE #######
         try:
             cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
                                                                                     pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
             printError(f"        {str(e)}")
             printError(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
-        ####### MAXIMUM #######
+        ####### MBE #######
         try:
             cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
@@ -284,7 +296,7 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
             maxDiff = 0
             if "Max Difference" in weightFactors.keys():
-                maxDiff = 80.0 + 20.0 * (weightFactors.get('Max Difference', 0) - abs(
+                maxDiff = 90.0 + 10.0 * (weightFactors.get('Max Difference', 0) - abs(
                                 cr.norms['Max Difference'])) / weightFactors.get('Max Difference', 9999)
 
             cr.score = cr.score + \
@@ -443,8 +455,10 @@ def processDirectory(path):
         printNotification("Generating References.\n")
         printNotification("Reading '{}'.".format(dataFile))
 
-        tsv = pd.read_csv(os.path.join(tsvPath, dataFile), sep="\t", on_bad_lines='warn')
-        referenceDf = referenceDf.add(tsv, fill_value=0)
+        df = pd.read_csv(os.path.join(tsvPath, dataFile), sep="\t", on_bad_lines='warn')
+        df = df.reindex(sorted(df.columns), axis=1) # resort by column
+
+        referenceDf = referenceDf.add(df, fill_value=0)
 
 
     ###############################################################
