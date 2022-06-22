@@ -25,9 +25,8 @@ from PrintFuncs import *
 
 BADGES = {
     0: "Failed",
-    1: "Gold",
-    2: "Silver",
-    3: "Bronze"
+    1: "Green",
+    2: "Yellow",
 }
 
 def scoreCalculation():
@@ -166,8 +165,6 @@ def scoreCalculation():
 
     printNotification("\nFinished.")
 
-    shutil.copytree(path1, path2, dirs_exist_ok=True)
-
     #### Convert data dict ####
     try:
         resultFile = "ToolColors.tsv"
@@ -176,6 +173,8 @@ def scoreCalculation():
     except Exception as e:
         printError(str(e))
         raise Exception(f"Could not create tool color file {colorDf}.")
+
+    shutil.copytree(path1, path2, dirs_exist_ok=True)
 
 # ---*** main ***---
 if __name__ == "__main__":
