@@ -318,16 +318,14 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
     # scoring caluclation --> >95% : Gold | >90% : Silver | >80% : Bronze
     badge = 0
-    if (cr.score > 95):
+    if (cr.score >= 90):
         badge = 1
-    elif (cr.score > 90):
+    elif (cr.score >= 80):
         badge = 2
-    elif (cr.score > 80):
-        badge = 3
+
     # now set the final SimQuality Badge
     cr.simQbadge = badge
-    cr.score = round(cr.score, 2)
-
+    cr.score = min(max(0, round(cr.score, 2)),100) # always between 0 and 100 %
     return cr
 
 
@@ -497,6 +495,10 @@ def processDirectory(path):
             appendErrorResults(tsvData, testCaseName, toolID, -7, variables)
             continue
 
+        # check if we have to interpolate half hourly data
+        if tsv.interpolateHalfHourlyData():
+            printNotification("    Data file needs to be interpolated.")
+
         # process all variables
         for i in range(len(variables)):
             # call function to generate and evaluate all norms for the given variable
@@ -525,7 +527,7 @@ def processDirectory(path):
 
             if len(starts) != len(ends):
                 printError(
-                    f"Start and end timpoints for evaluation do not have the same size: {len(start)} vs {len(end)}")
+                    f"    Start and end timpoints for evaluation do not have the same size: {len(start)} vs {len(end)}")
 
             for j in range(len(starts)):
                 start = float(starts[j])
@@ -561,10 +563,11 @@ def processDirectory(path):
 
             # if data has not the same order we look for the correct header position
             # and take its index
-            index = tsv.headers.index(rawVariables[i])
+            indexData = tsv.headers.index(rawVariables[i])
+            # indexRef = list(referenceDf.columns).index(rawVariables[i])
             cr = evaluateVariableResults(variables[i], referenceDf[tsv.headers[0]].tolist(), tsv.data[0],
-                                         referenceDf[tsv.headers[i+1]].tolist(),
-                                         tsv.data[index], starts, ends, weightFactors, timeIndicator)
+                                         referenceDf[rawVariables[i]].tolist(),
+                                         tsv.data[indexData], starts, ends, weightFactors, timeIndicator)
             cr.TestCase = testCaseName
             cr.ToolID = toolID
             cr.Variable = variables[i]
