@@ -25,8 +25,8 @@ from PrintFuncs import *
 
 BADGES = {
     0: "Failed",
-    1: "Green",
-    2: "Yellow",
+    1: "Perfect",
+    2: "Good",
 }
 
 def scoreCalculation():
