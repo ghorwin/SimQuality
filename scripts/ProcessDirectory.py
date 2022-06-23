@@ -192,93 +192,93 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             # we evaluate the results
             cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate Maximum for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate Maximum for variable '{variable}'")
         ####### MINUMUM #######
         try:
             cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate Minimum for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate Minimum for variable '{variable}'")
         ####### Average #######
         try:
             cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate Average for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate Average for variable '{variable}'")
         ####### CVRMSE #######
         try:
             cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate CVRMSE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate CVRMSE for variable '{variable}'")
         ####### Daily Amplitude CVRMSE #######
         try:
             cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
                                                                                     pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
         ####### MBE #######
         try:
             cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate MBE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate MBE for variable '{variable}'")
 
         try:
             cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate RMSIQR for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate RMSIQR for variable '{variable}'")
 
         try:
             cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate MSE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate MSE for variable '{variable}'")
 
         try:
             cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate NMBE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate NMBE for variable '{variable}'")
 
         try:
             cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate NRMSE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate NRMSE for variable '{variable}'")
 
         try:
             cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate RMSE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate RMSE for variable '{variable}'")
 
         try:
             cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate RMSLE for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate RMSLE for variable '{variable}'")
 
         try:
             cr.norms['R squared'] = sf.function_R_squared_coeff_determination(pdRef["Data"],pdData["Data"],pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate R squared for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate R squared for variable '{variable}'")
 
         try:
             cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate std dev for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate std dev for variable '{variable}'")
 
         try:
             cr.norms['Max Difference'] = sf.function_max_difference(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printError(f"        {str(e)}")
-            printError(f"        Cannot calculate Max Difference for variable '{variable}'")
+            printNotification(f"        {str(e)}")
+            printNotification(f"        Cannot calculate Max Difference for variable '{variable}'")
 
 
         # TODO : Wichtung
@@ -296,8 +296,8 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
             maxDiff = 0
             if "Max Difference" in weightFactors.keys():
-                maxDiff = 90.0 + 10.0 * (weightFactors.get('Max Difference', 0) - abs(
-                                cr.norms['Max Difference'])) / weightFactors.get('Max Difference', 9999)
+                maxDiff = 80.0 + \
+                          20.0 * (weightFactors.get('Max Difference', 0) - abs(cr.norms['Max Difference'])) / weightFactors.get('Max Difference', 0)
 
             cr.score = cr.score + \
                        (weightFactors.get('CVRMSE', 0) * (100.0 - abs(cr.norms['CVRMSE'])) +  # in %
@@ -322,10 +322,10 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
         badge = 1
     elif (cr.score >= 80):
         badge = 2
-
     # now set the final SimQuality Badge
     cr.simQbadge = badge
-    cr.score = min(max(0, round(cr.score, 2)),100) # always between 0 and 100 %
+    cr.score = max(round(cr.score, 2), 0)
+
     return cr
 
 
