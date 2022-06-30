@@ -27,6 +27,7 @@ BADGES = {
     0: "Failed",
     1: "Perfect",
     2: "Good",
+    99: "Not Possible"
 }
 
 def scoreCalculation():
