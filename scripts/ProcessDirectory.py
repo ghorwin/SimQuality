@@ -21,11 +21,15 @@ from PrintFuncs import *
 RESULTS_SUBDIRNAME = "result_data"
 EVAL_PERIODS = "EvaluationPeriods.tsv"
 
+NORMS = ["Average","CVRMSE","Daily Amplitude CVRMSE","MBE","MSE","Max Difference","Maximum",
+         "Minimum","NMBE","NRMSE","R squared","RMSE","RMSEIQR","RMSLE","std dev"]
 
 class CaseResults:
     def __init__(self):
         self.score = 0
         self.norms = dict()
+        for norm in NORMS: # Init all norms with -99
+            self.norms[norm] = -99
 
         self.simQbadge = 0  # means failed
 
@@ -81,8 +85,6 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
     cr.RefData = pd.DataFrame()
 
-
-
     # initialize all statistical methods in cr.norms
     for key in weightFactors:
         cr.norms[key] = -99
@@ -107,19 +109,11 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             # Check if time columns are equal. Some tools cannot produce output in under hourly mannor.
             # For this we are nice and try to convert our reference results.
             if not listsEqual(timeColumnData, timeColumnRef):
-                printWarning(f"        Mismatching time columns in data set file and reference data set. "
-                             f"Could be due to Numerical inaccuracy.")
-
-                printWarning(f"        Trying to compare with numerical tolerance.")
-
-
-            if not numpy.allclose(timeColumnData, timeColumnRef):
-
-                printWarning(f"        Yep, that was the case. We can continue ;)")
+                if not numpy.allclose(timeColumnData, timeColumnRef):
+                    printWarning(f"        Mismatching time columns in data set file and reference data set.")
 
         except Exception as e:
 
-            printWarning(f"        Nope, still quite a mass. :(")
             printWarning(f"        Trying to convert reference results for our tool with less time steps.")
 
             if len(timeColumnData) < len(timeColumnRef):
@@ -127,7 +121,10 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
 
                 for i in range(len(timeColumnData)):
                     if timeColumnData[i] not in timeColumnRef:
-                        printWarning(f"        Could not be converted unfortunately. Sorry. :(")
+                        printWarning(f"        Time step of tool data {timeColumnData[i]} was not in reference data.")
+
+
+
                         return cr
 
                     index = timeColumnRef.index(timeColumnData[i])
@@ -140,17 +137,60 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             elif len(timeColumnData) > len(timeColumnRef):
                 newTestData = []
 
-                for i in range(len(timeColumnRef)):
-                    if timeColumnRef[i] not in timeColumnData:
-                        printWarning(f"        Could not be converted unfortunately. Sorry. :(")
-                        return cr
+                # if we have less ref data but with smaller time steps
+                # we need to convert the ref data
+                if len(timeColumnData) < 2:
+                    printWarning(f"        Tool data has less then 2 entries.")
+                    return cr
+                if len(timeColumnRef) < 2:
+                    printWarning(f"        Reference data has less then 2 entries.")
+                    return cr
 
-                    index = timeColumnData.index(timeColumnRef[i])
-                    newTestData.append(testData[index])
+                stepSizeData = timeColumnData[1] - timeColumnData[0]
+                stepSizeRef = timeColumnRef[1] - timeColumnRef[0]
 
-                # time column data from tool data set is now set for reference data set
-                timeColumnData = timeColumnRef
-                testData = newTestData
+                if stepSizeData > stepSizeRef:
+                    newRefData = []
+                    newTimeColumn = []
+
+                    printWarning(f"        Tool data step size is less then reference data step size and contains more data then reference. Converting reference data.")
+
+                    for i in range(len(timeColumnData)):
+                        if timeColumnData[i] < timeColumnRef[0] or timeColumnData[i] > timeColumnRef[-1]:
+                            continue    # we do not have reference data for all tool data time steps, so we skip all
+                                        # data that is not included
+
+                        if timeColumnData[i] not in timeColumnRef:
+                            printWarning(f"        Could not find tool data time step {timeColumnData[i]} in time column of reference data. ")
+                            return cr
+
+                        indexRef = timeColumnRef.index(timeColumnData[i])
+                        newRefData.append(refData[indexRef])
+
+                        indexData = timeColumnData.index(timeColumnData[i])
+                        newTestData.append(testData[indexData])
+
+                        newTimeColumn.append(timeColumnData[i])
+
+
+                    timeColumnRef = newTimeColumn
+                    timeColumnData = newTimeColumn
+
+                    testData = newTestData
+                    refData = newRefData
+
+                else:
+                    for i in range(len(timeColumnRef)):
+                        if timeColumnRef[i] not in timeColumnData:
+                            printWarning(f"        Could not find reference data time step {timeColumnRef[i]} in time column of tool data. ")
+                            return cr
+
+                        index = timeColumnData.index(timeColumnRef[i])
+                        newTestData.append(testData[index])
+
+                    # time column data from tool data set is now set for reference data set
+                    timeColumnData = timeColumnRef
+                    testData = newTestData
 
         # We first convert our data to pandas
         try:
@@ -192,93 +232,93 @@ def evaluateVariableResults(variable, timeColumnRef, timeColumnData, refData, te
             # we evaluate the results
             cr.norms['Maximum'] = sf.function_Maximum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate Maximum for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate Maximum for variable '{variable}'")
         ####### MINUMUM #######
         try:
             cr.norms['Minimum'] = sf.function_Minimum(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate Minimum for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate Minimum for variable '{variable}'")
         ####### Average #######
         try:
             cr.norms['Average'] = sf.function_Average(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate Average for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate Average for variable '{variable}'")
         ####### CVRMSE #######
         try:
             cr.norms['CVRMSE'] = sf.function_CVRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate CVRMSE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate CVRMSE for variable '{variable}'")
         ####### Daily Amplitude CVRMSE #######
         try:
             cr.norms['Daily Amplitude CVRMSE'] = sf.function_Daily_Amplitude_CVRMSE(pdRef["Data"], pdData["Data"],
                                                                                     pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate Daily Amplitude CVRMSE for variable '{variable}'")
         ####### MBE #######
         try:
             cr.norms['MBE'] = sf.function_MBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate MBE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate MBE for variable '{variable}'")
 
         try:
             cr.norms['RMSEIQR'] = sf.function_RMSEIQR(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate RMSIQR for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate RMSIQR for variable '{variable}'")
 
         try:
             cr.norms['MSE'] = sf.function_MSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate MSE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate MSE for variable '{variable}'")
 
         try:
             cr.norms['NMBE'] = sf.function_NMBE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
+            printWarning(f"        {str(e)}")
             printNotification(f"        Cannot calculate NMBE for variable '{variable}'")
 
         try:
             cr.norms['NRMSE'] = sf.function_NRMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate NRMSE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate NRMSE for variable '{variable}'")
 
         try:
             cr.norms['RMSE'] = sf.function_RMSE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate RMSE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate RMSE for variable '{variable}'")
 
         try:
             cr.norms['RMSLE'] = sf.function_RMSLE(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate RMSLE for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate RMSLE for variable '{variable}'")
 
         try:
             cr.norms['R squared'] = sf.function_R_squared_coeff_determination(pdRef["Data"],pdData["Data"],pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate R squared for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate R squared for variable '{variable}'")
 
         try:
             cr.norms['std dev'] = sf.function_std_dev(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate std dev for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate std dev for variable '{variable}'")
 
         try:
             cr.norms['Max Difference'] = sf.function_max_difference(pdRef["Data"], pdData["Data"], pdTime["Date and Time"])
         except (RuntimeError, RuntimeWarning) as e:
-            printNotification(f"        {str(e)}")
-            printNotification(f"        Cannot calculate Max Difference for variable '{variable}'")
+            printWarning(f"        {str(e)}")
+            printWarning(f"        Cannot calculate Max Difference for variable '{variable}'")
 
 
         # TODO : Wichtung
@@ -440,6 +480,7 @@ def processDirectory(path):
         printNotification("  {}".format(e))
 
     ###############################################################
+    # Read references and combine tool data in "References.txt"
 
     referenceDf = pd.DataFrame()
 
@@ -466,6 +507,7 @@ def processDirectory(path):
     # now read in all the reference files, collect the variable headers and write out the collective file
     tsvData = []
     for dataFile in tsvFiles:
+
         # special handling of reference data files needed only for visualization
         if dataFile.startswith("Reference"):
             continue
@@ -496,23 +538,29 @@ def processDirectory(path):
             continue
 
         # check if we have to interpolate half hourly data
-        if tsv.interpolateHalfHourlyData():
-            printNotification("    Data file needs to be interpolated.")
+        if testCaseName != "09-Verschattung":
+            if tsv.interpolateHalfHourlyData():
+                printNotification("    Data file needs to be interpolated.")
 
         # process all variables
         for i in range(len(variables)):
+            doCalculation = True
+
             # call function to generate and evaluate all norms for the given variable
             # we provide time column, reference data column and value column, also parameter set for norm calculation
             # we get a variable-specific score stored in CaseResults object
             if not rawVariables[i] in tsv.headers:
-                printError("    '{}'s does not contain the variable {}. Skipped".format(dataFile, variables[i]))
-                continue
+                printError("    '{}'s does not contain the variable {}.".format(dataFile, variables[i]))
+                cr = CaseResults()
+                cr.simQbadge = 99
+                cr.score = -99
+                doCalculation = False
 
             # check if data even exists
-            if i > len(tsv.data):
-                printError("    '{}'s columns exceed number of columns of 'Reference.tsv'".format(dataFile))
-                appendErrorResults(tsvData, testCaseName, toolID, -11, variables)
-                break
+            # if i > len(tsv.data):
+            #     printError("    '{}'s columns exceed number of columns of 'Reference.tsv'".format(dataFile))
+            #     appendErrorResults(tsvData, testCaseName, toolID, -11, variables)
+            #     break
 
             if not variables[i] in evaluationVariables:
                 printError(
@@ -555,17 +603,17 @@ def processDirectory(path):
                 printError(str(e))
                 raise Exception(f"Could not convert time unit {tsv.headers[0]} to h.")
 
+            if doCalculation:
+                cols = referenceDf.columns
+                time = cols[0]
+                data = cols[i + 1]
 
+                # if data has not the same order we look for the correct header position
+                # and take its index
+                indexData = tsv.headers.index(rawVariables[i])
+                # indexRef = list(referenceDf.columns).index(rawVariables[i])
 
-            cols = referenceDf.columns
-            time = cols[0]
-            data = cols[i+1]
-
-            # if data has not the same order we look for the correct header position
-            # and take its index
-            indexData = tsv.headers.index(rawVariables[i])
-            # indexRef = list(referenceDf.columns).index(rawVariables[i])
-            cr = evaluateVariableResults(variables[i], referenceDf[tsv.headers[0]].tolist(), tsv.data[0],
+                cr = evaluateVariableResults(variables[i], referenceDf[tsv.headers[0]].tolist(), tsv.data[0],
                                          referenceDf[rawVariables[i]].tolist(),
                                          tsv.data[indexData], starts, ends, weightFactors, timeIndicator)
             cr.TestCase = testCaseName
@@ -585,7 +633,7 @@ def processDirectory(path):
                 cr.DisplayColor = data['Tool Color'].item()
             except Exception as e:
                 printError(str(e))
-                raise Exception(f"Data in 'ToolData.tsv' in {path} not specified for Tool '{toolID}'")
+                raise Exception(f"Data in 'ToolSpecifications.tsv' in {path} not specified for Tool '{toolID}'")
 
             tsvData.append(cr)
 
