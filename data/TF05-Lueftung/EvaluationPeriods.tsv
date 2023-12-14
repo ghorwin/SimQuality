@@ -1,5 +1,5 @@
-Variable	Start [h]	End [h]
-Variante 1 Raumlufttemperatur	5000	5200
+Variable	Start	End
+Variante 1 Raumlufttemperatur	5000	5200	
 Variante 2 Raumlufttemperatur	5000	5200
 Variante 2 Lueftungswaermestrom	5000	5200
 Variante 3 Raumlufttemperatur	5000	5200
